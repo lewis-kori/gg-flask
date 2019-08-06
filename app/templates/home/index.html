@@ -1,0 +1,454 @@
+{% extends 'home/home_base.html' %}
+
+{% block home_content %}
+  <div class="media-holder type-2" data-bg="images/1920x500_bg1.jpg">
+
+      <div class="container">
+
+          <div class="tabs type-2 style-3 tabs-section clearfix">
+              <!--tabs navigation-->
+              <ul class="tabs-nav clearfix">
+                  <li class="">
+                      <a href="#tab-1">Find a Car</a>
+                  </li>
+              </ul>
+              <!--tabs content-->
+              <div class="tabs-content">
+                  <div id="tab-1">
+                      <div class="select-area tab-col-2">
+                          <div class="select-col">
+
+                              <form class="lineform">
+                                  <input type="text" placeholder="ZIP">
+                              </form>
+
+                          </div>
+
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="Max Mileage">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
+
+
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="All Makes">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
+
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="All Models">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                      <div class="select-area tab-col-2">
+
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="Max Price">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
+
+
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="Min Year">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
+
+                          <div class="select-col" style="width: 100%">
+                              <a href="#" class="btn btn-style-3"><i class="licon-magnifier"></i>Search</a>
+                          </div>
+
+                      </div>
+
+                      <a href="#" class="info-btn">More search options</a>
+
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+  </div>
+
+  <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+
+  <div id="content">
+
+      <div class="page-section-bg psb1">
+
+          <div class="row flex-row">
+              {% for vehicle in all_vehicles %}
+              <div class="col-md-3 col-xs-6">
+
+                  <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                  <div class="product">
+
+                      <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                      <a href="#"><img src="{% if vehicle.image_url %}
+                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                       {% else %}
+                                            {{ url_for('static', filename='home/images/262x173_img3.jpg')}}
+                                       {% endif %}" alt=""></a>
+                      <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                      <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                      <div class="product-description">
+
+                          <h5 class="product-name"><a href="#">{{vehicle.name}}</a></h5>
+
+                          <div class="pricing-area">
+
+                              <div class="product-price">
+                                  {{vehicle.price}}
+                              </div>
+
+                          </div>
+                          <div class="model-loc">
+                              <ul>
+                                  <li><span>Mileage</span>{{vehicle.mileage}}</li>
+                                  <li><span>Location</span>Within 4 km</li>
+                              </ul>
+                          </div>
+
+                      </div>
+                      <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+
+                  </div>
+
+              </div>
+              {% endfor %}
+          </div>
+
+      </div>
+
+<!--      <div class="page-section-bg psb2">-->
+
+<!--          <div class="row flex-row">-->
+
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img3.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Ford Fusion Hybrid</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $26,459-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>241</li>-->
+<!--                                  <li><span>Location</span>Within 4 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img4.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2017 Chevrolet Colorado</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $21,035-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>220</li>-->
+<!--                                  <li><span>Location</span>Within 10 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img5.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Porsche Boxster</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $52,529-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>90</li>-->
+<!--                                  <li><span>Location</span>Within 25 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img6.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Honda Odyssey</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $29,929-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>230</li>-->
+<!--                                  <li><span>Location</span>Within 5 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+
+<!--          </div>-->
+
+<!--      </div>-->
+
+<!--      <div class="page-section-bg psb3">-->
+
+<!--          <div class="row flex-row">-->
+
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img3.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Ford Fusion Hybrid</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $26,459-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>241</li>-->
+<!--                                  <li><span>Location</span>Within 4 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img4.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2017 Chevrolet Colorado</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $21,035-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>220</li>-->
+<!--                                  <li><span>Location</span>Within 10 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img5.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Porsche Boxster</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $52,529-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>90</li>-->
+<!--                                  <li><span>Location</span>Within 25 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+<!--              <div class="col-md-3 col-xs-6">-->
+
+<!--                  &lt;!&ndash; - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                  <div class="product">-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <a href="#"><img src="images/262x173_img6.jpg" alt=""></a>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--                      <div class="product-description">-->
+
+<!--                          <h5 class="product-name"><a href="#">2016 Honda Odyssey</a></h5>-->
+
+<!--                          <div class="pricing-area">-->
+
+<!--                              <div class="product-price">-->
+<!--                                  $29,929-->
+<!--                              </div>-->
+
+<!--                          </div>-->
+<!--                          <div class="model-loc">-->
+<!--                              <ul>-->
+<!--                                  <li><span>Mileage</span>230</li>-->
+<!--                                  <li><span>Location</span>Within 5 km</li>-->
+<!--                              </ul>-->
+<!--                          </div>-->
+
+<!--                      </div>-->
+<!--                      &lt;!&ndash; - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--                  </div>-->
+
+<!--              </div>-->
+
+<!--          </div>-->
+
+<!--      </div>-->
+
+  </div>
+{% endblock home_content %}
+
+
+

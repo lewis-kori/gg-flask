@@ -1,0 +1,212 @@
+{% extends 'layouts/admin_base.html' %}
+{% import 'macros/form_macros.html' as f %}
+{% import 'macros/check_password.html' as check %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/select2/css/select2.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Inventory</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add New Vehicles</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.vehicles') }}">ALL VEHICLES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.add_vehicle') }}">ADD NEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="card-body">
+                    <form class="picker-form" method="post" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Name</label>
+                                    {{ form.name(class="form-control") }}
+                                    {%for error in form.name.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Plate</label>
+                                    {{ form.plate(class="form-control") }}
+                                    {%for error in form.plate.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Make</label>
+                                    {{ form.make(class="form-control") }}
+                                    {%for error in form.make.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Model</label>
+                                    {{ form.model(class="form-control") }}
+                                    {%for error in form.model.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Image</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            {{ form.image(class="custom-file-input") }}
+                                            <label class="custom-file-label">Choose file</label>
+                                        </div>
+                                    </div>
+                                    {%for error in form.image.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Price</label>
+                                    {{ form.price(class="form-control") }}
+                                    {%for error in form.price.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Year</label>
+                                    {{ form.year(class="form-control") }}
+                                    {%for error in form.year.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Color</label>
+                                    {{ form.color(class="form-control") }}
+                                    {%for error in form.color.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Description</label>
+                                    {{ form.description(class="form-control") }}
+                                    {%for error in form.description.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="col-form-label col-form-label-sm">Mileage</label>
+                                    {{ form.mileage(class="form-control") }}
+                                    {%for error in form.mileage.errors%}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12" >
+                                <div class="mt-2" style="text-align:center">
+                                    <button id="submit" type="submit" class="btn btn-dark">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-select2.js') }}"></script>
+{% endblock %}

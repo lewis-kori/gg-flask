@@ -1,0 +1,148 @@
+{% import 'macros/admin_nav_macros.html' as nav %}
+{% import 'macros/header_macros.html' as header %}
+{% import 'macros/rightnav_macros.html' as right %}
+{% import 'macros/footer_macros.html' as footer %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'partials/_head.html' %}
+
+        {# Any templates that extend this template can set custom_head_tags to add scripts to their page #}
+        {% block custom_head_tags %}
+
+    {% endblock %}
+
+    </head>
+    <body class="left-sidebar-fixed  left-sidebar-light header-fixed header-primary-color">
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START MAIN --><!-- //////////////////////////////////////////////////////////////////////////// -->
+        {% block header %}
+            {{ header.render_header(current_user, dropdown) }}
+        {% endblock %}
+        <div class="app-body">
+          <!--left sidebar start-->
+            <div class="left-nav-wrap">
+                <div class="left-sidebar">
+                    {% block nav %}
+                        {{ nav.render_nav(current_user, dropdown) }}
+                    {% endblock %}
+
+                    {% set dropdown =
+                      [
+                        ('All Users',
+                          [
+                            ('admin.registered_users', 'All Users', 'group'),
+                            ('admin.new_user', 'Add Users', 'person_add'),
+                            ('admin.invite_user', 'Invite Users', 'plus_one'),
+                            ('admin.admin_settings', 'Settings', 'settings'),
+                          ],
+                          '','group'
+                        ),
+                        ('home.index', 'View Site', 'home'),
+                        ('account.logout', 'Logout', 'lock')
+                      ]
+                    %}
+
+                </div>
+            </div>
+
+            {% include 'partials/_flashes.html' %}
+            {# When extended, the content block contains all the html of the webpage #}
+
+            <!--main content wrapper-->
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            {% block right %}
+                  {{ right.render_right(current_user, dropdown) }}
+            {% endblock %}
+
+            {% block footer %}
+                {{ footer.render_footer(current_user) }}
+            {% endblock %}
+
+            {# Implement CSRF protection for site #}
+            {% if csrf_token()|safe %}
+                <div style="visibility: hidden; display: none">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token()|safe }}">
+                </div>
+            {% endif %}
+        </div>
+
+
+
+
+      <!-- ================================================
+    Scripts
+    ================================================ -->
+    <!--basic scripts-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery.dcjqaccordion.2.7.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/icheck/skins/icheck.min.js') }}"></script>
+
+<!--sparkline-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/sparkline/jquery.sparkline.js') }}"></script>
+<!--sparkline initialization-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/sparkline/init-sparkline.js') }}"></script>
+
+<!--c3chart-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/c3chart/d3.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/c3chart/c3.min.js') }}"></script>
+<!--c3chart initialization-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/c3chart/init-c3chart.js') }}"></script>
+
+<!--chartjs-->
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/chartjs/Chart.bundle.min.js') }}"></script>
+<!--chartjs initialization-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-bubble-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-mixed-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-area-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-line-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-doughnut-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-doughnut-chart2.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-sales-overview-chart.js') }}"></script>-->
+<!--<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/chartjs/init-sales-report-chart.js') }}"></script>-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/modernizr.js') }}"></script>
+<![endif]-->
+
+<!--basic scripts initialization-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#select-role').dropdown({
+            onChange: function (value, text, $selectedItem) {
+                $('td.user.role:contains(' + value + ')').closest('tr').removeClass('hidden').show();
+                $('td.user.role').not(':contains(' + value + ')').closest('tr').addClass('hidden').hide();
+            }
+        });
+    });
+    function delete_item(id){
+      swal({    title: "Are you sure?",
+                  text: "You will not be able to recover this file!",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes, delete it!",
+                  closeOnConfirm: false },
+                  function(){
+                  $(id).submit();
+                });
+    }
+    </script>
+     {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

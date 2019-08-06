@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Google Web Fonts
+    ================================================== -->
+
+    <!-- Basic Page Needs
+    ================================================== -->
+
+    <title>Gigi</title>
+
+    <!--meta info-->
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- CSS theme files
+    ============================================ -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/fontello.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/responsive.css') }}">
+
+</head>
+
+<body>
+    <!-- - - - - - - - - - - - - - Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div id="wrapper" class="wrapper-container">
+
+        <!-- - - - - - - - - - - - - Mobile Menu - - - - - - - - - - - - - - -->
+
+        <nav id="mobile-advanced" class="mobile-advanced"></nav>
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <header id="header" class="header-3">
+
+            <!-- top-bar -->
+
+            <div class="top-bar">
+
+                <div class="container">
+
+                    <div class="flex-row flex-justify flex-center">
+
+                        <div class="contact-info-menu type-2">
+
+                            <div class="contact-info-item lang-button">
+
+                                <div class="flex-row flex-center">
+
+                                    <i class="licon-earth"></i>
+                                    <div class="item-inner">
+                                        <a href="#">Language</a>
+                                        <ul class="dropdown-list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">German</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div style="position: absolute;left: 16%;">
+                            <a href="#" class="upa">Cars</a>
+                            <a href="#" class="upa">Prestige cars</a>
+                        </div>
+                        <div class="slash-list">
+                            <span>Account: </span>
+                            <a href="#">Sign in</a>
+                            <a href="#">Sign up</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- top-header -->
+
+            <div class="top-header">
+
+                <div class="container">
+
+                    <div class="row flex-row flex-justify flex-center">
+                        <div class="col-sm-2">
+
+                            <!-- logo -->
+
+                            <div class="logo-wrap">
+
+                                <a href="index.html" class="logo"><img src="{{ url_for('static', filename='home/images/logo.png') }}" alt=""
+                                                                       style="height: 36px;"></a>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-10">
+
+                            <!-- - - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - - - -->
+
+                            <nav id="main-navigation" class="main-navigation">
+                                <ul id="menu" class="clearfix ">
+                                    <li><a class="wake">Buy</a></li>
+                                    <li><a class="wake">Sell your car</a></li>
+                                    <li><a class="wake">Import</a></li>
+                                    <li><a>Car reviews</a></li>
+                                </ul>
+                            </nav>
+
+                            <!-- - - - - - - - - - - - - end Navigation - - - - - - - - - - - - - - - -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--main menu-->
+
+            <div class="menu-holder">
+
+                <div class="container">
+
+                    <div class="menu-wrap">
+
+                        <div class="nav-item">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - -->
+
+        {% block home_content %}
+
+
+        {% endblock home_content %}
+
+        {% block footer %}
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <footer id="footer" class="footer-4">
+
+
+        <!-- Top footer -->
+        <div class="top-footer">
+
+            <div class="container extra">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+
+                        <div class="widget">
+
+                            <h5 class="widget-title">About Us</h5>
+                            <p>
+                                Gigi Motors is the pioneer among the dealerships in the Kenyan used car market.
+                            </p>
+                            <p>We have been dedicated to providing our clients both individual and corporate with premium
+                                quality new & used cars.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+
+                        <div class="widget">
+                            <h5 class="widget-title">Company</h5>
+                            <ul class="info-links">
+
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">News &amp; Tips</a></li>
+                                <li><a href="#">Site Map</a></li>
+                                <li><a href="#">Contact</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+
+                        <div class="widget">
+                            <h5 class="widget-title">Services</h5>
+                            <ul class="info-links">
+
+                                <li><a href="#">New Cars For Sale</a></li>
+                                <li><a href="#">Pre-owend Cars</a></li>
+                                <li><a href="#">Sell My Car</a></li>
+                                <li><a href="#">Car Valuations</a></li>
+                                <li><a href="#">Financing & Insurance</a></li>
+                                <li><a href="#">Service & Repair</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+
+                        <div class="widget">
+                            <h5 class="widget-title">Locations</h5>
+                            <ul class="info-links">
+
+                                <li><a href="#">Nairobi</a></li>
+                                <li><a href="#">Nakuru</a></li>
+                                <li><a href="#">Mombasa</a></li>
+                                <li><a href="#">Financing & Insurance</a></li>
+                                <li><a href="#">Service & Repair</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+
+                        <div class="widget">
+                            <h5 class="widget-title">Latest News & Tips</h5>
+                            <article class="entry">
+
+                                <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+                                <div class="thumbnail-attachment">
+                                    <a href="#"><img src="images/130x87_img1.jpg" alt=""></a>
+                                </div>
+                                <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                                <div class="entry-body">
+
+                                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                                    <div class="entry-meta">
+
+                                        <time class="entry-date" datetime="2016-01-27">December 28, 2017</time>
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                                    <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                            </article>
+                            <article class="entry">
+
+                                <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+                                <div class="thumbnail-attachment">
+                                    <a href="#"><img src="images/130x87_img2.jpg" alt=""></a>
+                                </div>
+                                <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                                <div class="entry-body">
+
+                                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                                    <div class="entry-meta">
+
+                                        <time class="entry-date" datetime="2016-01-27">December 23, 2017</time>
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                                    <h5 class="entry-title"><a href="#">Vestibulum Ante Ipsum Primis in Faucibus </a></h5>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                            </article>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright-section">
+
+            <div class="container">
+
+                <div class="copyright align-center">Copyright Gigi © 2019. All Rights Reserved.</div>
+
+            </div>
+        </div>
+
+    </footer>
+
+        <!-- - - - - - - - - - - - - end Footer - - - - - - - - - - - - - - - -->
+        {% endblock footer %}
+    </div>
+
+    <!-- - - - - - - - - - - - end Wrapper - - - - - - - - - - - - - - -->
+
+    <!-- JS Libs & Plugins
+    ============================================ -->
+    <script src="{{ url_for('static', filename='home/js/libs/jquery.modernizr.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/js/libs/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/js/libs/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/js/libs/retina.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/mad.customselect.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/sticky-sidebar.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/jquery.queryloader2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/fancybox/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/instafeed.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/plugins/twitter/jquery.tweet.js') }}"></script>
+
+    <!-- JS theme files
+    ============================================ -->
+    <script src="{{ url_for('static', filename='home/js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/js/script.js') }}"></script>
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>

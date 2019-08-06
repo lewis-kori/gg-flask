@@ -1,0 +1,140 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+       <!-- START CONTENT -->
+        <section id="content">
+          <!--breadcrumbs start-->
+          <div id="breadcrumbs-wrapper">
+            <div class="container">
+              <div class="row">
+                <div class="col s10 m6 l6">
+                  <h5 class="breadcrumbs-title">{{ 'Add New Package' if not listing else 'Edit Package'  }}</h5>
+                  <ol class="breadcrumbs">
+                    <li><a href="{{url_for('publisher.dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{url_for('publisher.destination')}}">Destinations</a></li>
+                    <li class="active">{{ 'New' if not listing else 'Edit'  }}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--breadcrumbs end-->
+
+          <!--start container-->
+          <div class="container">
+            <div class="section">
+              <div class="divider"></div>
+                <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card-panel">
+                    <h4 class="header2">Basic information</h4>
+                    <div class="center-align">
+                      <span class="btn disabled">Trip Info</span>
+                      <span class="btn disabled">Package</span>
+                      <span class="btn disabled">Activities and Places</span>
+                      <span class="btn disabled">Policy</span>
+                      <span class="btn disabled">Images</span>
+                    </div>
+                    <div class="row">
+                      <form class="col s12" method="post" enctype="multipart/form-data">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <i class="material-icons prefix">title</i>
+                            {{ form.title() }}
+                            <label for="email">Title</label>
+                            {%for error in form.title.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">add_location</i>
+                            {{ form.location() }}
+                            <label for="email">Location</label>
+                            {%for error in form.location.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                           <div class="input-field col s6">
+                            <i class="material-icons prefix">access_time</i>
+                            {{ form.duration() }}
+                            <label for="email">Duration</label>
+                             {%for error in form.duration.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">date_range</i>
+                            {{ form.availability_from(class="datepicker") }}
+                            <label for="password">Available From</label>
+                            {%for error in form.availability_from.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">date_range</i>
+                            {{ form.availability_to(class="datepicker",id='test') }}
+                            <label for="password">Available To</label>
+                            {%for error in form.availability_to.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">work</i>
+                            {{ form.package() }}
+                            <label for="email">Package</label>
+                            {%for error in form.package.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                           <div class="input-field col s6">
+                            <i class="material-icons prefix">format_list_bulleted</i>
+                             {{ form.categories() }}
+                            <label for="email">Category</label>
+                             {%for error in form.categories.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">network_wifi</i>
+                            {{ form.connectivity() }}
+                            <label for="email">Connectivity</label>
+                            {%for error in form.connectivity.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                          <div class="input-field col s6">
+                            <i class="material-icons prefix">accessibility</i>
+                            {{ form.physical_condition() }}
+                            <label for="email">Physical Condition</label>
+                            {%for error in form.physical_condition.errors%}
+                                <div class="error">{{ error }}</div>
+                              {%endfor%}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="row">
+                            <div class="center-align">
+                              <button class="btn cyan waves-effect waves-light right" type="submit">Next
+                                <i class="material-icons right">send</i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end container-->
+        </section>
+        <!-- END CONTENT -->
+{% endblock%}
+
+{% block scripts %}
+   <script src="{{ url_for("static", filename="js/page.js") }}"></script>
+   <script>
+        document.getElementById('category-id').firstChild.setAttribute("disabled", "true");
+   </script>
+{% endblock %}

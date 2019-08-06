@@ -1,0 +1,100 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Inventory</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">ALL VEHICLES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.add_vehicle') }}">ADD NEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+
+<div class="row">
+    {% for vehicle in all_vehicles %}
+    <div class="col-md-4 col-sm-12">
+        <div class="card card-shadow mb-4 bg-white text-black">
+            <div class="card-body">
+                <div class="row d-flex align-items-center">
+                    <div class="col-sm-12 col-lg-12 text-center">
+                        <img class="imi d-inline-block mb-3 mb-lg-0"
+                             src="{% if vehicle.image_url %}
+                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                       {% else %}
+                                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                                       {% endif %}"
+                             srcset="{% if vehicle.image_url %}
+                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                       {% else %}
+                                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                                       {% endif %}" alt=""/>
+                    </div>
+                    <div class="col-sm-12 col-lg-12">
+                        <h4 class="mt-2 weight600 mb-0">{{vehicle.name}}</h4>
+                        <small class=" f12 text-black">{{vehicle.description}}</small>
+                        <div class="size mt-2">
+                            Price : {{vehicle.price}}
+                            <a href="#" class="btn btn-primary btn-pill btn-sm float-right">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/data-tables/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-datatable.js') }}"></script>
+
+{% endblock %}

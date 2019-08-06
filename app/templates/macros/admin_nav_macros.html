@@ -1,0 +1,81 @@
+{% macro render_menu_items(endpoints) %}
+    {% for endpoint, name, icon in endpoints %}
+        <li>
+          <a class="{% if request.endpoint == endpoint %}active{% endif %}" href="{{ url_for(endpoint) }}">
+            {% if icon %}
+            <i>{{ icon }}</i>
+            {% endif %}
+
+            <span>{{ name | safe }}</span>
+          </a>
+        </li>
+
+    {% endfor %}
+{% endmacro %}
+
+{% macro header_items(current_user, dropdown) %}
+    {% set endpoints = [
+      ('admin.vehicles', 'Inventory', ''),
+      ('admin.admin_settings', 'Sold', ''),
+      ('admin.admin_settings', 'Reserved', ''),
+      ('admin.admin_settings', 'Bazaar', ''),
+      ('admin.admin_settings', 'Clients', ''),
+      ('admin.admin_settings', 'Suppliers', ''),
+      ('admin.admin_settings', 'Enquiries', ''),
+      ('account.logout', 'Logout', '')
+
+    ]%}
+    {% set user = [] %}
+    {% if current_user.is_authenticated %}
+      {% set user = ([(current_user.role.index + '.dashboard', current_user.role.name + ' Dashboard', '')]) %}
+    {% endif %}
+    {{ render_menu_items( user + endpoints) }}
+{% endmacro %}
+
+{% macro account_items(current_user) %}
+    {% if current_user.is_authenticated %}
+      {% set endpoints = [
+        ('account.manage', 'Your Account', 'settings'),
+        ('account.logout', 'Log out', 'sign out')
+      ] %}
+      {{ render_menu_items(endpoints) }}
+    {% else %}
+      {% set endpoints = [
+        ('account.register', 'Register', 'list layout'),
+        ('account.login', 'Log In', 'sign in')
+      ] %}
+      {{ render_menu_items(endpoints) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro create_dropdown(dropdown, icon) %}
+  {% for item in dropdown %}
+    {% if item | length == 3 %}
+      {{ render_menu_items([item]) }}
+    {% elif item | length == 4 %}
+        <li class="sub-menu">
+          <a class="dropdown-menu" href="javascript:;" data-activates="Dashboarddropdown">
+            <i>{{ item[3] }}</i>
+            <span>{{ item[0] }}
+            </span>
+          </a>
+        </li>
+
+        <ul id="Dashboarddropdown" class="sub">
+          {{ create_dropdown(item[1]) }}
+        </ul>
+
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro render_nav(current_user, dropdown=[]) %}
+
+        <nav class="sidebar-menu">
+            <ul id="nav-accordion">
+              {{ header_items(current_user) }}
+              {{ create_dropdown(dropdown) }}
+          </ul>
+        </nav>
+
+{% endmacro %}

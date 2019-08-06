@@ -1,0 +1,235 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="media d-flex align-items-center ">
+                    <div class="mr-4 rounded-circle bg-warning sr-icon-box ">
+                        <i class="vl_user-male"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-uppercase mb-0 weight500">{{vehicles_count}}</h4>
+                        <span class="text-muted">All Cars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="media d-flex align-items-center">
+                    <div class="mr-4 rounded-circle bg-success sr-icon-box ">
+                        <i class="vl_download"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-uppercase mb-0 weight500">{{vehicles_count}}</h4>
+                        <span class="text-muted">Available Cars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="media d-flex align-items-center">
+                    <div class="mr-4 rounded-circle bg-danger sr-icon-box ">
+                        <i class="vl_shopping-bag2"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-uppercase mb-0 weight500">{{vehicles_count}}</h4>
+                        <span class="text-muted">Reserved Cars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="media d-flex align-items-center">
+                    <div class="mr-4 rounded-circle bg-primary sr-icon-box ">
+                        <i class="vl_cart-empty"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-uppercase mb-0 weight500">{{vehicles_count}}</h4>
+                        <span class="text-muted">Sold Cars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-4 col-md-6">
+        <div class="card bg-purple text-white mb-4 py-1">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="vl_graph-pie fa-3x text-white"></i>
+                </div>
+                <h5 class=" font-weight-normal mt-0" title="Number of Orders">Growth</h5>
+                <h2 class="mt-3 mb-3 text-white">32,879</h2>
+                <p class="mb-0 ">
+                    <span class=" mr-2"><i class="fa fa-arrow-up"></i> 3.23%</span>
+                    <span class="float-right">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <div class="card bg-primary text-white mb-4 py-1">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="vl_user-male fa-3x text-white"></i>
+                </div>
+                <h5 class=" font-weight-normal mt-0" title="Number of Orders">Customer</h5>
+                <h2 class="mt-3 mb-3 text-white">32,879</h2>
+                <p class="mb-0 ">
+                    <span class=" mr-2"><i class="fa fa-arrow-up"></i> 3.23%</span>
+                    <span class="float-right">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <div class="card bg-info text-white mb-4 py-1">
+            <div class="card-body">
+                <div class="float-right">
+                    <i class="vl_shopping-bag2 fa-3x text-white"></i>
+                </div>
+                <h5 class=" font-weight-normal mt-0" title="Number of Orders">Order</h5>
+                <h2 class="mt-3 mb-3 text-white">32,879</h2>
+                <p class="mb-0 ">
+                    <span class=" mr-2"><i class="fa fa-arrow-up"></i> 3.23%</span>
+                    <span class="float-right">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--sales report & active user-->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card card-shadow mb-4">
+            <div class="card-header border-0">
+                <div class="custom-title-wrap bar-primary">
+                    <div class="custom-title">Sales Report</div>
+                    <div class=" widget-action-link">
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-transparent text-secondary dropdown-hover p-0" data-toggle="dropdown">
+                                <i class=" vl_ellipsis-fill-h"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right vl-dropdown">
+                                <a class="dropdown-item" href="#"> Edit</a>
+                                <a class="dropdown-item" href="#"> Delete</a>
+                                <a class="dropdown-item" href="#"> Settings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <h4 class="mb-0">$120 <i class="fa fa-long-arrow-up text-success f14"></i></h4>
+                        <small class="text-muted text-uppercase">Today's Sales</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="mb-0">$740 <i class="fa fa-long-arrow-down text-danger f14"></i></h4>
+                        <small class="text-muted text-uppercase">This Week Sales</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="mb-0">$3740 <i class="fa fa-long-arrow-up text-success f14"></i></h4>
+                        <small class="text-muted text-uppercase">This Month Sales</small>
+                    </div>
+                </div>
+                <div>
+                    <canvas id="sales_report_chart" height="320"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/sales report & active user-->
+
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-shadow mb-4 bg-primary text-light">
+            <div class="card-body pb-0">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-5">
+                        <p class="mb-0">Sales In November 2018</p>
+                        <h4>$ 56453.00</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-7">
+                        <div class="row">
+                            <div class="col-4">
+                                <small>Direct Sale</small>
+                                <h5>$ 3442</h5>
+                            </div>
+                            <div class="col-4">
+                                <small>Referal</small>
+                                <h5>$ 434</h5>
+                            </div>
+                            <div class="col-4">
+                                <small>Affiliate</small>
+                                <h5>$ 7867</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-4">
+                    <canvas id="mixed_chart" height="148"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-shadow mb-4 bg-purple text-light">
+            <div class="card-body pb-0">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-5">
+                        <p class="mb-0">Sales In July</p>
+                        <h4>$ 2675.00</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-7">
+                        <div class="row">
+                            <div class="col-4">
+                                <small>Direct Sale</small>
+                                <h5>$ 1765</h5>
+                            </div>
+                            <div class="col-4">
+                                <small>Referal</small>
+                                <h5>$ 890</h5>
+                            </div>
+                            <div class="col-4">
+                                <small>Affiliate</small>
+                                <h5>$ 120</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-4">
+                    <canvas id="mixed_chart2" height="148"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
