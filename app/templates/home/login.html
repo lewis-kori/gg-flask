@@ -1,78 +1,61 @@
-{% extends 'home/home_base.html' %}
+{% extends 'layouts/auth_base.html' %}
 
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
 
-{% block header %}{% endblock header %}
-{% block home_content %}
+{% endblock %}
 
-<img class="center-image" src="{{ url_for('static', filename='home/img/tour_grid_15.jpg') }}" alt="">
+{% block content %}
 
-<div class="container">
-	<div class="login-fullpage">
-		<div class="row">
-			<div class="login-logo">
-				<img class="center-image" src="{{ url_for('static', filename='home/img/tour_grid_8.jpg') }}" alt="">
-			</div>
-			<div class="col-xs-12 col-sm-7">
-				<div class="f-login-content">
-					<div class="f-login-header">
-						<div class="f-login-title color-dr-blue-2">Welcome back!</div>
-						<div class="f-login-desc color-grey">Please login to your account</div>
-					</div>
-					{% with messages = get_flashed_messages(with_categories=True) %}
-              {% if messages %}
-                {% for category, msg in messages %}
-                  <div class="alert alert-{{ category }}" role="alert">
-                      <span class="f-login-desc color-grey">{{ msg }}</span>
-                  </div>
-              {% endfor %}
-              {% endif %}
-              {% endwith %}
-					<form action="" class="f-login-form" method="POST">
-						{{form.hidden_tag()}}
-						<div class="input-style-1 b-50 type-2 color-5">
-							<label for="" class="pb-1">Email: </label>
-							{{form.email()}}
-							{%for error in form.email.errors%}
-								<span>{{error}}</span>
-							{%endfor%}
-						</div>
-						<div class="input-style-1 b-50 type-2 color-5">
-							<label for="" class="pb-1">Password: </label>
-							{{form.password()}}
-							{%for error in form.password.errors%}
-								<span>{{error}}</span>
-							{%endfor%}
-						</div>
-						<div class="checkbox-group">
-							<div>
-								<p>Don't an account? <a href="{{url_for('account.choose_account_type')}}" class="color-dr-blue-2">Register now.</a></p>
-							</div>
-							<div>
-								<p><a href="{{url_for('account.reset_password_request')}}" class="color-dr-blue-2">Forgot password</a>?</p>
-							</div>
-						</div>
-
-						{{form.submit(class="login-btn c-button full b-60 bg-dr-blue-2 hv-dr-blue-2-o")}}
-
-						<!-- <div class="row">
-							<div class="col-xs-12 col-sm-4">
-								<a href="{{ url_for('account.oauth_authorize', provider='facebook') }}" class="c-button full b-60 bg-blue-7 hv-blue-7-o"><i class="fa fa-facebook"></i><span>login via Facebook</span></a>
-							</div>
-							<div class="col-xs-12 col-sm-4">
-								<a href="{{ url_for('account.oauth_authorize', provider='twitter') }}" class="c-button full b-60 bg-blue-8 hv-blue-8-o"><i class="fa fa-twitter"></i><span>login via Twitter</span></a>
-							</div>
-							<div class="col-xs-12 col-sm-4">
-								<a href="{{ url_for('account.oauth_authorize', provider='google') }}" class="c-button full b-60 bg-blue-8 hv-blue-8-o">
-									<i class="fa fa-google"></i><span>login via Google</span>
-								</a>
-							</div>
-						</div> -->
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="leftHalf" style="background-image: url('')">
+    <div class="login-promo-txt">
+        <h2>Welcome</h2>
+        <p></p>
+    </div>
 </div>
-{% endblock home_content %}
 
-{% block footer %}{% endblock footer %}
+<div class="rightHalf">
+    <div class="position-relative">
+        <!--login form-->
+        <div class="login-form">
+            <h2 class="text-center mb-4">
+                <img src="{{ url_for('static', filename='home/images/logo.png') }}"
+                     srcset="{{ url_for('static', filename='home/images/logo.png') }} 2x" alt="">
+            </h2>
+            <h4 class="text-uppercase- text-purple text-center mb-5">Login to Admin</h4>
+            <form action="" class="f-login-form" method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.email(class="form-control")}}
+                    {%for error in form.email.errors%}
+                    <span>{{error}}</span>
+                    {%endfor%}
+                </div>
+                <div class="form-group mb-4">
+                    {{form.password(class="form-control")}}
+                    {%for error in form.password.errors%}
+                    <span>{{error}}</span>
+                    {%endfor%}
+                </div>
+
+                <div class="form-group clearfix">
+                    <a href="#" class="float-left forgot-link my-2">Forgot Password ?</a>
+                    {{form.submit(class="btn btn-purple btn-pill float-right")}}
+
+                </div>
+
+                <div class="form-divider"></div>
+
+                <a href="#" class="btn btn-facebook btn-pill text-uppercase"><i class="fa fa-facebook-square"></i> Login
+                    with facebook</a>
+                <div class="text-center mt-5">
+                    <a href="registration.html" class="btn-link text-capitalize f12">Create New Account</a>
+                </div>
+            </form>
+        </div>
+        <!--/login form-->
+    </div>
+</div>
+
+{% endblock %}

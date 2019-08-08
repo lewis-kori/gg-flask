@@ -29,45 +29,13 @@ from app.auth.forms import (
 import httplib2
 
 from app.email import send_email
-from app.models import User
+from app.models import User, Role
 from app.auth.email import send_confirm_email
 from app.auth.email import send_password_reset_email
 #from oauth import OAuthSignIn
 
 
 account = Blueprint('account', __name__)
-
-
-@account.route('/authorize/<provider>')
-def oauth_authorize(provider):
-    if not current_user.is_anonymous:
-        return redirect(url_for('home.index'))
-    oauth = OAuthSignIn.get_provider(provider)
-    return oauth.authorize()
-
-
-@account.route('/callback/<provider>')
-def oauth_callback(provider):
-    if not current_user.is_anonymous:
-        return redirect(url_for('home.index'))
-    oauth = OAuthSignIn.get_provider(provider)
-    social_id, username, email = oauth.callback()
-    if social_id is None:
-        flash('Authentication failed.')
-        return redirect(url_for('home.index'))
-    user = User.query.filter_by(social_id=social_id).first()
-    if not user:
-        user = User(social_id=social_id, nickname=username, email=email)
-        db.session.add(user)
-        db.session.commit()
-    login_user(user, True)
-    if current_user.role.index == 'admin':
-        return redirect(request.args.get('next') or url_for('admin.dashboard'))
-    elif current_user.role.index == 'publisher':
-        return redirect(request.args.get('next') or url_for('publisher.dashboard'))
-    else:
-        return redirect(request.args.get('next') or url_for('customer.dashboard'))
-
 
 @account.route('/', methods=['GET', 'POST'])
 def login():

@@ -37,6 +37,6 @@ def terms_of_use():
     return render_template('home/terms_of_use.html')
 
 
-@home.route('/tour-operators/terms-and-conditions')
+@home.route('/terms-and-conditions')
 def tour_operators_terms():
     return render_template('home/tour_operators_terms.html')

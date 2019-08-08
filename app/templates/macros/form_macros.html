@@ -135,7 +135,7 @@
             </div>
         {% endfor %}
     {% elif field.type == 'SubmitField' %}
-        {{ field(class='btn btn-success waves-effect waves-light m-r-10') }}
+        {{ field(class='btn btn-green btn-pill float-right') }}
     {% elif field.type == 'FormField' %}
         {{ render_form(field) }}
     {% elif field.type == 'CustomSelectField' %}
