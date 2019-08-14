@@ -1,4 +1,4 @@
-#!/home/jina/PycharmProjects/GiGi/venv/bin/python
+#!/home/ubuntu/gg/venv/bin/python3
 #
 # Very simple serial terminal
 #

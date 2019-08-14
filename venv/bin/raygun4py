@@ -1,12 +1,10 @@
-#!/home/jina/PycharmProjects/GiGi/venv/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'raygun4py==3.1.4','console_scripts','raygun4py'
-__requires__ = 'raygun4py==3.1.4'
+#!/home/ubuntu/gg/venv/bin/python3
+# -*- coding: utf-8 -*-
 import re
 import sys
-from pkg_resources import load_entry_point
+
+from raygun4py.cli import main
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(
-        load_entry_point('raygun4py==3.1.4', 'console_scripts', 'raygun4py')()
-    )
+    sys.exit(main())
