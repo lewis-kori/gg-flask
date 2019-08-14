@@ -22,7 +22,7 @@ home = Blueprint('home', __name__)
 def index():
     """Admin dashboard page."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
-    return render_template('home/index.html', form=form,
+    return render_template('home/index.html',
                            all_vehicles=all_vehicles)
 
 
