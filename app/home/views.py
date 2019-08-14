@@ -20,7 +20,6 @@ home = Blueprint('home', __name__)
 
 @home.route('/', methods=['post', 'get'])
 def index():
-    form = Search()
     """Admin dashboard page."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
     return render_template('home/index.html', form=form,

@@ -2004,7 +2004,7 @@ button.search-button:before{content: "\e922";}
   padding: 10px 0;
   min-height: 350px;
       max-width: 1024px;
-    margin: auto;
+    margin: 0.8% auto 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

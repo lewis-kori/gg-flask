@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import Form, FlaskForm
 from wtforms import ValidationError
 from flask_ckeditor import CKEditorField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
@@ -8,7 +8,8 @@ from wtforms.fields import (
     SubmitField,
     SelectField,
     TextAreaField,
-    FileField
+    FileField,
+    FormField
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import (
@@ -80,7 +81,7 @@ class NewUserForm(InviteUserForm):
     submit = SubmitField('Create')
 
 
-class AddMakeForm(Form):
+class AddMakeForm(FlaskForm):
     name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
     image = FileField(validators=[FileAllowed(photos, u'Image only!')])
     description = CKEditorField('Description')
@@ -94,18 +95,33 @@ class EditMakeForm(Form):
     submit = SubmitField('Add')
 
 
-class AddVehicleForm(Form):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    description = TextAreaField('Description', validators=[InputRequired(), Length(1, 64)])
+class AddVehicleForm(FlaskForm):
+    plate = StringField('Plate')
+    description = TextAreaField('Description', validators=[InputRequired()])
+    name = StringField('Name', validators=[InputRequired()])
     price = StringField('Price', validators=[InputRequired()])
     mileage = StringField('Mileage', validators=[InputRequired()])
     color = StringField('Color', validators=[InputRequired()])
-    plate = StringField('Plate')
+    condition = StringField('Condition')
     year = StringField('Year', validators=[InputRequired()])
-    image = FileField(validators=[FileAllowed(photos, u'Image only!')])
     model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     submit = SubmitField('Add')
+
+
+class AddVehicleImagesForm(FlaskForm):
+    front_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    back_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    left_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    right_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    dash_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    interior_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    submit = SubmitField('Add')
+
+
+class GiantForm(FlaskForm):
+    part_one = FormField(AddVehicleForm)
+    part_two = FormField(AddVehicleImagesForm)
 
 
 class EditVehicleForm(Form):

@@ -5,7 +5,8 @@ from flask import (
     redirect,
     render_template,
     send_from_directory,
-    current_app
+    current_app,
+    jsonify
 )
 
 from app.models import *
@@ -20,6 +21,7 @@ from app.auth.email import send_password_reset_email
 from app.auth.admin_decorators import check_confirmed
 from sqlalchemy import func
 from flask_ckeditor import upload_success, upload_fail
+
 
 admin = Blueprint('admin', __name__)
 photos = UploadSet('photos', IMAGES)
@@ -66,31 +68,35 @@ def vehicles():
 def add_vehicle():
     all_vehicles = Vehicle.query.all()
     """Create a new vehicle."""
-    form = AddVehicleForm()
-    form.make.choices = [(row.id, row.name) for row in Make.query.all()]
-    form.model.choices = [(row.id, row.name) for row in Model.query.all()]
-    if form.validate_on_submit():
-        image = form.image.data
+    form = GiantForm()
+    form1 = form.part_one
+    form2 = form.part_two
+    form.part_one.make.choices = [(row.id, row.name) for row in Make.query.all()]
+    form.part_one.model.choices = [(row.id, row.name) for row in Model.query.all()]
+    if "submit-car_details" in request.form and form.part_one.validate(form):
+        print(jsonify(data={'message': 'Car details are {}'.format(form.part_one.data)}))
+    elif "submit-image_details" in request.form and form.validate():
+        image = form.part_two.front_image.data
         if image:
-            image = photos.save(form.image.data)
-        make = Make.query.filter_by(id=form.make.data).first_or_404()
-        model = Model.query.filter_by(id=form.model.data).first_or_404()
+            image = photos.save(form.part_two.front_image.data)
+        make = Make.query.filter_by(id=form.part_one.make.data).first_or_404()
+        model = Model.query.filter_by(id=form.part_one.model.data).first_or_404()
         new_vehicle = Vehicle(
-            name=form.name.data,
-            price=form.price.data,
-            description=form.description.data,
-            plate=form.plate.data,
-            year=form.year.data,
+            name=form.part_one.name,
+            price=form.part_one.price.data,
+            description=form.part_one.description,
+            plate=form.part_one.plate.data,
+            year=form.part_one.year.data,
             image_url=image,
-            mileage=form.mileage.data,
-            color=form.color.data,
+            mileage=form.part_one.mileage.data,
+            color=form.part_one.color.data,
             model_id=model.id,
             make_id=make.id
         )
         db.session.add(new_vehicle)
         db.session.commit()
         return redirect(url_for('admin.vehicles'))
-    return render_template('admin/new_vehicle.html', all_vehicles=all_vehicles, form=form)
+    return render_template('admin/new_vehicle.html', all_vehicles=all_vehicles, form=form, form1=form1, form2=form2)
 
 
 @admin.route('/settings', methods=('GET', 'POST'))

@@ -2854,8 +2854,8 @@ select.form-control-lg {
 form wizard style
 ----------------------------------*/
 .stepy-tab {
-    margin: 40px 0; 
-    text-align: center;
+    margin: 0px 0;
+    text-align: right;
 }
 
 .stepy-tab ul {
@@ -2912,7 +2912,7 @@ form wizard style
     height: 50px;
     cursor: auto;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 30px;
     background: #626be3;
     line-height: 50px;
 }
@@ -2920,9 +2920,9 @@ form wizard style
 .stepy-titles li div {
     width: auto;
     height: 50px;
-    padding: 0 40px;
+    padding: 0 20px;
     color: #949494;
-    border-radius: 5px;
+    border-radius: 30px;
     background: #ededed;
     font-size: 16px;
     font-weight: 300;
@@ -2930,11 +2930,11 @@ form wizard style
 }
 
 .wizard > .content {
-    min-height: 25em;
-    margin: .5em;
-    margin-top: 1rem;
-    border: 1px solid #efefef; 
-    background: #fff;
+    min-height: 25em !important;
+    margin: .5em !important;
+    margin-top: 1rem !important;
+    border: 1px solid #efefef !important;
+    background: #fff !important;
 }
 
 .wizard > .steps .disabled a,
@@ -3021,7 +3021,7 @@ form wizard style
     text-align: center;
 }
 .wizard > .steps > ul > li a {
-    padding: 1rem;
+    padding: 1.5rem;
     text-transform: uppercase;
 }
 .wizard > .steps > ul > li a i {
@@ -3037,7 +3037,7 @@ form wizard style
 .wizard > .steps .done a,
 .wizard > .steps .done a:hover,
 .wizard > .steps .done a:active {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .wizard > .steps .current a {
@@ -3053,7 +3053,7 @@ form wizard style
     float: left;
     width: 50px;
     height: 50px;
-    margin-top: 3px;
+    margin-top: -9%;
     margin-right: 20px;
     text-align: center;
     color: #b0b0b0;

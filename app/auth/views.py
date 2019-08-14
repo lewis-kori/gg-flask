@@ -32,10 +32,12 @@ from app.email import send_email
 from app.models import User, Role
 from app.auth.email import send_confirm_email
 from app.auth.email import send_password_reset_email
-#from oauth import OAuthSignIn
+
+# from oauth import OAuthSignIn
 
 
 account = Blueprint('account', __name__)
+
 
 @account.route('/', methods=['GET', 'POST'])
 def login():
@@ -92,8 +94,8 @@ def register_publisher():
         role = Role.query.filter_by(index='publisher').first_or_404()
         user = User(
             first_name=form.first_name.data,
-            email = form.email.data,
-            password = form.password.data, role=role)
+            email=form.email.data,
+            password=form.password.data, role=role)
         db.session.add(user)
         db.session.commit()
 

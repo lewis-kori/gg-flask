@@ -218,7 +218,7 @@
 				id		= this.attr('id'),
 				opt		= this.data('options');
 
-        	$('<a/>', { id: id + '-next-' + index, href: 'javascript:void(0);', 'class': 'button-next  btn btn-info', html: opt.nextLabel }).click(function() {
+        	$('<a/>', { id: id + '-next-' + index, href: 'javascript:void(0);','type':'submit', 'name':'submit-car_details', 'value':'submit-car_details', 'class': 'button-next btn btn-info', html: opt.nextLabel }).click(function() {
         		if (!opt.next || methods.execute.call($this, opt.next, index + 1)) {
 					methods.step.call($this, (index + 1) + 1);
         		}
@@ -341,3 +341,17 @@
 	};
 
 })(jQuery);
+//<div class="row">
+//    <div class="col-lg-12" >
+//        <div class="mt-2" style="text-align:right">
+//            <button id="submit" type="submit" name="submit-car_details" class="btn btn-dark">Next</button>
+//        </div>
+//    </div>
+//</div>
+//<div class="row">
+//    <div class="col-lg-12" >
+//        <div class="mt-2" style="text-align:right">
+//            <button id="submit2" type="submit" name="submit-image_details" class="btn btn-dark">Save</button>
+//        </div>
+//    </div>
+//</div>
