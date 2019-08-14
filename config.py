@@ -90,7 +90,7 @@ class DevelopmentConfig(Config):
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
     #     'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://jina:jinakubwa@localhost/gg'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://ubuntu:dalcom2019@localhost/gg'
     # DB_URL = 'postgresql+psycopg2://jina:jinakubwa@localhost/gg'
     #
     # SQLALCHEMY_DATABASE_URI = DB_URL
