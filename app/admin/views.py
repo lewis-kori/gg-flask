@@ -85,27 +85,27 @@ def add_vehicle():
     if form.validate_on_submit():
         front_image = form.front_image.data
         if front_image:
-            image = photos.save(form.front_image.data)
+            front_image = photos.save(form.front_image.data)
 
         back_image = form.back_image.data
         if back_image:
-            image = photos.save(form.back_image.data)
+            back_image = photos.save(form.back_image.data)
 
         left_image = form.left_image.data
         if left_image:
-            image = photos.save(form.left_image.data)
+            left_image = photos.save(form.left_image.data)
 
         right_image = form.right_image.data
         if right_image:
-            image = photos.save(form.right_image.data)
+            right_image = photos.save(form.right_image.data)
 
         dash_image = form.dash_image.data
         if dash_image:
-            image = photos.save(form.dash_image.data)
+            dash_image = photos.save(form.dash_image.data)
 
         interior_image = form.interior_image.data
         if interior_image:
-            image = photos.save(form.interior_image.data)
+            interior_image = photos.save(form.interior_image.data)
 
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
@@ -115,7 +115,7 @@ def add_vehicle():
             description=form.description.data,
             plate=form.plate.data,
             year=form.year.data,
-            image_url=image,
+            image_url=front_image,
             back_image_url=back_image,
             dash_image_url=dash_image,
             front_image_url=front_image,
