@@ -19,7 +19,7 @@ class Vehicle(db.Model):
     dash_image_url = db.Column(db.String(64), index=True)
     interior_image_url = db.Column(db.String(64), index=True)
     mileage = db.Column(db.String(80), index=True)
-    condition = db.Column(db.String(80))
+    condition = db.Column(db.String(80), index=True)
     color = db.Column(db.String(80), index=True)
     model_id = db.Column(db.Integer(), db.ForeignKey('models.id'), index=True)
     make_id = db.Column(db.Integer(), db.ForeignKey('makes.id'), index=True)
