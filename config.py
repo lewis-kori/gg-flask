@@ -91,7 +91,7 @@ class DevelopmentConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = (
         os.environ.get("DATABASE_URI")
-        or "postgresql+psycopg2://ubuntu:dalcom2019@localhost/gg"
+        or "postgresql+psycopg2://jina:jinakubwa@localhost/gg"
     )
     # DB_URL = 'postgresql+psycopg2://jina:jinakubwa@localhost/gg'
     #

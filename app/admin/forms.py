@@ -98,6 +98,10 @@ class AddVehicleForm(FlaskForm):
     right_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
     dash_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
     interior_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    seller_email = StringField('Email', validators=[InputRequired()])
+    seller_name = StringField('Name', validators=[InputRequired()])
+    phone_number = StringField('Phone', validators=[InputRequired()])
+    area = StringField('Area', validators=[InputRequired()])
     submit = SubmitField("Add")
 
 

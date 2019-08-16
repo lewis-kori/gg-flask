@@ -124,6 +124,11 @@ def add_vehicle():
             right_image_url=right_image,
             mileage=form.mileage.data,
             color=form.color.data,
+            condition=form.condition.data,
+            seller_name=form.seller_name.data,
+            seller_email=form.seller_email.data,
+            phone_number=form.phone_number.data,
+            area=form.area.data,
             model_id=model.id,
             make_id=make.id,
         )

@@ -259,6 +259,46 @@
                                 {%endfor%}
                             </div>
                         </fieldset>
+
+                        <fieldset title="3. User Details" class="step" id="default-step-2">
+                            <legend> </legend>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Name</label>
+                                        {{ form.seller_name(class='form-control') }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Email</label>
+                                        {{ form.seller_email(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Phone Number</label>
+                                        {{ form.phone_number(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Area</label>
+                                        {{ form.area(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for error_field, errors in form.errors.items() %}
+                                <div class="invalid-feedback">
+                                    {{ error_field }}: {{ errors|join(', ') }}
+                                </div>
+                                {%endfor%}
+                            </div>
+
+                        </fieldset>
                         <input type="submit" class="finish btn btn-danger" value="submit" name="submit-image_details" />
                     </form>
 
