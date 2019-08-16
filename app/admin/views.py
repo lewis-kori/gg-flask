@@ -6,7 +6,7 @@ from flask import (
     render_template,
     send_from_directory,
     current_app,
-    jsonify
+    jsonify,
 )
 
 from app.models import *
@@ -23,19 +23,23 @@ from sqlalchemy import func
 from flask_ckeditor import upload_success, upload_fail
 
 
-admin = Blueprint('admin', __name__)
-photos = UploadSet('photos', IMAGES)
+admin = Blueprint("admin", __name__)
+photos = UploadSet("photos", IMAGES)
 
 
-@admin.route('/')
+@admin.route("/")
 @login_required
 @admin_required
 @check_confirmed
 def dashboard():
     """Admin dashboard page."""
     bookings = Booking.query.order_by(Booking.createdAt.desc()).limit(5)
-    listings = Listing.query.filter_by(published=True).order_by(Listing.createdAt.desc()).limit(5)
-    croles = Role.query.filter_by(index='customer').first_or_404()
+    listings = (
+        Listing.query.filter_by(published=True)
+        .order_by(Listing.createdAt.desc())
+        .limit(5)
+    )
+    croles = Role.query.filter_by(index="customer").first_or_404()
     customers = croles.users.order_by(User.createdAt.desc()).limit(5)
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
     makes = Make.query.order_by(Make.createdAt.desc()).limit(5)
@@ -47,68 +51,82 @@ def dashboard():
     makes_count = Make.query.count()
     models_count = Model.query.count()
 
-    return render_template('admin/index.html', all_vehicles=all_vehicles, vehicles_count=vehicles_count,
-                           makes_count=makes_count, models_count=models_count, makes=makes, models=models)
+    return render_template(
+        "admin/index.html",
+        all_vehicles=all_vehicles,
+        vehicles_count=vehicles_count,
+        makes_count=makes_count,
+        models_count=models_count,
+        makes=makes,
+        models=models,
+    )
 
 
-@admin.route('/all_vehicles')
+@admin.route("/all_vehicles")
 @login_required
 @admin_required
 @check_confirmed
 def vehicles():
     """Vehicles."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).all()
-    return render_template('admin/all_vehicles.html', all_vehicles=all_vehicles)
+    return render_template("admin/all_vehicles.html", all_vehicles=all_vehicles)
 
 
-@admin.route('/vehicle/add', methods=['GET', 'POST'])
+@admin.route("/vehicle/add", methods=["GET", "POST"])
 @login_required
 @admin_required
 @check_confirmed
 def add_vehicle():
     all_vehicles = Vehicle.query.all()
     """Create a new vehicle."""
-    form = GiantForm()
-    form1 = form.part_one
-    form2 = form.part_two
-    form.part_one.make.choices = [(row.id, row.name) for row in Make.query.all()]
-    form.part_one.model.choices = [(row.id, row.name) for row in Model.query.all()]
-    if "submit-car_details" in request.form and form.part_one.validate(form):
-        print(jsonify(data={'message': 'Car details are {}'.format(form.part_one.data)}))
-    elif "submit-image_details" in request.form and form.validate():
-        image = form.part_two.front_image.data
+    form = AddVehicleForm()
+    form.make.choices = [(row.id, row.name) for row in Make.query.all()]
+    form.model.choices = [(row.id, row.name) for row in Model.query.all()]
+    if form.validate_on_submit():
+        image = form.front_image.data
         if image:
-            image = photos.save(form.part_two.front_image.data)
-        make = Make.query.filter_by(id=form.part_one.make.data).first_or_404()
-        model = Model.query.filter_by(id=form.part_one.model.data).first_or_404()
+            image = photos.save(form.front_image.data)
+        make = Make.query.filter_by(id=form.make.data).first_or_404()
+        model = Model.query.filter_by(id=form.model.data).first_or_404()
         new_vehicle = Vehicle(
-            name=form.part_one.name,
-            price=form.part_one.price.data,
-            description=form.part_one.description,
-            plate=form.part_one.plate.data,
-            year=form.part_one.year.data,
+            name=form.name.data,
+            price=form.price.data,
+            description=form.description.data,
+            plate=form.plate.data,
+            year=form.year.data,
             image_url=image,
-            mileage=form.part_one.mileage.data,
-            color=form.part_one.color.data,
+            mileage=form.mileage.data,
+            color=form.color.data,
             model_id=model.id,
-            make_id=make.id
+            make_id=make.id,
         )
         db.session.add(new_vehicle)
         db.session.commit()
-        return redirect(url_for('admin.vehicles'))
-    return render_template('admin/new_vehicle.html', all_vehicles=all_vehicles, form=form, form1=form1, form2=form2)
+        return redirect(url_for("admin.vehicles"))
+    return render_template("admin/new_vehicle.html", form=form)
 
 
-@admin.route('/settings', methods=('GET', 'POST'))
+@admin.route("/_get_model")
+@login_required
+@admin_required
+def _get_model():
+    make_id = request.args.get("make_id", 0, type=int)
+    models = [
+        (row.id, row.name) for row in Model.query.filter_by(make_id=make_id).all()
+    ]
+    return jsonify(models)
+
+
+@admin.route("/settings", methods=("GET", "POST"))
 @login_required
 @admin_required
 def admin_settings():
     user = current_user
 
-    return render_template('admin/blank.html', user=user)
+    return render_template("admin/blank.html", user=user)
 
 
-@admin.route('/settings/change_password', methods=('GET', 'POST'))
+@admin.route("/settings/change_password", methods=("GET", "POST"))
 @login_required
 @admin_required
 @check_confirmed
@@ -120,14 +138,14 @@ def change_password():
             current_user.password = form.new_password.data
             db.session.add(current_user)
             db.session.commit()
-            flash('Your password has been updated.', 'green')
-            return redirect(url_for('admin.settings'))
+            flash("Your password has been updated.", "green")
+            return redirect(url_for("admin.settings"))
         else:
-            flash('Original password is invalid.', 'red')
-    return render_template('admin/change_password.html', form=form)
+            flash("Original password is invalid.", "red")
+    return render_template("admin/change_password.html", form=form)
 
 
-@admin.route('/settings/change-email', methods=['GET', 'POST'])
+@admin.route("/settings/change-email", methods=["GET", "POST"])
 @admin_required
 @login_required
 @check_confirmed
@@ -139,46 +157,49 @@ def change_email_request():
             new_email = form.email.data
             token = current_user.generate_email_change_token(new_email)
             change_email_link = url_for(
-                'account.change_email', token=token, _external=True)
+                "account.change_email", token=token, _external=True
+            )
             get_queue().enqueue(
                 send_email,
                 recipient=new_email,
-                subject='Confirm Your New Email',
-                template='account/email/change_email',
+                subject="Confirm Your New Email",
+                template="account/email/change_email",
                 # current_user is a LocalProxy, we want the underlying user
                 # object
                 user=current_user._get_current_object(),
-                change_email_link=change_email_link)
-            flash('A confirmation link has been sent to {}.'.format(new_email),
-                  'warning')
-            return redirect(url_for('admin.settings'))
+                change_email_link=change_email_link,
+            )
+            flash(
+                "A confirmation link has been sent to {}.".format(new_email), "warning"
+            )
+            return redirect(url_for("admin.settings"))
         else:
-            flash('Invalid email or password.', 'form-error')
-    return render_template('admin/change_email.html', form=form)
+            flash("Invalid email or password.", "form-error")
+    return render_template("admin/change_email.html", form=form)
 
 
-@admin.route('/settings/change-email/<token>', methods=['GET', 'POST'])
+@admin.route("/settings/change-email/<token>", methods=["GET", "POST"])
 @login_required
 @admin_required
 @check_confirmed
 def change_email(token):
     """Change existing user's email with provided token."""
     if current_user.change_email(token):
-        flash('Your email address has been updated.', 'success')
+        flash("Your email address has been updated.", "success")
     else:
-        flash('The confirmation link is invalid or has expired.', 'error')
-    return redirect(url_for('admin.dashboard'))
+        flash("The confirmation link is invalid or has expired.", "error")
+    return redirect(url_for("admin.dashboard"))
 
 
-@admin.route('/category')
+@admin.route("/category")
 @admin_required
 @check_confirmed
 def category():
     categories = Category.query.order_by(Category.createdAt.desc()).all()
-    return render_template('admin/category.html', items=categories)
+    return render_template("admin/category.html", items=categories)
 
 
-@admin.route('/category/new', methods=('GET', 'POST'))
+@admin.route("/category/new", methods=("GET", "POST"))
 @admin_required
 @check_confirmed
 def newCategory():
@@ -190,24 +211,24 @@ def newCategory():
         category = Category(name=form.name.data, image_url=image)
         db.session.add(category)
         db.session.commit()
-        flash('Category added successfully', 'green')
-        return redirect(url_for('admin.category'))
-    return render_template('admin/add_category.html', form=form)
+        flash("Category added successfully", "green")
+        return redirect(url_for("admin.category"))
+    return render_template("admin/add_category.html", form=form)
 
 
-@admin.route('/files/<path:filename>')
+@admin.route("/files/<path:filename>")
 def uploaded_files(filename):
-    path = current_app.config['UPLOADS_CKEDITOR']
+    path = current_app.config["UPLOADS_CKEDITOR"]
     return send_from_directory(path, filename)
 
 
-@admin.route('/upload', methods=['POST'])
+@admin.route("/upload", methods=["POST"])
 def upload():
-    f = request.files.get('upload')
+    f = request.files.get("upload")
     # Add more validations here
-    extension = f.filename.split('.')[1].lower()
-    if extension not in ['jpg', 'gif', 'png', 'jpeg']:
-        return upload_fail(message='Image only!')
-    f.save(os.path.join('app/static/ckeditor_uploads', f.filename))
-    url = url_for('admin.uploaded_files', filename=f.filename)
+    extension = f.filename.split(".")[1].lower()
+    if extension not in ["jpg", "gif", "png", "jpeg"]:
+        return upload_fail(message="Image only!")
+    f.save(os.path.join("app/static/ckeditor_uploads", f.filename))
+    url = url_for("admin.uploaded_files", filename=f.filename)
     return upload_success(url=url)  # return upload_success call

@@ -9,114 +9,108 @@ from wtforms.fields import (
     SelectField,
     TextAreaField,
     FileField,
-    FormField
+    FormField,
 )
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import (
-    Email,
-    EqualTo,
-    InputRequired,
-    Length
-)
+from wtforms.validators import Email, EqualTo, InputRequired, Length
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from app import db
 from app.models import Role, User, Category
 
-photos = UploadSet('photos', IMAGES)
+photos = UploadSet("photos", IMAGES)
 
 
 class ChangeUserEmailForm(Form):
     email = EmailField(
-        'New email', validators=[InputRequired(),
-                                 Length(1, 64),
-                                 Email()])
-    submit = SubmitField('Update email')
+        "New email", validators=[InputRequired(), Length(1, 64), Email()]
+    )
+    submit = SubmitField("Update email")
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered.')
+            raise ValidationError("Email already registered.")
 
 
 class ChangeAccountTypeForm(Form):
     role = QuerySelectField(
-        'New account type',
+        "New account type",
         validators=[InputRequired()],
-        get_label='name',
-        query_factory=lambda: db.session.query(Role).order_by('permissions'))
-    submit = SubmitField('Update role')
+        get_label="name",
+        query_factory=lambda: db.session.query(Role).order_by("permissions"),
+    )
+    submit = SubmitField("Update role")
 
 
 class InviteUserForm(Form):
-    first_name = StringField(
-        'First name', validators=[InputRequired(),
-                                  Length(1, 64)])
-    last_name = StringField(
-        'Last name', validators=[InputRequired(),
-                                 Length(1, 64)])
-    email = EmailField(
-        'Email', validators=[InputRequired(),
-                             Length(1, 64),
-                             Email()])
-    submit = SubmitField('Invite')
+    first_name = StringField("First name", validators=[InputRequired(), Length(1, 64)])
+    last_name = StringField("Last name", validators=[InputRequired(), Length(1, 64)])
+    email = EmailField("Email", validators=[InputRequired(), Length(1, 64), Email()])
+    submit = SubmitField("Invite")
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered.')
+            raise ValidationError("Email already registered.")
 
 
 class NewUserForm(InviteUserForm):
-    password = PasswordField(
-        'Password',
-        validators=[
-            InputRequired(),
-        ])
+    password = PasswordField("Password", validators=[InputRequired()])
     password2 = PasswordField(
-        'Confirm password',
-        validators=[
-            InputRequired(),
-            EqualTo('password', 'Passwords must match.')
-        ])
+        "Confirm password",
+        validators=[InputRequired(), EqualTo("password", "Passwords must match.")],
+    )
 
-    submit = SubmitField('Create')
+    submit = SubmitField("Create")
 
 
 class AddMakeForm(FlaskForm):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    description = CKEditorField('Description')
-    submit = SubmitField('Add')
+    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
+    image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    description = CKEditorField("Description")
+    submit = SubmitField("Add")
 
 
 class EditMakeForm(Form):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    description = TextAreaField('Description', validators=[InputRequired(), Length(1, 64)])
-    image_url = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    submit = SubmitField('Add')
+    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
+    description = TextAreaField(
+        "Description", validators=[InputRequired(), Length(1, 64)]
+    )
+    image_url = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    submit = SubmitField("Add")
 
 
 class AddVehicleForm(FlaskForm):
-    plate = StringField('Plate')
-    description = TextAreaField('Description', validators=[InputRequired()])
-    name = StringField('Name', validators=[InputRequired()])
-    price = StringField('Price', validators=[InputRequired()])
-    mileage = StringField('Mileage', validators=[InputRequired()])
-    color = StringField('Color', validators=[InputRequired()])
-    condition = StringField('Condition')
-    year = StringField('Year', validators=[InputRequired()])
+    plate = StringField("Plate")
+    description = TextAreaField("Description", validators=[InputRequired()])
+    name = StringField("Name", validators=[InputRequired()])
+    price = StringField("Price", validators=[InputRequired()])
+    mileage = StringField("Mileage", validators=[InputRequired()])
+    color = StringField("Color", validators=[InputRequired()])
+    condition = StringField("Condition")
+    year = StringField("Year", validators=[InputRequired()])
     model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    submit = SubmitField('Add')
+    front_image = FileField(
+        validators=[FileAllowed(photos, u"Image only!"), FileRequired()]
+    )
+    back_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    left_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    right_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    dash_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    interior_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    submit = SubmitField("Add")
 
 
 class AddVehicleImagesForm(FlaskForm):
-    front_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    back_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    left_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    right_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    dash_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    interior_image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    submit = SubmitField('Add')
+    front_image = FileField(
+        validators=[FileAllowed(photos, u"Image only!"), FileRequired()]
+    )
+    back_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    left_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    right_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    dash_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    interior_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    submit = SubmitField("Add")
 
 
 class GiantForm(FlaskForm):
@@ -125,41 +119,45 @@ class GiantForm(FlaskForm):
 
 
 class EditVehicleForm(Form):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    description = TextAreaField('Description', validators=[InputRequired(), Length(1, 64)])
-    price = StringField('Price', validators=[InputRequired()])
-    mileage = StringField('Mileage', validators=[InputRequired()])
-    color = StringField('Color', validators=[InputRequired()])
-    plate = StringField('Plate', validators=[InputRequired()])
-    year = StringField('Year', validators=[InputRequired()])
-    image_url = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
+    description = TextAreaField(
+        "Description", validators=[InputRequired(), Length(1, 64)]
+    )
+    price = StringField("Price", validators=[InputRequired()])
+    mileage = StringField("Mileage", validators=[InputRequired()])
+    color = StringField("Color", validators=[InputRequired()])
+    plate = StringField("Plate", validators=[InputRequired()])
+    year = StringField("Year", validators=[InputRequired()])
+    image_url = FileField(validators=[FileAllowed(photos, u"Image only!")])
     model_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    submit = SubmitField('Add')
+    submit = SubmitField("Add")
 
 
 class AddModelForm(Form):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    description = CKEditorField('Description')
-    image_url = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
+    description = CKEditorField("Description")
+    image_url = FileField(validators=[FileAllowed(photos, u"Image only!")])
     make_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    submit = SubmitField('Add')
+    submit = SubmitField("Add")
 
 
 class EditModelForm(Form):
-    name = StringField('Name', validators=[InputRequired(), Length(1, 64)])
-    description = TextAreaField('Description', validators=[InputRequired(), Length(1, 64)])
-    image_url = FileField(validators=[FileAllowed(photos, u'Image only!')])
+    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
+    description = TextAreaField(
+        "Description", validators=[InputRequired(), Length(1, 64)]
+    )
+    image_url = FileField(validators=[FileAllowed(photos, u"Image only!")])
     make_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    submit = SubmitField('Add')
+    submit = SubmitField("Add")
 
 
 class CategoryForm(Form):
-    name = StringField('name', validators=[Length(min=2, max=80)])
-    image = FileField(validators=[FileAllowed(photos, u'Image only!')])
-    submit = SubmitField('save')
+    name = StringField("name", validators=[Length(min=2, max=80)])
+    image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    submit = SubmitField("save")
 
     def validate_name(self, name):
         category = Category.query.filter_by(name=name.data).first()
         if category is not None:
-            raise ValidationError('This category has already been added')
+            raise ValidationError("This category has already been added")

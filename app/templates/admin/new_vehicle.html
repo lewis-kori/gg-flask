@@ -83,13 +83,13 @@
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Name</label>
-                                        <input class="form-control" id="part_one-name" name="part_one-name" type="text" value="">
+                                        {{ form.name(class='form-control') }}
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Plate</label>
-                                        {{ form1.plate(class="form-control") }}
+                                        {{ form.plate(class="form-control") }}
                                     </div>
                                 </div>
                             </div>
@@ -97,13 +97,13 @@
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Make</label>
-                                        {{ form.part_one.make(class="form-control") }}
+                                        {{ form.make(class="form-control", id="car-makes") }}
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Model</label>
-                                        {{ form.part_one.model(class="form-control") }}
+                                        {{ form.model(class="form-control", id='car-models') }}
                                     </div>
                                 </div>
                             </div>
@@ -111,13 +111,13 @@
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Condition</label>
-                                        {{ form.part_one.condition(class="form-control") }}
+                                        {{ form.condition(class="form-control") }}
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Price</label>
-                                        {{ form.part_one.price(class="form-control") }}
+                                        {{ form.price(class="form-control") }}
                                     </div>
                                 </div>
                             </div>
@@ -125,13 +125,13 @@
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Year</label>
-                                        {{ form.part_one.year(class="form-control") }}
+                                        {{ form.year(class="form-control") }}
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Color</label>
-                                        {{ form.part_one.color(class="form-control") }}
+                                        {{ form.color(class="form-control") }}
                                     </div>
                                 </div>
                             </div>
@@ -139,18 +139,18 @@
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Description</label>
-                                        <textarea class="form-control" id="part_one-description" name="part_one-description" rows="3" value=""></textarea>
+                                        {{ form.description(class="form-control") }}
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Mileage</label>
-                                        {{ form.part_one.mileage(class="form-control") }}
+                                        {{ form.mileage(class="form-control") }}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                {% for error_field, errors in form.part_one.errors.items() %}
+                                {% for error_field, errors in form.errors.items() %}
                                 <div class="invalid-feedback">
                                     {{ error_field }}: {{ errors|join(', ') }}
                                 </div>
@@ -170,7 +170,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.front_image(class="custom-file-input") }}
+                                                {{ form.front_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -184,7 +184,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.back_image(class="custom-file-input") }}
+                                                {{ form.back_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -200,7 +200,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.left_image(class="custom-file-input") }}
+                                                {{ form.left_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -214,7 +214,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.right_image(class="custom-file-input") }}
+                                                {{ form.right_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -230,7 +230,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.dash_image(class="custom-file-input") }}
+                                                {{ form.dash_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -244,7 +244,7 @@
                                                 <span class="input-group-text"></span>
                                             </div>
                                             <div class="custom-file">
-                                                {{ form.part_two.interior_image(class="custom-file-input") }}
+                                                {{ form.interior_image(class="custom-file-input") }}
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
@@ -252,7 +252,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                {% for error_field, errors in form.part_two.errors.items() %}
+                                {% for error_field, errors in form.errors.items() %}
                                 <div class="invalid-feedback">
                                     {{ error_field }}: {{ errors|join(', ') }}
                                 </div>
@@ -272,45 +272,50 @@
 
 {% block scripts %}
 <script>
-    $(document).ready(function() {
-        $('form').submit(function (e) {
-            var url = "{{ url_for('admin.add_vehicle') }}"; // send the form data here.
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $('form').serialize(), // serializes the form's elements.
-                success: function (data) {
-                    console.log(data)  // display the returned data in the console.
-                    window.location = "{{ url_for('admin.vehicles') }}"
-                }
-            });
-            e.preventDefault(); // block the traditional submission of the form.
-        });
-        // Inject our CSRF token into our AJAX request.
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
-                }
-            }
-        })
-    });
-</script>
-<script>
- var form = $("form");
- $(":submit",form).click(function(){
-            if($(this).attr('name')) {
-                $(form).append(
-                    $("<input type='hidden'>").attr( {
-                        name: $(this).attr('name'),
-                        value: $(this).attr('value') })
-                );
-            }
-        });
+  $(document).ready(function() {
+    var dropdown = {
+        make: $('#car-makes'),
+        model:$('#car-models')
+    };
 
- $(form).submit(function(){
-     console.log($(this).serializeArray());
- });
+    updateModel();
+
+  function updateModel() {
+      var send = {
+          make_id: dropdown.make.val()
+      };
+      dropdown.model.attr('disabled', 'disabled');
+      dropdown.model.empty();
+      $.getJSON("{{ url_for('admin._get_model') }}", send, function(data) {
+          data.forEach(function(item) {
+              dropdown.model.append(
+                  $('<option>', {
+                      value: item[0],
+                      text: item[1]
+                  })
+              );
+          });
+          dropdown.model.removeAttr('disabled');
+      });
+  }
+  dropdown.make.on('change', function() {
+      updateModel();
+  });
+});
+ // var form = $("form");
+ // $(":submit",form).click(function(){
+ //            if($(this).attr('name')) {
+ //                $(form).append(
+ //                    $("<input type='hidden'>").attr( {
+ //                        name: $(this).attr('name'),
+ //                        value: $(this).attr('value') })
+ //                );
+ //            }
+ //        });
+ //
+ // $(form).submit(function(){
+ //     console.log($(this).serializeArray());
+ // });
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-select2.js') }}"></script>
