@@ -87,7 +87,6 @@ def add_vehicle():
     if form.errors:
         print(form.errors)
     if form.validate_on_submit():
-        print('okayyy')
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
         transmission = Transmission.query.filter_by(id=form.transmission.data).first_or_404()
@@ -117,7 +116,7 @@ def add_vehicle():
             transmission_id=transmission.id,
             fuel_type_id=fuel.id,
             interior=form.interior.data,
-            engine_size=form.engine_size.data
+            engine_size=form.engine_size.data,
         )
         db.session.add(new_vehicle)
         db.session.commit()

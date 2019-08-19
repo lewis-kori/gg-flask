@@ -62,12 +62,12 @@
                     <div class="col-sm-12 col-lg-12 text-center">
                         <img class="imi d-inline-block mb-3 mb-lg-0"
                              src="{% if vehicle.image_url %}
-                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
                                        {% else %}
                                             {{ url_for('static', filename='images/toyota.jpeg')}}
                                        {% endif %}"
                              srcset="{% if vehicle.image_url %}
-                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
                                        {% else %}
                                             {{ url_for('static', filename='images/toyota.jpeg')}}
                                        {% endif %}" alt=""/>

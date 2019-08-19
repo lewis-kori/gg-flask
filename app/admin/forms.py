@@ -10,7 +10,8 @@ from wtforms.fields import (
     TextAreaField,
     FileField,
     FormField,
-    HiddenField
+    HiddenField,
+    SelectMultipleField
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, EqualTo, InputRequired, Length
@@ -95,6 +96,7 @@ class AddVehicleForm(FlaskForm):
     transmission = SelectField(choices=[], coerce=int)
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
+    features = SelectMultipleField(choices=[], coerce=int)
     front_image = StringField(
         validators=[InputRequired()]
     )

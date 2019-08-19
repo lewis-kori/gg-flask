@@ -2,6 +2,12 @@ from datetime import datetime
 
 from .. import db
 
+features_association = db.Table('features_association',
+                                db.Column('id', db.Integer, primary_key=True, autoincrement=True),
+                                db.Column('vehicle_id', db.Integer, db.ForeignKey('vehicles.id')),
+                                db.Column('feature_id', db.Integer, db.ForeignKey('features.id'))
+                                )
+
 
 class Vehicle(db.Model):
     __tablename__ = 'vehicles'
@@ -31,6 +37,7 @@ class Vehicle(db.Model):
     transmission_id = db.Column(db.Integer, db.ForeignKey('transmissions.id'))
     engine_size = db.Column(db.String(80), index=True)
     interior = db.Column(db.String(80), index=True)
+    features = db.relationship('Feature', secondary=features_association, backref='vehicle')
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     createdAt = db.Column(db.DateTime(), default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
