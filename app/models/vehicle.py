@@ -27,7 +27,8 @@ class Vehicle(db.Model):
     seller_email = db.Column(db.String(80), index=True)
     phone_number = db.Column(db.String(80), index=True)
     area = db.Column(db.String(80), index=True)
-
+    fuel_type_id = db.Column(db.Integer(), db.ForeignKey('fuel_types.id'), index=True)
+    transmission_id = db.Column(db.Integer, db.ForeignKey('transmissions.id'))
     engine_size = db.Column(db.String(80), index=True)
     interior = db.Column(db.String(80), index=True)
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)

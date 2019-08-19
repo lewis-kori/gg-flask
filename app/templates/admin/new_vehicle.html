@@ -11,6 +11,10 @@
 <link href="{{ url_for('static', filename='vendor/dropzone/dropzone.min.css')}}" rel="stylesheet">
 <!--jqery steps-->
 <link href="{{ url_for('static', filename='vendor/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
+<!--dropzone-->
+<script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
+<!--init dropzone-->
+<script src="{{ url_for('static', filename='vendor/js-init/init-dropzone.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -163,12 +167,11 @@
                             <legend> </legend>
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Front Image</label>
-
-                                                {{ form.front_image(id="front_image") }}
-
-
+                                    <div class="mb-4" id="front_image">
+                                        <div class="dz-message needsclick">
+                                            <span class="note needsclick">Front Image</span>
+                                            {{ form.front_image() }}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -337,21 +340,10 @@
       updateModel();
   });
 });
-$("div#front_image").dropzone({ url: "{{ url_for('admin.add_vehicle') }}" });
- // var form = $("form");
- // $(":submit",form).click(function(){
- //            if($(this).attr('name')) {
- //                $(form).append(
- //                    $("<input type='hidden'>").attr( {
- //                        name: $(this).attr('name'),
- //                        value: $(this).attr('value') })
- //                );
- //            }
- //        });
- //
- // $(form).submit(function(){
- //     console.log($(this).serializeArray());
- // });
+</script>
+<script>
+var myDropzone = new Dropzone("div#front_image", { url: "{{ url_for('admin.upload') }}"});
+
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-select2.js') }}"></script>
@@ -365,8 +357,5 @@ $("div#front_image").dropzone({ url: "{{ url_for('admin.add_vehicle') }}" });
 
 <!--jquery stepy-->
 <script src="{{ url_for('static', filename='vendor/jquery-steps/jquery.stepy.js') }}"></script>
-<!--dropzone-->
-<script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
-<!--init dropzone-->
-<script src="{{ url_for('static', filename='vendor/js-init/init-dropzone.js') }}"></script>
+
 {% endblock %}

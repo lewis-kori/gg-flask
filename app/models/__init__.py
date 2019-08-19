@@ -27,3 +27,5 @@ from .model import *
 from .vehicle import *
 from .make import *
 from .birds import *
+from .transmission import *
+from .fuel import *

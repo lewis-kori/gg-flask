@@ -4,8 +4,7 @@ from .. import db
 class Transmission(db.Model):
     __tablename__ = 'transmissions'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120))
-    vehicles = db.relationship('Vehicle', backref='Transmission', lazy='dynamic')
+    type = db.Column(db.String(80))
 
     def __repr__(self):
-        return '<Transmission \'%s\'>' % self.name
+        return '<Transmission \'%s\'>' % self.type

@@ -183,7 +183,7 @@ def change_password():
 @check_confirmed
 def change_email_request():
     """Respond to existing user's request to change their email."""
-    form = ChangeEmailForm()
+    form = ChangeUserEmailForm()
     if form.validate_on_submit():
         if current_user.verify_password(form.password.data):
             new_email = form.email.data
@@ -264,3 +264,4 @@ def upload():
     f.save(os.path.join("app/static/ckeditor_uploads", f.filename))
     url = url_for("admin.uploaded_files", filename=f.filename)
     return upload_success(url=url)  # return upload_success call
+

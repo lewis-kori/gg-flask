@@ -12,6 +12,7 @@ from flask_moment import Moment
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 from flask_babel import Babel, lazy_gettext as _l
 from flask_ckeditor import CKEditor
+from flask_dropzone import Dropzone
 # from oauth2client.contrib.flask_util import UserOAuth2
 
 
@@ -26,6 +27,7 @@ csrf = CSRFProtect()
 compress = Compress()
 moment = Moment()
 babel = Babel()
+dropzone = Dropzone()
 ckeditor = CKEditor()
 # Set up Flask-Login
 login_manager = LoginManager()
@@ -68,10 +70,12 @@ def create_app(config_name):
     RQ(app)
 
     babel.init_app(app)
+    dropzone.init_app(app)
 
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app)
+
 
     app.config['CKEDITOR_ENABLE_CSRF'] = True
     app.config['CKEDITOR_FILE_UPLOADER'] = '/admin/upload'

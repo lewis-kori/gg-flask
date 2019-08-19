@@ -63,7 +63,11 @@ class Config:
     UPLOAD_FOLDER = os.path.join(basedir, "app/static/uploads")
     UPLOADS_CKEDITOR = os.path.join(basedir, "app/static/ckeditor_uploads")
     THUMBNAIL_FOLDER = os.path.join(basedir, "app/static/uploads/thumbnail")
-
+    # Flask-Dropzone config:
+    DROPZONE_ALLOWED_FILE_TYPE = 'image',
+    DROPZONE_MAX_FILE_SIZE = 3,
+    DROPZONE_MAX_FILES = 30,
+    DROPZONE_ENABLE_CSRF = True  # enable CSRF protection
     # Parse the REDIS_URL to set RQ config variables
     if PYTHON_VERSION == 3:
         urllib.parse.uses_netloc.append("redis")
