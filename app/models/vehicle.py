@@ -27,6 +27,9 @@ class Vehicle(db.Model):
     seller_email = db.Column(db.String(80), index=True)
     phone_number = db.Column(db.String(80), index=True)
     area = db.Column(db.String(80), index=True)
+
+    engine_size = db.Column(db.String(80), index=True)
+    interior = db.Column(db.String(80), index=True)
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     createdAt = db.Column(db.DateTime(), default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
