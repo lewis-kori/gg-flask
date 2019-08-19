@@ -82,46 +82,29 @@ def add_vehicle():
     form = AddVehicleForm()
     form.make.choices = [(row.id, row.name) for row in Make.query.all()]
     form.model.choices = [(row.id, row.name) for row in Model.query.all()]
+    form.transmission.choices = [(row.id, row.type) for row in Transmission.query.all()]
+    form.fuel_type.choices = [(row.id, row.type) for row in Fuel.query.all()]
+    if form.errors:
+        print(form.errors)
     if form.validate_on_submit():
-        front_image = form.front_image.data
-        if front_image:
-            front_image = photos.save(form.front_image.data)
-
-        back_image = form.back_image.data
-        if back_image:
-            back_image = photos.save(form.back_image.data)
-
-        left_image = form.left_image.data
-        if left_image:
-            left_image = photos.save(form.left_image.data)
-
-        right_image = form.right_image.data
-        if right_image:
-            right_image = photos.save(form.right_image.data)
-
-        dash_image = form.dash_image.data
-        if dash_image:
-            dash_image = photos.save(form.dash_image.data)
-
-        interior_image = form.interior_image.data
-        if interior_image:
-            interior_image = photos.save(form.interior_image.data)
-
+        print('okayyy')
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
+        transmission = Transmission.query.filter_by(id=form.transmission.data).first_or_404()
+        fuel = Fuel.query.filter_by(id=form.fuel_type.data).first_or_404()
         new_vehicle = Vehicle(
             name=form.name.data,
             price=form.price.data,
             description=form.description.data,
             plate=form.plate.data,
             year=form.year.data,
-            image_url=front_image,
-            back_image_url=back_image,
-            dash_image_url=dash_image,
-            front_image_url=front_image,
-            interior_image_url=interior_image,
-            left_image_url=left_image,
-            right_image_url=right_image,
+            image_url=form.front_image.data,
+            back_image_url=form.back_image.data,
+            dash_image_url=form.dash_image.data,
+            front_image_url=form.front_image.data,
+            interior_image_url=form.interior_image.data,
+            left_image_url=form.left_image.data,
+            right_image_url=form.right_image.data,
             mileage=form.mileage.data,
             color=form.color.data,
             condition=form.condition.data,
@@ -131,6 +114,10 @@ def add_vehicle():
             area=form.area.data,
             model_id=model.id,
             make_id=make.id,
+            transmission_id=transmission.id,
+            fuel_type_id=fuel.id,
+            interior=form.interior.data,
+            engine_size=form.engine_size.data
         )
         db.session.add(new_vehicle)
         db.session.commit()
@@ -256,7 +243,8 @@ def uploaded_files(filename):
 
 @admin.route("/upload", methods=["POST"])
 def upload():
-    f = request.files.get("upload")
+    f = request.files.get("file")
+    print(request.files)
     # Add more validations here
     extension = f.filename.split(".")[1].lower()
     if extension not in ["jpg", "gif", "png", "jpeg"]:

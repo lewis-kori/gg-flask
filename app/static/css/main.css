@@ -913,7 +913,6 @@ left sidebar navigation style
     }
 }
 .card-body > div, h1, h2, h3, h4 {
-    cursor: pointer;
 }
 /*------------------------------------
 footer

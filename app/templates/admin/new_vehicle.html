@@ -11,10 +11,13 @@
 <link href="{{ url_for('static', filename='vendor/dropzone/dropzone.min.css')}}" rel="stylesheet">
 <!--jqery steps-->
 <link href="{{ url_for('static', filename='vendor/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
+<!--multiple select-->
+<link href="{{ url_for('static', filename='vendor/multi-select/css/multi-select.css')}}" rel="stylesheet">
 <!--dropzone-->
 <script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
 <!--init dropzone-->
 <script src="{{ url_for('static', filename='vendor/js-init/init-dropzone.js') }}"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -78,11 +81,19 @@
                             </li>
                         </ul>
                     </div>
+                    {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                        <div class="alert alert-error">
+                            <strong>Error!</strong> {{error}}:{{field}}
+                        </div>
+                        {% endfor %}
+                    {% endfor %}
                     <form class="picker-form"
                           method="post" enctype="multipart/form-data" id="default">
                         {{ form.hidden_tag() }}
                         <fieldset title="1. Car Details" class="step" id="default-step-0">
                             <legend> </legend>
+
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="form-group">
@@ -160,91 +171,99 @@
                                 </div>
                                 {%endfor%}
                             </div>
+                            <div class="card-header border-0">
+                                <div class="custom-title-wrap bar-primary">
+                                    <div class="custom-title">Additional Features</div>
+                                </div>
+                            </div>
 
+                            <div class="row mt-4">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Fuel Type</label>
+                                        {{ form.fuel_type(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Transmission</label>
+                                        {{ form.transmission(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Engine Size</label>
+                                        {{ form.engine_size(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Interior</label>
+                                        {{ form.interior(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
                         </fieldset>
 
                         <fieldset title="2. Car Images" class="step" id="default-step-1" >
                             <legend> </legend>
                             <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="mb-4" id="front_image">
-                                        <div class="dz-message needsclick">
+                                <div class="col-xl-3">
+                                    {{ form.front_image(id="front_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="front_image">
+                                        <div class="dz-message needsclick" style="margin: 0;">
+
                                             <span class="note needsclick">Front Image</span>
-                                            {{ form.front_image() }}
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Back Image</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                {{ form.back_image(class="custom-file-input") }}
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image(id="back_image_field") }}
+                                    <div class="dropzone mb-4" id="back_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Back Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Left Image</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                {{ form.left_image(class="custom-file-input") }}
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image(id="left_image_field") }}
+                                    <div class="dropzone mb-4" id="left_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Left Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Right Image</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                {{ form.right_image(class="custom-file-input") }}
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image(id="right_image_field") }}
+                                    <div class="dropzone mb-4" id="right_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Right Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Dashboard Image</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                {{ form.dash_image(class="custom-file-input") }}
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image(id="dash_image_field") }}
+                                    <div class="dropzone mb-4" id="dash_image">
+                                        <div class="dz-message needsclick" style="margin: 0">
+                                            <span class="note needsclick">Dashboard Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="input-group mb-3">
-                                        <label class="col-form-label col-form-label-sm">Interior Image</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                {{ form.interior_image(class="custom-file-input") }}
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image(id="interior_image_field") }}
+                                    <div class="dropzone mb-4" id="interior_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Interior Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -342,7 +361,43 @@
 });
 </script>
 <script>
-var myDropzone = new Dropzone("div#front_image", { url: "{{ url_for('admin.upload') }}"});
+$( document ).ready(function() {
+    var myDropzone = new Dropzone("div#front_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone2 = new Dropzone("div#back_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone3 = new Dropzone("div#left_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone4 = new Dropzone("div#right_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone5 = new Dropzone("div#dash_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+
+   myDropzone.on("addedfile", function(file) {
+       $('#front_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone2.on("addedfile", function(file) {
+       $('#back_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone3.on("addedfile", function(file) {
+       $('#left_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone4.on("addedfile", function(file) {
+       $('#right_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone5.on("addedfile", function(file) {
+       $('#dash_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone6.on("addedfile", function(file) {
+       $('#interior_image_field').val(file.name)
+       console.log(file.name);
+      });
+
+});
+
+
+Dropzone.autoDiscover = false;
 
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/js/select2.min.js') }}"></script>
@@ -357,5 +412,7 @@ var myDropzone = new Dropzone("div#front_image", { url: "{{ url_for('admin.uploa
 
 <!--jquery stepy-->
 <script src="{{ url_for('static', filename='vendor/jquery-steps/jquery.stepy.js') }}"></script>
-
+<script src="{{ url_for('static', filename='vendor/multi-select/js/jquery.multi-select.js') }}"></script>
+<!--init multiple select-->
+<script src="{{ url_for('static', filename='vendor/js-init/init-multiple-select.js') }}"></script>
 {% endblock %}

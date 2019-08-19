@@ -10,6 +10,7 @@ from wtforms.fields import (
     TextAreaField,
     FileField,
     FormField,
+    HiddenField
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, EqualTo, InputRequired, Length
@@ -90,14 +91,23 @@ class AddVehicleForm(FlaskForm):
     year = StringField("Year", validators=[InputRequired()])
     model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    front_image = FileField(
-        validators=[FileAllowed(photos, u"Image only!"), FileRequired()]
+    fuel_type = SelectField(choices=[], coerce=int)
+    transmission = SelectField(choices=[], coerce=int)
+    interior = StringField("Interior")
+    engine_size = StringField("Engine Size")
+    front_image = StringField(
+        validators=[InputRequired()]
     )
-    back_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
-    left_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
-    right_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
-    dash_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
-    interior_image = FileField(validators=[FileAllowed(photos, u"Image only!")])
+    back_image = HiddenField(
+    )
+    left_image = HiddenField(
+    )
+    right_image = HiddenField(
+    )
+    dash_image = HiddenField(
+    )
+    interior_image = HiddenField(
+    )
     seller_email = StringField('Email', validators=[InputRequired()])
     seller_name = StringField('Name', validators=[InputRequired()])
     phone_number = StringField('Phone', validators=[InputRequired()])
