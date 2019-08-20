@@ -26,6 +26,17 @@ def index():
                            all_vehicles=all_vehicles)
 
 
+@home.route('/view_car/<id>', methods=['post', 'get'])
+def view_car(id):
+    """Admin dashboard page."""
+    all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
+    vehicle = Vehicle.query.get_or_404(id)
+    fuel_id = vehicle.fuel_type_id
+    car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
+    return render_template('home/single_car_view.html',
+                           all_vehicles=all_vehicles, vehicle=vehicle, car_fuel_type=car_fuel_type)
+
+
 @home.route('/privacy_policy')
 def privacy():
     return render_template('home/privacy_policy.html')

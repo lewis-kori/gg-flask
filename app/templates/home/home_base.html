@@ -21,12 +21,13 @@
 
     <!-- CSS theme files
     ============================================ -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/plugins/fancybox/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/fontello.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/responsive.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/css/icon.css') }}">
 </head>
 
 <body>
@@ -152,10 +153,10 @@
 
         <!-- - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - -->
 
-        {% block home_content %}
+        {% block content %}
 
 
-        {% endblock home_content %}
+        {% endblock content %}
 
         {% block footer %}
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->

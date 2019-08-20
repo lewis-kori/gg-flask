@@ -1,0 +1,541 @@
+{% extends 'home/home_base.html' %}
+
+{% block content %}
+
+<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+
+    <div id="content">
+
+      <div class="page-section" style="padding-top: 25px;">
+
+        <div class="container">
+          <div class="row">
+            <main id="main" class="col-md-8">
+
+              <div class="single-product-section">
+
+                <div class="single-product-title">
+
+                  <h2 class="section-title">{{vehicle.name}}</h2>
+                  <div class="flex-row flex-justify">
+                    <div class="product-price" style="color: #da1919;">
+                      {{vehicle.price}}
+                    </div>
+                    <div class="slash-list">
+                      <a href="#" class="link-text2"><i class="licon-heart"></i>Wishlist </a>
+                      <a href="#" class="link-text2"><i class="licon-copy"></i>Compare </a>
+                      <a href="#" class="link-text2"><i class="licon-document2"></i>Car Brochure </a>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="content-element3">
+
+                  <div class="carousel-type-4 type-2">
+
+                    <div class="carousel-tabs">
+
+                      <div id="tab1" class="tab-cont current">
+
+                        <div class="owl-carousel" id="sync-carousel-1" data-max-items="1">
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" alt="">
+                            </a>
+                          </div>
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.back_image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.back_image_url))}}" alt=""></a>
+                          </div>
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.right_image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.right_image_url))}}" alt="">
+                            </a>
+                          </div>
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.left_image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.left_image_url))}}" alt=""></a>
+                          </div>
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.interior_image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.interior_image_url))}}" alt=""></a>
+                          </div>
+
+                          <div class="item-carousel">
+                            <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.dash_image_url))}}" class="fancybox" data-fancybox="group">
+                                <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.dash_image_url))}}" alt=""></a>
+                          </div>
+
+                        </div>
+
+                      </div>
+                      <div id="tab2" class="tab-cont">
+
+                        <div class="responsive-iframe">
+
+                          <iframe src=""></iframe>
+
+                        </div>
+
+                      </div>
+
+
+                    </div>
+
+                    <div class="tabs tabs-section style-2 clearfix">
+                      <!--tabs navigation-->
+                      <ul class="tabs-nav clearfix">
+                        <li data-tab="tab1">
+                          <a href="#tab-1"><span class="licon-camera2"></span>Photos</a>
+                        </li>
+                        <li data-tab="tab2">
+                          <a href="#tab-2"><span class="licon-camera"></span>More</a>
+                        </li>
+
+                      </ul>
+                      <!--tabs content-->
+                      <div class="tabs-content">
+                        <div id="tab-1">
+
+                          <!-- - - - - - - - - - - - - - Carousel Pagination - - - - - - - - - - - - - - - - -->
+
+                          <div class="owl-carousel type-small" data-sync="#sync-carousel-1" data-max-items="5" data-item-margin="20">
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.front_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.back_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.right_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.left_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.interior_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                            <!-- Carousel Item -->
+
+                            <div class="item-carousel">
+                              <img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.dash_image_url))}}" alt="">
+                            </div>
+
+                            <!-- Carousel Item -->
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Carousel Pagination - - - - - - - - - - - - - - - - -->
+
+                        </div>
+                        <div id="tab-2">
+
+                          <img src="" alt="More">
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="content-element3">
+
+                  <h4><b>Overview</b></h4>
+                  <ul class="car-detail-list">
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>Mileage</span><span>{{vehicle.mileage}}</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>Fuel</span><span>{{car_fuel_type.type}}</span>
+                      </div>
+
+                    </li>
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>Year</span><span>{{vehicle.year}}</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>Make</span><span>{{vehicle.make.name}}</span>
+                      </div>
+
+                    </li>
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>Model</span><span>{{vehicle.model.name}}</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>Engine</span><span>{{vehicle.engine}}</span>
+                      </div>
+
+                    </li>
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>VIN</span><span>WP1AD2A20GLA80654</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>Transmission</span><span>{{vehicle.transmission}}</span>
+                      </div>
+
+                    </li>
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>Exterior Color</span><span>{{vehicle.color}}</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>Drivetype</span><span>AWD</span>
+                      </div>
+
+                    </li>
+                    <li class="flex-row flex-justify">
+
+                      <div class="detail-col">
+                        <span>Interior Color</span><span>Gray</span>
+                      </div>
+                      <div class="detail-col">
+                        <span>MPG</span><span>18 City / 24 Highway</span>
+                      </div>
+
+                    </li>
+                  </ul>
+                  <div class="brends flex-row flex-center">
+                    <a href="#"><img src="" alt=""></a>
+                    <a href="#"><img src="" alt=""></a>
+
+                  </div>
+
+                </div>
+
+                <div class="content-element3">
+
+                  <h4><b>StandardFeatures</b></h4>
+                  <div class="features-section">
+
+                    <div class="row">
+                      <div class="col-xs-6">
+
+                        <ul class="custom-list type-5">
+
+                          <li>10 Speakers</li>
+                          <li>20" Wheels</li>
+                          <li>3.27 Axle Ratio</li>
+                          <li>4-Wheel Disc Brakes</li>
+                          <li>8-Way Power Front Seats</li>
+
+                        </ul>
+
+                      </div>
+                      <div class="col-xs-6">
+
+                        <ul class="custom-list type-5">
+
+                          <li>ABS brakes</li>
+                          <li>AM/FM radio</li>
+                          <li>Air Conditioning</li>
+                          <li>Automatic temperature control</li>
+                          <li>Automatically Dimming Interior & Exterior Mirrors</li>
+
+                        </ul>
+
+                      </div>
+                    </div>
+                    <div class="row other-items">
+                      <div class="col-xs-6">
+
+                        <ul class="custom-list type-5">
+
+                          <li>10 Speakers</li>
+                          <li>20" Wheels</li>
+                          <li>3.27 Axle Ratio</li>
+                          <li>4-Wheel Disc Brakes</li>
+                          <li>8-Way Power Front Seats</li>
+
+                        </ul>
+
+                      </div>
+                      <div class="col-xs-6">
+
+                        <ul class="custom-list type-5">
+
+                          <li>ABS brakes</li>
+                          <li>AM/FM radio</li>
+                          <li>Air Conditioning</li>
+                          <li>Automatic temperature control</li>
+                          <li>Automatically Dimming Interior & Exterior Mirrors</li>
+
+                        </ul>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <a href="#" class="show-more info-btn type2">Show All</a>
+
+                </div>
+
+                <div class="content-element3">
+
+                  <h4><b>Seller Comments</b></h4>
+                  <p>{{vehicle.description}}</p>
+                  <a href="javascript:;" class="link-text2 contact-button"><i class="icon-help-circled-alt"></i>Ask a Question</a>
+
+                </div>
+
+
+
+                <div class="content-element3">
+
+                  <h4><b>More</b></h4>
+
+                </div>
+
+              </div>
+
+            </main>
+            <aside id="sidebar" class="col-md-4">
+
+              <div class="content-element3">
+
+                <div class="sidebar-item dealer-item style-2">
+
+                  <div class="dealer-title">
+
+                    <div class="wrapper">
+                      <h5><a href="#">Gigi Motors</a></h5>
+                      <div class="rating-area">
+
+                        <ul class="rating">
+                          <li><i class="licon-star"></i></li>
+                          <li><i class="licon-star"></i></li>
+                          <li><i class="licon-star"></i></li>
+                          <li><i class="licon-star"></i></li>
+                          <li class="empty-half"><i class="licon-star"></i></li>
+                        </ul>
+                        <div class="rating-number">(4.5)</div>
+                        <a href="#" class="review">7 reviews</a>
+                        <a href="#" class="link-text2">Write a Review</a>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dealer-desc">
+
+                    <div class="contact-section">
+
+                      <div class="contact-item">
+                        <h6 class="contact-title"><i class="licon-map-marker"></i><span>{{vehicle.area}}</span></h6>
+                        <span class="contact-desc with-icon"><a href="javascript:;" class="link-text2 map-button">
+                            Map & Directions</a></span>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <a href="#" class="btn btn-big btn-style-3 sidebar-btn" content="telephone=no"><i class="licon-telephone"></i><b>{{vehicle.phone_number}}</b></a>
+
+                <div class="question-form bg-sidebar-item">
+
+                  <h5>Contact The Seller</h5>
+                  <p class="type-2">All fields are required.</p>
+
+                  <form>
+
+                    <div class="auto-custom-select">
+                      <select data-default-text="Ask a question">
+                        <option value="menu">Option 1</option>
+                        <option value="menu">Option 2</option>
+                        <option value="menu">Option 3</option>
+                      </select>
+                    </div>
+
+                    <textarea rows="4" placeholder="I have a question about the {{vehicle.name}} for {{vehicle.price}}"></textarea>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Email">
+
+                    <div class="form-cols">
+                      <div class="form-collumn col-sm-7">
+                        <input type="text" placeholder="Phone (option)">
+                      </div>
+                      <div class="form-collumn col-sm-5">
+                        <input type="text" placeholder="ZIP">
+                      </div>
+                    </div>
+
+                  </form>
+
+                  <a href="#" class="btn btn-style-3">Send Message</a>
+
+                </div>
+
+                <a href="#" class="btn btn-big sidebar-btn"><i class="licon-profile"></i>Seller Profile</a>
+                <a href="#" class="btn btn-big sidebar-btn"><i class="licon-select2"></i>Visit Seller Website</a>
+                <a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 contact-button"><i class="licon-car2"></i>Schedule a Test Drive</a>
+                <a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 contact-button"><i class="licon-bag-dollar"></i>Make an Offer Price</a>
+                <a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 contact-button"><i class="licon-wallet"></i>Apply For Credit</a>
+                <a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 calc-button"><i class="licon-calculator2"></i>Calculate Payments</a>
+                <a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 trade-button"><i class="licon-receipt"></i>Trade-in Appraisal</a>
+
+              </div>
+
+              <h5 class="section-title">More from this Seller</h5>
+
+              <div class="products-holder view-list">
+
+                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                <div class="product">
+
+                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                  <div class="product-image">
+                    <a href="#"><img src="images/130x87_img9.jpg" alt=""></a>
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                  <div class="product-description">
+
+                    <h5 class="product-name"><a href="#">2016 Porsche Cayenne E-Hybrid</a></h5>
+
+                    <div class="pricing-area">
+
+                      <div class="product-price">
+                        $72,000
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+
+                </div>
+
+                <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                <div class="product">
+
+                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                  <div class="product-image">
+                    <a href="#"><img src="images/130x87_img10.jpg" alt=""></a>
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                  <div class="product-description">
+
+                    <h5 class="product-name"><a href="#">2014 Porsche Macan</a></h5>
+
+                    <div class="pricing-area">
+
+                      <div class="product-price">
+                        $55,679
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+
+                </div>
+
+                <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                <div class="product">
+
+                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                  <div class="product-image">
+                    <a href="#"><img src="images/130x87_img11.jpg" alt=""></a>
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                  <div class="product-description">
+
+                    <h5 class="product-name"><a href="#">2011 Porsche Cayenne</a></h5>
+
+                    <div class="pricing-area">
+
+                      <div class="product-price">
+                        $22,000
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+
+                </div>
+
+                <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+
+              </div>
+
+              <a href="#" class="info-btn">View All Cars at This Seller</a>
+
+            </aside>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="align-center"><a href="#"><img src="images/banner4.jpg" alt=""></a></div>
+
+
+
+
+    </div>
+
+    <!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+
+
+{% endblock %}
