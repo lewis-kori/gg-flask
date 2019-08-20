@@ -100,15 +100,15 @@ class AddVehicleForm(FlaskForm):
     front_image = StringField(
         validators=[InputRequired()]
     )
-    back_image = HiddenField(
+    back_image = StringField(
     )
-    left_image = HiddenField(
+    left_image = StringField(
     )
-    right_image = HiddenField(
+    right_image = StringField(
     )
-    dash_image = HiddenField(
+    dash_image = StringField(
     )
-    interior_image = HiddenField(
+    interior_image = StringField(
     )
     seller_email = StringField('Email', validators=[InputRequired()])
     seller_name = StringField('Name', validators=[InputRequired()])

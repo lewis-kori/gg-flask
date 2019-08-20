@@ -87,6 +87,7 @@ def add_vehicle():
     if form.errors:
         print(form.errors)
     if form.validate_on_submit():
+        print(form.data)
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
         transmission = Transmission.query.filter_by(id=form.transmission.data).first_or_404()
