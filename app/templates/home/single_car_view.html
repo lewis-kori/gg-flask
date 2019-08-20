@@ -255,12 +255,9 @@
                       <div class="col-xs-6">
 
                         <ul class="custom-list type-5">
-
-                          <li>10 Speakers</li>
-                          <li>20" Wheels</li>
-                          <li>3.27 Axle Ratio</li>
-                          <li>4-Wheel Disc Brakes</li>
-                          <li>8-Way Power Front Seats</li>
+                          {% for features in vehicle.features%}
+                          <li>{{features.name}}</li>
+                          {% endfor %}
 
                         </ul>
 
