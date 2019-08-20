@@ -84,13 +84,13 @@ def add_vehicle():
     form.model.choices = [(row.id, row.name) for row in Model.query.all()]
     form.transmission.choices = [(row.id, row.type) for row in Transmission.query.all()]
     form.fuel_type.choices = [(row.id, row.type) for row in Fuel.query.all()]
-    if form.errors:
-        print(form.errors)
+    form.features.choices = [(row.id, row.name) for row in Feature.query.all()]
     if form.validate_on_submit():
-        print(form.data)
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
-        transmission = Transmission.query.filter_by(id=form.transmission.data).first_or_404()
+        transmission = Transmission.query.filter_by(
+            id=form.transmission.data
+        ).first_or_404()
         fuel = Fuel.query.filter_by(id=form.fuel_type.data).first_or_404()
         new_vehicle = Vehicle(
             name=form.name.data,
@@ -119,6 +119,9 @@ def add_vehicle():
             interior=form.interior.data,
             engine_size=form.engine_size.data,
         )
+        for feature_id in form.features.data:
+            feature = Feature.query.filter_by(id=feature_id).first_or_404()
+            new_vehicle.features.append(feature)
         db.session.add(new_vehicle)
         db.session.commit()
         return redirect(url_for("admin.vehicles"))
@@ -244,7 +247,6 @@ def uploaded_files(filename):
 @admin.route("/upload", methods=["POST"])
 def upload():
     f = request.files.get("file")
-    print(request.files)
     # Add more validations here
     extension = f.filename.split(".")[1].lower()
     if extension not in ["jpg", "gif", "png", "jpeg"]:
@@ -252,4 +254,3 @@ def upload():
     f.save(os.path.join("app/static/ckeditor_uploads", f.filename))
     url = url_for("admin.uploaded_files", filename=f.filename)
     return upload_success(url=url)  # return upload_success call
-

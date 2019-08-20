@@ -211,6 +211,11 @@
                                 </div>
                             </div>
 
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    {{ form.features(class="form-control", id='car-features') }}
+                                </div>
+                            </div>
                         </fieldset>
 
                         <fieldset title="2. Car Images" class="step" id="default-step-1" >
@@ -399,6 +404,16 @@ $( document ).ready(function() {
        $('#interior_image_field').val(file.name)
        console.log(file.name);
       });
+
+      $('select[multiple]').multiselect({
+        columns: 3,
+        search : true,
+        // plugin texts
+        texts: {
+            placeholder    : 'Select Additional Features',
+        },
+
+    });
 
 });
 
