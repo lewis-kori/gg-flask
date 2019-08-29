@@ -12,6 +12,8 @@ from flask_moment import Moment
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 from flask_babel import Babel, lazy_gettext as _l
 from flask_ckeditor import CKEditor
+from flask_cors import CORS, cross_origin
+from flask_bcrypt import Bcrypt
 # from oauth2client.contrib.flask_util import UserOAuth2
 
 
@@ -27,6 +29,8 @@ compress = Compress()
 moment = Moment()
 babel = Babel()
 ckeditor = CKEditor()
+cors = CORS()
+flask_bcrypt = Bcrypt()
 # Set up Flask-Login
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -39,19 +43,18 @@ def create_app(config_name):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     # not using sqlalchemy event system, hence disabling it
 
-
     app.config['OAUTH_CREDENTIALS'] = {
         'google': {
-            'id': '767868202462-3v28oqcun0fnd0vc89uh7in4mbi7fg4o.apps.googleusercontent.com',
-            'secret': 'KfvqdFDqYYn9hXDFeC3BmImD'
+            'id': '',
+            'secret': ''
         },
         'facebook': {
-            'id': '1357352657745486',
-            'secret': '52e5d34fef41614988fbd1a7e33deab2'
+            'id': '',
+            'secret': ''
         },
         'twitter': {
-            'id': 'NzD4SB1S9Ulod1k1cqZGH5g6J ',
-            'secret': 'CLXzCpbe0NxY8mOzgBtgRNWJjltJth2urwR7EkBzr365EUNEWO'
+            'id': '',
+            'secret': ''
         }
     }
 
@@ -66,13 +69,14 @@ def create_app(config_name):
     moment.init_app(app)
     ckeditor.init_app(app)
     RQ(app)
-
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    cors.init_app(app, resources={r"/api/*": {"origins": "*"}})
+    flask_bcrypt.init_app(app)
     babel.init_app(app)
 
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app)
-
 
     app.config['CKEDITOR_ENABLE_CSRF'] = True
     app.config['CKEDITOR_FILE_UPLOADER'] = '/admin/upload'
@@ -88,13 +92,6 @@ def create_app(config_name):
         assets_env.append_path(os.path.join(basedir, path))
     assets_env.url_expire = True
 
-    # assets_env.register('app_css', app_css)
-    # assets_env.register('app_js', app_js)
-    # assets_env.register('vendor_css', vendor_css)
-    # assets_env.register('vendor_js', vendor_js)
-    # assets_env.register('skye_css', vendor_css)
-    # assets_env.register('skye_js', vendor_js)
-
     # Configure SSL if platform supports it
     if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
         from flask.ext.sslify import SSLify
@@ -107,16 +104,12 @@ def create_app(config_name):
 
     # customer blue_print
 
-
-
     # home blue_print
 
     from .home import home as home_blueprint
     app.register_blueprint(home_blueprint)
 
     # publisher blue_print
-
-
 
     # home blue_print
 
@@ -127,5 +120,8 @@ def create_app(config_name):
     app.register_blueprint(account_blueprint, url_prefix='/social_login')
 
     # csrf.exempt(api_blueprint)
+
+    from .api import blueprint as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/mobile')
 
     return app
