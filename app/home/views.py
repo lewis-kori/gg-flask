@@ -37,6 +37,11 @@ def view_car(id):
                            all_vehicles=all_vehicles, vehicle=vehicle, car_fuel_type=car_fuel_type)
 
 
+@home.route('/contact_us')
+def contact():
+    return render_template('home/contact_us.html')
+
+
 @home.route('/privacy_policy')
 def privacy():
     return render_template('home/privacy_policy.html')

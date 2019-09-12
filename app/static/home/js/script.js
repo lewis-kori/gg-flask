@@ -625,7 +625,7 @@
 		            var marker = new google.maps.Marker({
 		               position:myCenter,
 		               map: map,
-		               icon: 'images/map_marker.png'
+		               icon: '/static/home/images/map_marker.png'
 		            });
 		            
 		            marker.setMap(map);
@@ -681,7 +681,7 @@
 						var marker = new google.maps.Marker({
 						  position: {lat: mark[1], lng: mark[2]},
 						  map: map,
-						  icon: 'images/map_marker.png',
+						  icon: '/static/home/images/map_marker.png',
 						  title: mark[0],
 						  zIndex: mark[3]
 						});
@@ -719,7 +719,7 @@
 		            var marker = new google.maps.Marker({
 		               position:myCenter,
 		               map: map,
-		               icon: 'images/map_marker.png'
+		               icon: '/static/home/images/map_marker.png'
 		            });
 		            
 		            marker.setMap(map);
