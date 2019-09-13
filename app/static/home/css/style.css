@@ -2185,8 +2185,9 @@ button.search-button:before{content: "\e922";}
 
 .breadcrumbs-wrap{
   padding: 60px 0;
-  -webkit-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: auto;
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
 .breadcrumbs-wrap.type-2{
@@ -7598,7 +7599,7 @@ button.search-button:before{content: "\e922";}
   }
 
   .review-section.list-type .review-item:not(:last-child){
-    margin-bottom: 60px;
+    margin-bottom: 0%;
   }
 
   .review-section.list-type .entry-attachment{
@@ -9081,4 +9082,12 @@ display: block;
     overflow: inherit;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.night{
+    max-width: 277px;
+}
+
+.switch{
+    padding: 0 12px;
+    border-bottom: solid 1px #d5d7d8;
 }

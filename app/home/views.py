@@ -42,6 +42,11 @@ def contact():
     return render_template('home/contact_us.html')
 
 
+@home.route('/blog')
+def blog():
+    return render_template('home/blog.html')
+
+
 @home.route('/privacy_policy')
 def privacy():
     return render_template('home/privacy_policy.html')

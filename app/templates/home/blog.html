@@ -1,0 +1,749 @@
+{% extends 'home/home_base.html' %}
+
+{% block content %}
+<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+
+    <div id="content">
+
+      <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+      <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
+
+        <div class="container">
+
+          <h1 class="page-title">Blog</h1>
+
+          <ul class="breadcrumbs">
+
+            <li><a href="{{ url_for('home.index') }}">Home</a></li>
+            <li>Blog</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
+      <div class="tabs tabs-section style-2 clearfix" style="">
+          <!--tabs navigation-->
+        <div class="container">
+            <ul class="tabs-nav clearfix" style="margin-top:-3.3%;">
+              <li>
+                <a href="#one" style="color: #fff;" class="active">Reviews</a>
+              </li>
+              <li>
+                <a href="#runners" style="color: #fff;"> Advice & Tips</a>
+              </li>
+              <li>
+                <a href="#third" style="color: #fff;"> News</a>
+              </li>
+            </ul>
+          </div>
+          <!--tabs content-->
+          <div class="tabs-content">
+            <div class="page-section active" id="one" style="margin-top: -7%;">
+
+              <div class="container">
+
+                <div class="row">
+                  <h3 class="section-title switch">Reviews</h3>
+                  <div id="main" class="col-md-6 col-sm-12">
+
+                    <div class="content-element2">
+                      <div class="review-section">
+
+                        <article class="entry review-item">
+
+                          <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-attachment">
+
+                            <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/750x510_img1.jpg') }}" alt=""></figure>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                          <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-body">
+
+                            <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                            <div class="entry-meta">
+
+                              <time class="entry-date" datetime="2016-01-12">October 28, 2019</time>
+
+                            </div>
+
+                            <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                            <h4 class="entry-title"><a href="#">Aliquam Dapibus Tincidunt Metus</a></h4>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                        </article>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img1.jpg') }}" alt=""></figure>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-26">October 26, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img2.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-22">October 22, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Aenean Auctor Wisi Et Urna</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 4%;">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img19.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-16">October 16, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Ut Pharetra Augue Nec Augue</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img22.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-08">October 8, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Fusce Euismod Consequat Ante</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-section" id="runners" style="margin-top: -7%;">
+
+              <div class="container">
+                <div class="row">
+                  <h3 class="section-title switch">Advice &amp; Tips</h3>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img19.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-16">October 16, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Ut Pharetra Augue Nec Augue</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img20.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-15">October 15, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Aliquam Dapibus Tincidunt Metus</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img21.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-12">October 12, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Proin Dictum Elementum Velit</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img22.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-08">October 8, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Fusce Euismod Consequat Ante</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img23.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-05">October 5, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Sed Ut Perspiciatis Sit</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img21.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-12">October 12, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Proin Dictum Elementum Velit</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="page-section" id="third" style="margin-top: -7%;">
+
+              <div class="container">
+                <div class="row">
+                  <h3 class="section-title switch">News</h3>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img19.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-16">October 16, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Ut Pharetra Augue Nec Augue</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img20.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-15">October 15, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Aliquam Dapibus Tincidunt Metus</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img21.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-12">October 12, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Proin Dictum Elementum Velit</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="review-section list-type">
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img22.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-08">October 8, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Fusce Euismod Consequat Ante</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img23.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-05">October 5, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Sed Ut Perspiciatis Sit</a></h5>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+                      <article class="entry review-item">
+
+                        <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-attachment">
+
+                          <figure class="thumbnail-attachment"><img class="night" src="{{ url_for('static', filename='home/images/360x240_img21.jpg') }}" alt=""></figure>
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                        <div class="entry-body">
+
+                          <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                          <div class="entry-meta">
+
+                            <time class="entry-date" datetime="2018-10-12">October 12, 2019</time>
+
+                          </div>
+
+                          <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                          <h5 class="entry-title"><a href="#">Proin Dictum Elementum Velit</a></h5>
+
+
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                      </article>
+
+                    </div>
+
+
+
+                  </div>
+                  <div class="col-md-12">
+                    <ul class="pagination" style="float:right;">
+                      <li><a href="#" class="prev-page"></a></li>
+                      <li class="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#" class="next-page"></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+      </div>
+    </div>
+
+{% endblock %}
