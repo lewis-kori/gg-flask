@@ -47,6 +47,11 @@ def blog():
     return render_template('home/blog.html')
 
 
+@home.route('/sell_my_car')
+def sell():
+    return render_template('home/sell_car.html')
+
+
 @home.route('/privacy_policy')
 def privacy():
     return render_template('home/privacy_policy.html')

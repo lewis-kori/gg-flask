@@ -1,0 +1,178 @@
+{% extends 'home/home_base.html' %}
+{% block custom_head_tags %}
+{{ super() }}
+<style>
+    label{
+        font-size: 15px;
+    }
+    .hh5{
+        font-size: 1.74rem;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="page-section">
+
+    <div class="container">
+
+
+        <div class="content-element3">
+
+            <h4 style="text-align: center;"><b>Sell Your Car</b></h4>
+            <p>Donec eget tellus non erat lacinia fermentum. Donec in velit vel ipsum auctor pulvinar. Vestibulum
+                iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Sed in lacus ut enim
+                adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+
+        </div>
+
+        <div class="content-element3">
+
+            <div class="row">
+                <div class="col-sm-6" style="border-right: 1px solid #ddd;">
+
+                    <h5 class="hh5"><b>Vehicle Information</b></h5>
+                    <p>This is the basic information needed.</p>
+
+                    <form class="contact-form style-2">
+
+                        <div class="content-element3">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+
+                                    <label class="required">ZIP Code where vehicle will be sold</label>
+                                    <input type="text" class="half-col">
+
+                                    <label class="required">Make</label>
+                                    <div class="auto-custom-select">
+                                        <select data-default-text="Select">
+                                            <option value="Option 1">Option 1</option>
+                                            <option value="Option 2">Option 2</option>
+                                            <option value="Option 3">Option 3</option>
+                                        </select>
+                                    </div>
+
+                                    <label class="required">Body Style</label>
+                                    <div class="auto-custom-select">
+                                        <select data-default-text="Select">
+                                            <option value="Option 1">Option 1</option>
+                                            <option value="Option 2">Option 2</option>
+                                            <option value="Option 3">Option 3</option>
+                                        </select>
+                                    </div>
+
+                                    <label class="required half-col tooltips">Price ($)
+                                        <span class="right-tooltip qustion-tooltip">
+                            <a href="javascript:;" class="qustion-icon"></a>
+                            <span class="tooltip">
+                              <span><b>What is the competitive price of your vehicle?</b></span>
+                              <span>Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci.</span>
+                              <span class="licon-cross-circle close-tooltip"></span>
+                            </span>
+                          </span>
+                                    </label>
+                                    <input type="text" class="half-col">
+
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <label class="required">Year</label>
+                                    <div class="auto-custom-select">
+                                        <select data-default-text="Select">
+                                            <option value="Option 1">Option 1</option>
+                                            <option value="Option 2">Option 2</option>
+                                            <option value="Option 3">Option 3</option>
+                                        </select>
+                                    </div>
+
+                                    <label class="required">Model</label>
+                                    <div class="auto-custom-select">
+                                        <select data-default-text="Select">
+                                            <option value="Option 1">Option 1</option>
+                                            <option value="Option 2">Option 2</option>
+                                            <option value="Option 3">Option 3</option>
+                                        </select>
+                                    </div>
+
+                                    <label class="required">Mileage</label>
+                                    <input type="text" class="half-col">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="content-element3">
+
+                            <h5 class="hh5"><b>Seller's Comments</b></h5>
+                            <p>This is your chance to tell shoppers about your vehicle in your own words. </p>
+                            <textarea rows="5"></textarea>
+
+                        </div>
+
+                        <div class="content-element7">
+
+                            <h5 class="hh5"><b>Contact Information</b></h5>
+                            <p>Enter address you want to use for your ad. Your phone number will be available to
+                                prospective buyers. We'll email you notifications and information, but we'll never
+                                display your email address. Please read our <a href="#" class="link-text2">Privacy
+                                    Statement</a>.</p>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="required">First Name</label>
+                                    <input type="text">
+
+                                    <label class="required">Email</label>
+                                    <input type="email">
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="required">Last Name</label>
+                                    <input type="text">
+
+                                    <label class="required">Phone Number</label>
+                                    <input type="text">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="align-center">
+                            <a href="#" class="btn btn-style-3">Submit</a>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="col-sm-5" style="margin-left: 1%;">
+
+                    <div class="content-element3">
+
+                        <h5 class="hh5"><b>Map</b></h5>
+                        <p></p>
+
+                        <div class="row">
+                            <!-- Google map -->
+                            <div class="map-section">
+                                <div id="googleMap" class="map-container type-2"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+
+{% endblock %}
