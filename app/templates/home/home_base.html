@@ -21,6 +21,7 @@
 
     <!-- CSS theme files
     ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/plugins/fancybox/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home/css/fontello.css') }}">
@@ -105,7 +106,7 @@
 
                             <div class="logo-wrap">
 
-                                <a href="index.html" class="logo"><img src="{{ url_for('static', filename='home/images/logo.png') }}" alt=""
+                                <a href="{{ url_for('home.index') }}" class="logo"><img src="{{ url_for('static', filename='home/images/logo.png') }}" alt=""
                                                                        style="height: 36px;"></a>
 
                             </div>
@@ -117,42 +118,43 @@
 
                             <nav id="main-navigation" class="main-navigation">
                                 <ul id="menu" class="clearfix ">
-                                    <li><a class="wake">Buy</a></li>
+                                    <li><a class="wake">Buy a Car</a></li>
                                     <li><a href="{{ url_for('home.sell') }}" class="wake">Sell your car</a></li>
+                                    <li><a class="wake">Import</a></li>
+                                    <li><a href="{{ url_for('home.blog') }}" class="wake">News &amp; Reviews</a></li>
                                     <li class="dropdown has-megamenu">
-                                        <a class="wake">About</a>
+                                        <a>About</a>
                                         <!--sub menu-->
                                         <div class="sub-menu-wrap mega-menu">
                                           <div class="mega-submenu">
-                                            <h5>How we roll</h5>
-                                            <ul style="border-top: 2px solid blue;margin-right: 2%;margin-left:2%;">
+                                            <h5>Who We Are</h5>
+                                            <ul style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;">
                                               <li><a href="#">About Us</a></li>
                                               <li><a href="#">Our Staff</a></li>
                                               <li><a href="#">Services</a></li>
-                                              <li><a href="#">Pricing</a></li>
+                                              <li><a href="#">Why Gigi Motors</a></li>
                                             </ul>
                                           </div>
                                           <div class="mega-submenu">
-                                            <h5>Our cars</h5>
-                                            <ul style="border-top: 2px solid blue;margin-right: 2%;margin-left:2%;">
-                                              <li><a href="#">Sell Your Vehicle</a></li>
-                                              <li><a href="#">Compare Vehicles</a></li>
-                                              <li><a href="#">Car Finance Calculator</a></li>
-
+                                            <h5>Other Services</h5>
+                                            <ul style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;">
+                                              <li><a href="#">Trade In</a></li>
+                                              <li><a href="#">Finance</a></li>
+                                              <li><a href="#">Insurance</a></li>
+                                              <li><a href="#">Warranty</a></li>
+                                              <li><a href="#">Partners</a></li>
                                             </ul>
                                           </div>
                                           <div class="mega-submenu">
                                             <h5>More</h5>
-                                            <ul style="border-top: 2px solid blue;margin-right: 2%;">
-                                             <li><a href="#">Find a Dealer</a></li>
-                                              <li><a href="#">Dealer Page</a></li>
-                                              <li><a href="#">Contact Us</a></li>
+                                            <ul style="border-top: 2px solid #fff;margin-right: 2%;">
+                                             <li><a href="#">FAQs</a></li>
+                                              <li><a href="#">Find A Store</a></li>
+                                              <li><a href="{{ url_for('home.contact') }}">Contact Us</a></li>
                                             </ul>
                                           </div>
                                         </div>
                                     </li>
-                                    <li><a href="{{ url_for('home.blog') }}" class="wake">Blog</a></li>
-                                    <li><a href="{{ url_for('home.contact') }}">Contact Us</a></li>
                                 </ul>
                             </nav>
 

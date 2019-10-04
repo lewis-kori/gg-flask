@@ -1252,11 +1252,12 @@ a.top-tooltip .tooltip:after{
 
 .header-3 #main-navigation > ul > li > a,
 .header-4 #main-navigation > ul > li > a{
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #fff;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
+  font-family: 'Raleway', sans-serif;
 }
 
 .header-3 #main-navigation > ul > li.current > a, 
@@ -1621,13 +1622,13 @@ header:not([class*="header"]) .responsive-nav-button{
 
 .header-3 .sub-menu-wrap.mega-menu,
 .header-4 .sub-menu-wrap.mega-menu{
-  left: 0;
-  right: 0;
+  left: 8%;
+  right: -8%;
 }
 
 .mega-menu > * h5{
   font-size: 15px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: bold;
   padding-left: 20px;
 }
@@ -2003,7 +2004,8 @@ button.search-button:before{content: "\e922";}
 .media-holder.type-2{
   padding: 10px 0;
   min-height: 350px;
-      max-width: 1024px;
+      /*max-width: 1024px;*/
+      max-width: 100%;
     margin: 0.8% auto 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3063,7 +3065,7 @@ button.search-button:before{content: "\e922";}
 
   .go-to-top.go-top-visible {
     right: 48%;
-    bottom: 5%;
+    bottom: 2%;
     opacity: 1;
     visibility: visible;
     display: block;
@@ -9057,7 +9059,7 @@ button.search-button:before{content: "\e922";}
   padding: 28px 0;
 }
 .psb1{
-  padding: 90px 0 45px;
+  padding: 30px 0 45px;
 }
 .psb2{
   padding: 25px 0;

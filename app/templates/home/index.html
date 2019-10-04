@@ -19,7 +19,7 @@
                           <div class="select-col">
 
                               <form class="lineform">
-                                  <input type="text" placeholder="ZIP">
+                                  <input type="text" placeholder="Make">
                               </form>
 
                           </div>
@@ -27,7 +27,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Max Mileage">
+                                  <select data-default-text="Model">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -40,7 +40,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="All Makes">
+                                  <select data-default-text="Year | From">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -52,7 +52,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="All Models">
+                                  <select data-default-text="Year | To">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -68,7 +68,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Max Price">
+                                  <select data-default-text="Min Price">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -81,7 +81,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Min Year">
+                                  <select data-default-text="Max Price">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -109,10 +109,20 @@
   <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
   <div id="content">
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="products-holder">
+                <h4 class="section-title" style="padding: 40px 57px 0;">Featured Cars</h4>
+              </div>
+            </div>
+          </div>
+      </div>
 
       <div class="page-section-bg psb1">
 
           <div class="row flex-row">
+
               {% for vehicle in all_vehicles %}
               <div class="col-md-3 col-xs-6 mb-4">
 
@@ -121,7 +131,7 @@
 
                       <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
                       <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{% if vehicle.image_url %}
-                                            {{ url_for('static', filename='uploads/{}'.format(vehicle.image_url))}}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
                                        {% else %}
                                             {{ url_for('static', filename='home/images/262x173_img3.jpg')}}
                                        {% endif %}" alt=""></a>
@@ -156,7 +166,258 @@
           </div>
 
       </div>
+
+      <div class="page-section-bg psb1">
+
+        <div class="container">
+
+          <h4 class="section-title">Latest Posts</h4>
+
+          <div class="review-section">
+
+            <div class="row">
+              <div class="col-md-6">
+
+                <article class="entry review-item">
+
+                  <div class="review-label">
+                    4.5<span>out of 5</span>
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-attachment">
+
+                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/555x377_img2.jpg')}}" alt=""></figure>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-body">
+
+                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-meta">
+
+                      <time class="entry-date" datetime="2018-10-28">October 28, 2019</time>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                    <h4 class="entry-title"><a href="#">Aliquam Dapibus Tincidunt Metus</a></h4>
+
+                    <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-content">
+
+                      <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget. <a href="#" class="info-btn">Read More</a></p>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                </article>
+
+              </div>
+              <div class="col-md-6">
+
+                <article class="entry review-item">
+
+                  <div class="review-label">
+                    4.7<span>out of 5</span>
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-attachment">
+
+                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/555x377_img1.jpg')}}" alt=""></figure>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-body">
+
+                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-meta">
+
+                      <time class="entry-date" datetime="2018-10-27">October 27, 2018</time>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                    <h4 class="entry-title"><a href="#">Vestibulum Ante Ipsum</a></h4>
+
+                    <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-content">
+
+                      <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus. <a href="#" class="info-btn">Read More</a></p>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                </article>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-6">
+
+                <article class="entry review-item">
+
+                  <div class="review-label size2">
+                    4.9<span>out of 5</span>
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-attachment">
+
+                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img1.jpg')}}" alt=""></figure>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-body">
+
+                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-meta">
+
+                      <time class="entry-date" datetime="2018-10-26">October 26, 2018</time>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                    <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                </article>
+
+              </div>
+              <div class="col-md-4 col-sm-6">
+
+                <article class="entry review-item">
+
+                  <div class="review-label size2">
+                    3.2<span>out of 5</span>
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-attachment">
+
+                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img2.jpg')}}" alt=""></figure>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-body">
+
+                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-meta">
+
+                      <time class="entry-date" datetime="2018-10-14">October 14, 2018</time>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                    <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                </article>
+
+              </div>
+              <div class="col-md-4 col-sm-6">
+
+                <article class="entry review-item">
+
+                  <div class="review-label size2">
+                    4.8<span>out of 5</span>
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-attachment">
+
+                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img6.jpg')}}" alt=""></figure>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+                  <div class="entry-body">
+
+                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                    <div class="entry-meta">
+
+                      <time class="entry-date" datetime="2016-10-07">October 7, 2018</time>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                    <h5 class="entry-title"><a href="#">Neque Porro Quisquam </a></h5>
+
+                  </div>
+
+                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+
+                </article>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="align-center">
+            <a href="#" class="btn">More Reviews</a>
+          </div>
+
+        </div>
+
+      </div>
+
   </div>
+
+    <!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
 {% endblock content %}
 
 
