@@ -841,7 +841,11 @@
 
                                     <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
                                     <figure class="product-image">
-                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" alt=""></a>
+                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{% if vehicle.image_url %}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
+                                       {% else %}
+                                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                                       {% endif %}" alt=""></a>
                                         <div class="overlay full-width-block">
                                             <div class="icon-fancy">
                                                 <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" class="fancybox" data-fancybox="group"><i
