@@ -1622,8 +1622,8 @@ header:not([class*="header"]) .responsive-nav-button{
 
 .header-3 .sub-menu-wrap.mega-menu,
 .header-4 .sub-menu-wrap.mega-menu{
-  left: 8%;
-  right: -8%;
+  left: 0%;
+  right: 0%;
 }
 
 .mega-menu > * h5{

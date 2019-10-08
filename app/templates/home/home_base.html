@@ -116,9 +116,9 @@
 
                             <!-- - - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - - - -->
 
-                            <nav id="main-navigation" class="main-navigation">
+                            <nav id="main-navigation" class="main-navigation" style="float:right;">
                                 <ul id="menu" class="clearfix ">
-                                    <li><a class="wake">Buy a Car</a></li>
+                                    <li><a href="{{ url_for('home.inventory') }}" class="wake">Buy a Car</a></li>
                                     <li><a href="{{ url_for('home.sell') }}" class="wake">Sell your car</a></li>
                                     <li><a class="wake">Import</a></li>
                                     <li><a href="{{ url_for('home.blog') }}" class="wake">News &amp; Reviews</a></li>

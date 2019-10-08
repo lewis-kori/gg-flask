@@ -26,6 +26,15 @@ def index():
                            all_vehicles=all_vehicles)
 
 
+@home.route('/buy_a_car', methods=['post', 'get'])
+def inventory():
+    """Admin dashboard page."""
+    all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
+    vehicles_count = all_vehicles.count()
+    return render_template('home/inventory.html',
+                           all_vehicles=all_vehicles, vehicles_count=vehicles_count)
+
+
 @home.route('/view_car/<id>', methods=['post', 'get'])
 def view_car(id):
     """Admin dashboard page."""
