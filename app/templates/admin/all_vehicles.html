@@ -77,7 +77,7 @@
                         <small class=" f12 text-black">{{vehicle.description}}</small>
                         <div class="size mt-2">
                             Price : {{vehicle.price}}
-                            <a href="#" class="btn btn-primary btn-pill btn-sm float-right">View</a>
+                            <a href="{{ url_for('admin.view_vehicle', id=vehicle.id) }}" class="btn btn-primary btn-pill btn-sm float-right">View</a>
                         </div>
                     </div>
                 </div>

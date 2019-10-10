@@ -428,7 +428,7 @@ img.alignright{
   padding: 90px 0;
     max-width: 1024px;
     margin: auto;
-    background-color: #f7f7f5;
+    background-color: #fff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1243,7 +1243,7 @@ a.top-tooltip .tooltip:after{
 #header.header-3 .top-header{
   padding: 8px 0;
   border-bottom: none;
-  background-color:#30384f;
+  background-color:#fff;
 }
 
 .header-3 .menu-holder{
@@ -1253,7 +1253,7 @@ a.top-tooltip .tooltip:after{
 .header-3 #main-navigation > ul > li > a,
 .header-4 #main-navigation > ul > li > a{
   text-transform: capitalize;
-  color: #fff;
+  color: #312f2f;
   font-weight: 400;
   font-size: 14px;
   cursor: pointer;
@@ -1821,6 +1821,7 @@ button.search-button:before{content: "\e922";}
 
 #content{
   position: relative;
+  background: #fff;
 }
 
 .columns-section h3{
@@ -2003,7 +2004,7 @@ button.search-button:before{content: "\e922";}
 
 .media-holder.type-2{
   padding: 10px 0;
-  min-height: 350px;
+  min-height: 400px;
       /*max-width: 1024px;*/
       max-width: 100%;
     margin: 0.8% auto 0;
@@ -2981,8 +2982,8 @@ button.search-button:before{content: "\e922";}
   }
 
   .btn:hover{
-    background: #fff;
-    color: #31353c;
+    background: #ed442b;
+    color: #fff;
     border-color: #d5d7d8;
   }
 
@@ -3442,6 +3443,7 @@ button.search-button:before{content: "\e922";}
     .contact-form input:not(:last-child),
     .contact-form textarea:not(:last-child),
     .contact-form.style-2 .auto-custom-select:not(:last-child),
+    .contact-form.style-2 .auto-custom-select1:not(:last-child),
     .contact-form > .row:not(:last-child){
       margin-bottom: 30px;
     }
@@ -3459,7 +3461,8 @@ button.search-button:before{content: "\e922";}
     .contact-form.style-2 input,
     .contact-form.style-2 textarea,
     .contact-form.style-2 .auto-selected-option,
-    .contact-form.style-2 .auto-custom-select .auto-options-list{
+    .contact-form.style-2 .auto-custom-select .auto-options-list,
+    .contact-form.style-2 .auto-custom-select1 .auto-options-list{
       background: #f2f3f3;
     }
 
@@ -3537,6 +3540,12 @@ button.search-button:before{content: "\e922";}
       width: 100%;
     }
 
+    .auto-custom-select1{
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+    }
       .auto-custom-select .auto-selected-option{
         cursor: pointer;
         position: relative;
@@ -3548,7 +3557,23 @@ button.search-button:before{content: "\e922";}
         white-space: nowrap;
       }
 
+        .auto-custom-select1 .auto-selected-option{
+        cursor: pointer;
+        position: relative;
+        padding: 11px 50px 10px 20px;
+        height: 44px;
+        overflow: hidden;
+        background: #e8e8e3;
+        z-index: 1;
+        white-space: nowrap;
+        width: 100%;
+      }
+
       .auto-custom-select.auto-opened .auto-selected-option{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .auto-custom-select1.auto-opened .auto-selected-option{
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -3571,8 +3596,30 @@ button.search-button:before{content: "\e922";}
         -moz-box-shadow:    0px 10px 17px 0px rgba(0, 0, 0, 0.1);
         box-shadow:         0px 10px 17px 0px rgba(0, 0, 0, 0.1);
       }
+      .auto-custom-select1 .auto-options-list{
+        position: absolute;
+        left: 0;
+        top: 100%;
+        opacity: 0;
+        visibility: hidden;
+        cursor: pointer;
+        background: #fff;
+        z-index: 2;
+        width: 100%;
+        border-top: none;
+        padding: 10px 0;
+        margin-top: -10px;
+        border-radius: 0 0 3px 3px;
+        -webkit-box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow:    0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+        box-shadow:         0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+      }
 
       .auto-custom-select.auto-opened .auto-options-list{
+        opacity: 1;
+        visibility: visible;
+      }
+      .auto-custom-select1.auto-opened .auto-options-list{
         opacity: 1;
         visibility: visible;
       }
@@ -3585,8 +3632,20 @@ button.search-button:before{content: "\e922";}
           -o-transition: all .3s ease;
           transition: all .3s ease;
         }
+        .auto-custom-select1 .auto-options-list li{
+          padding: 3px 20px;
+          color: #31353c;
+
+          -webkit-transition: all .3s ease;
+          -o-transition: all .3s ease;
+          transition: all .3s ease;
+        }
 
         .auto-custom-select .auto-options-list li:hover{
+          background: #4a6ee0;
+          color: #fff;
+        }
+        .auto-custom-select1 .auto-options-list li:hover{
           background: #4a6ee0;
           color: #fff;
         }
@@ -3601,8 +3660,30 @@ button.search-button:before{content: "\e922";}
         color: #97999b;
         font-size: 18px;
       }
+      .auto-custom-select1 .auto-selected-option:before{
+        content: '\f13a';
+        font-family: 'fontello';
+        position: absolute;
+        top: 0;
+        right: 20px;
+        line-height: 44px;
+        color: #97999b;
+        font-size: 18px;
+      }
+      .auto-custom-select1:before{
+        content: '\f13a';
+        font-family: 'fontello';
+        position: absolute;
+        top: 0;
+        right: 20px;
+        line-height: 44px;
+        color: #97999b;
+        font-size: 18px;
+        z-index: 1000;
+      }
 
       .auto-custom-select.auto-opened .auto-selected-option:before{content: '\e902';}
+      .auto-custom-select1.auto-opened .auto-selected-option:before{content: '\e902';}
 
     /* Fieldset */
 

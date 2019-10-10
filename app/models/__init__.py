@@ -29,3 +29,5 @@ from .make import *
 from .birds import *
 from .transmission import *
 from .fuel import *
+from .seller_vehicle import *
+from .import_vehicle import *

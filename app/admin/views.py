@@ -72,6 +72,20 @@ def vehicles():
     return render_template("admin/all_vehicles.html", all_vehicles=all_vehicles)
 
 
+@admin.route("/view_vehicle/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def view_vehicle(id):
+    """View Vehicle."""
+    all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).all()
+    vehicle = Vehicle.query.get_or_404(id)
+    fuel_id = vehicle.fuel_type_id
+    car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
+    return render_template("admin/view_vehicle.html", all_vehicles=all_vehicles, vehicle=vehicle, fuel_id=fuel_id,
+                           car_fuel_type=car_fuel_type)
+
+
 @admin.route("/vehicle/add", methods=["GET", "POST"])
 @login_required
 @admin_required
@@ -254,3 +268,16 @@ def upload():
     f.save(os.path.join("app/static/ckeditor_uploads", f.filename))
     url = url_for("admin.uploaded_files", filename=f.filename)
     return upload_success(url=url)  # return upload_success call
+
+
+@admin.route("/view_vehicle/<id>/delete")
+@login_required
+@admin_required
+@check_confirmed
+def delete_vehicle(id):
+    """View Vehicle."""
+    vehicle = Vehicle.query.get_or_404(id)
+
+    db.session.delete(vehicle)
+    db.session.commit()
+    return redirect(url_for("admin.vehicles"))

@@ -1,21 +1,75 @@
 {% extends 'home/home_base.html' %}
 
 {% block content %}
+<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+
+    <div id="content">
+
+      <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+      <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
+
+        <div class="container">
+
+          <h1 class="page-title">Contact Us</h1>
+
+          <ul class="breadcrumbs">
+
+            <li><a href="{{ url_for('home.index') }}">Home</a></li>
+            <li>Import Vehicle</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
+
 
 <div class="page-section">
 
     <div class="container">
+
 
         <h2 class="section-title">Get In Touch</h2>
 
         <div class="row">
 
             <div class="col-md-8 col-sm-12">
+                <form id="contact-form" class="contact-form">
 
-                <!-- Google map -->
-                <div class="map-section">
-                    <div id="googleMap" class="map-container type-2"></div>
-                </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label class="required">Your Name</label>
+                            <input type="text" name="cf-name">
+
+                            <label class="required">Your email</label>
+                            <input type="text" name="cf-email">
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <label class="required">Phone number</label>
+                            <input type="text" name="phone">
+
+                            <label>Message</label>
+                            <textarea name="cf-message" rows="5"></textarea>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+
+
+                            <button type="submit" class="btn btn-style-3" data-type="submit">Send Message</button>
+
+                        </div>
+                    </div>
+
+                </form>
 
             </div>
             <div class="col-md-4 col-sm-12">
@@ -114,51 +168,14 @@
 
     <div class="container">
 
-        <h2><b>We Welcome Your Feedback and Comments</b></h2>
-        <form id="contact-form" class="contact-form">
-
-            <div class="row">
-                <div class="col-sm-4">
-
-                    <label class="required">You Name</label>
-                    <input type="text" name="cf-name">
-
-                    <label class="required">You email</label>
-                    <input type="text" name="cf-email">
-
+        <!-- Google map -->
+                <div class="map-section">
+                    <div id="googleMap" class="map-container type-2"></div>
                 </div>
-                <div class="col-sm-4">
-
-                    <label>Phone number</label>
-                    <input type="text" name="phone">
-
-                    <label>Department</label>
-                    <div class="custom-select">
-                        <div class="select-title">Service</div>
-                        <ul id="menu-type" class="select-list"></ul>
-                        <select class="hide">
-                            <option value="menu">Service 1</option>
-                            <option value="menu">Service 2</option>
-                            <option value="menu">Service 3</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="col-sm-4">
-
-                    <label>Message</label>
-                    <textarea name="cf-message" rows="5"></textarea>
-
-                    <button type="submit" class="btn btn-style-3" data-type="submit">Send Message</button>
-
-                </div>
-            </div>
-
-        </form>
 
     </div>
 
 </div>
 
-
+    </div>
 {% endblock %}

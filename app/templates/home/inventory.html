@@ -1,9 +1,16 @@
 {% extends 'home/home_base.html' %}
-
+{% block custom_head_tags %}
+{{ super() }}
+  <style>
+  #content{border-top: 1px solid #ccc;}
+  </style>
+{% endblock %}
 {% block content %}
+
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
     <div id="content" class="page-content-wrap">
+
 
       <div class="container">
 
@@ -922,7 +929,7 @@
 
                                                         </div>
 
-                                                        <a href="#" class="btn btn-small">get Best Price</a>
+                                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}" class="btn btn-small">get Best Price</a>
 
                                                     </div>
 
@@ -947,11 +954,17 @@
                     </div>
 
                     <ul class="pagination">
-                        <li><a href="#" class="prev-page"></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#" class="next-page"></a></li>
+                        <li>
+                          {% if prev_url %}
+                          <a href="{{ prev_url or '#' }}" class="prev-page"></a>
+                          {% endif %}
+                        </li>
+
+                        <li>
+                          {% if next_url %}
+                          <a href="{{ next_url or '#' }}" class="next-page {% if not next_url %} disabled{% endif %}"></a>
+                          {% endif %}
+                        </li>
                     </ul>
                 </div>
             </main>

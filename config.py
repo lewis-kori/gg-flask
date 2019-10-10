@@ -80,7 +80,7 @@ class Config:
     RQ_DEFAULT_PORT = url.port
     RQ_DEFAULT_PASSWORD = url.password
     RQ_DEFAULT_DB = 0
-    POSTS_PER_PAGE = 25
+    POSTS_PER_PAGE = 15
 
     @staticmethod
     def init_app(app):
