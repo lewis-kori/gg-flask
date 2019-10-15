@@ -50,7 +50,7 @@
               <div class="col-sm-12">
 
                 <h4><b>Vehicle Information</b></h4>
-                <p>This is the basic information needed to create your ad. It will appear on your listing and detailed ad.</p>
+                <p>Turn your car into cash. We'll take care of the process. Kindly fill out the form below to help us help you.</p>
                 {% for field in form.errors %}
                         {% for error in form.errors[field] %}
                         <div class="alert alert-error">
@@ -72,7 +72,7 @@
                         <label class="required">Plate</label>
                         {{ form.plate(class="") }}
 
-                        <label class="required tooltips">Price ($)
+                        <label class="required tooltips">Price (KES)
                           <span class="right-tooltip qustion-tooltip">
                             <a href="javascript:;" class="qustion-icon"></a>
                             <span class="tooltip">
@@ -106,9 +106,6 @@
                   </div>
 
                   <div class="content-element3">
-
-                    <h5><b>Detailed Vehicle Information</b></h5>
-                    <p>The more details your provide, the more activity your listing will receive.</p>
 
                     <div class="row">
                       <div class="col-sm-6">
@@ -148,8 +145,8 @@
 
                   <div class="content-element3">
 
-                    <h5><b>Seller's Comments</b></h5>
-                    <p>This is your chance to tell shoppers about your vehicle in your own words. </p>
+                    <h5><b>Description</b></h5>
+                    <p>Write a description of your vehicle below to give us an accurate idea of the condition of your vehicle</p>
                     <textarea rows="5"></textarea>
 
                   </div>
@@ -157,7 +154,8 @@
                   <div class="content-element7">
 
                     <h5><b>Contact Information</b></h5>
-                    <p>Enter address you want to use for your ad. Your phone number will be available to prospective buyers. We'll email you notifications and information, but we'll never display your email address. Please read our <a href="#" class="link-text2">Privacy Statement</a>.</p>
+                    <p>By submitting this form you will be scheduling a sales appointment at no obligation and
+                      will be contacted within 48 hours by a sales consultant <a href="#" class="link-text2"></a>.</p>
 
                     <div class="row">
                       <div class="col-sm-6">

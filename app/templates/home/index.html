@@ -27,7 +27,7 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Model">
+                                  <select data-default-text="Year | From">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -40,11 +40,13 @@
                           <div class="select-col">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Year | From">
+                                  <select data-default-text="Model">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
                                   </select>
+
+
                               </div>
 
                           </div>
@@ -123,7 +125,7 @@
 
           <div class="row flex-row">
 
-              {% for vehicle in all_vehicles %}
+              {% for vehicle in featured_vehicles %}
               <div class="col-md-3 col-xs-6 mb-4">
 
                   <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
@@ -151,8 +153,10 @@
                           </div>
                           <div class="model-loc">
                               <ul>
-                                  <li><span>Mileage</span>{{vehicle.mileage}}</li>
-                                  <li><span>Location</span>Within 4 km</li>
+                                  <li><span>Year of Make</span> {{vehicle.year}}</li>
+                                  <li><span>Engine Size</span> {% if engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %}</li>
+                                  <li><span>Engine Type</span> {% if fuel_type %} {{vehicle.fuel_type}} {% else %} N/A {% endif %}</li>
+                                  <li><span>Transmission</span> {% if transmission %} {{vehicle.transmission}} {% else %} N/A {% endif %}</li>
                               </ul>
                           </div>
 
@@ -187,7 +191,7 @@
                   <!--tabs navigation-->                  
                   <ul class="tabs-nav clearfix">
                     <li>
-                      <a href="#tab-5">Body Style</a>
+                      <a href="#tab-5">Body Type</a>
                     </li>
                     <li>
                       <a href="#tab-6">Make</a>
@@ -214,7 +218,7 @@
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Crossover</a></h6>
+                              <h6 class="product-name"><a href="#">Mini SUV</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -256,7 +260,7 @@
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Pickup Truck</a></h6>
+                              <h6 class="product-name"><a href="#">Pickup</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -298,7 +302,7 @@
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Sedan</a></h6>
+                              <h6 class="product-name"><a href="#">Saloon</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->

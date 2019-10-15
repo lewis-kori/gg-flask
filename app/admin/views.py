@@ -109,6 +109,7 @@ def add_vehicle():
         new_vehicle = Vehicle(
             name=form.name.data,
             price=form.price.data,
+            featured=form.featured.data,
             description=form.description.data,
             plate=form.plate.data,
             year=form.year.data,

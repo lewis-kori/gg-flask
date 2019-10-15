@@ -17,6 +17,7 @@ class Vehicle(db.Model):
     description = db.Column(db.String(500), index=True)
     plate = db.Column(db.String(80), index=True)
     year = db.Column(db.String(80), index=True)
+    featured = db.Column(db.Boolean, default=True, index=True)
     image_url = db.Column(db.String(64), index=True)
     front_image_url = db.Column(db.String(64), index=True)
     back_image_url = db.Column(db.String(64), index=True)

@@ -13,6 +13,7 @@
 <link href="{{ url_for('static', filename='vendor/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
 <!--multiple select-->
 <link href="{{ url_for('static', filename='vendor/multi-select/css/multi-select.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/icheck/skins/all.css')}}" rel="stylesheet">
 <!--dropzone-->
 <script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
 <!--init dropzone-->
@@ -202,6 +203,13 @@
                                     <div class="form-group">
                                         <label class="col-form-label col-form-label-sm">Interior</label>
                                         {{ form.interior(class="form-control") }}
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm control-label">Featured Vehicle?</label>
+                                        <div>{{ form.featured(class="form-control iCheck-red") }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -436,4 +444,7 @@ Dropzone.autoDiscover = false;
 <script src="{{ url_for('static', filename='vendor/multi-select/js/jquery.multi-select.js') }}"></script>
 <!--init multiple select-->
 <script src="{{ url_for('static', filename='vendor/js-init/init-multiple-select.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/icheck/skins/icheck.min.js') }}"></script>
+    <!--init icheck-->
+    <script src="{{ url_for('static', filename='vendor/js-init/init-icheck.js') }}"></script>
 {% endblock %}

@@ -2027,6 +2027,8 @@ button.search-button:before{content: "\e922";}
 
 .media-holder.type-2 .tabs{
   max-width: 365px;
+      vertical-align: middle;
+    padding-top: 25px;
 }
 
 .media-holder.type-3{
@@ -3065,8 +3067,8 @@ button.search-button:before{content: "\e922";}
   }
 
   .go-to-top.go-top-visible {
-    right: 48%;
-    bottom: 2%;
+        right: 4%;
+    bottom: 0.275%;
     opacity: 1;
     visibility: visible;
     display: block;
@@ -4126,7 +4128,7 @@ button.search-button:before{content: "\e922";}
   }
 
     .social-icons > li{
-      font-size: 24px;
+      font-size: 12px;
       display: inline-block;
       vertical-align: middle;
       padding: 5px 10px 0;
@@ -4139,7 +4141,7 @@ button.search-button:before{content: "\e922";}
       }
 
       .social-icons > li > a:hover{
-        color: #fff;
+        color: #da1919;
       }
 
       .social-icons.style-2 > li > a{

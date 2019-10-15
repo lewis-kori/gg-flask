@@ -20,44 +20,11 @@
 
             <div class="filter-section">
 
-              <div class="accordion toggle no-of">
-
-                <!--accordion item-->
-                <div class="accordion-item">
-                  <h6 class="a-title active">Location</h6>
-                  <div class="a-content">
-                    <form>
-
-                      <div class="cols-wrap">
-
-                        <div class="col">
-                          <label>Search within</label>
-                          <div class="auto-custom-select">
-                            <select data-default-text="10 miles">
-                              <option value="menu">Option 1</option>
-                              <option value="menu">Option 2</option>
-                              <option value="menu">Option 3</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <label>ZIP code</label>
-                          <input type="text" placeholder="60606">
-                        </div>
-
-                      </div>
-
-                    </form>
-                  </div>
-                </div>
-
-              </div>
-
               <div class="accordion toggle">
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Condition</h6>
+                  <h6 class="a-title">Condition</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -90,7 +57,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Year</h6>
+                  <h6 class="a-title">Year</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -172,7 +139,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Make</h6>
+                  <h6 class="a-title">Make</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -261,7 +228,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Model</h6>
+                  <h6 class="a-title">Model</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -343,7 +310,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Price</h6>
+                  <h6 class="a-title">Price</h6>
                   <div class="a-content">
 
                     <!--price-->
@@ -364,7 +331,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Mileage</h6>
+                  <h6 class="a-title">Mileage</h6>
                   <div class="a-content">
 
                     <form>
@@ -388,7 +355,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Body Style</h6>
+                  <h6 class="a-title">Body Style</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -470,7 +437,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Drivetrain</h6>
+                  <h6 class="a-title">Drivetrain</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -531,7 +498,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Transmission</h6>
+                  <h6 class="a-title">Transmission</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -585,7 +552,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Exterior Color</h6>
+                  <h6 class="a-title">Exterior Color</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -667,7 +634,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Interior Color</h6>
+                  <h6 class="a-title">Interior Color</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -749,7 +716,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Photos</h6>
+                  <h6 class="a-title">Photos</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -768,7 +735,7 @@
 
                 <!--accordion item-->
                 <div class="accordion-item">
-                  <h6 class="a-title active">Keywords</h6>
+                  <h6 class="a-title">Keywords</h6>
                   <div class="a-content">
 
                     <form>
@@ -814,22 +781,7 @@
                                     </div>
 
                                 </div>
-                                <div class="sort-col">
 
-                                    <div class="flex-row flex-center">
-
-                                        <span>Per page</span>
-                                        <div class="auto-custom-select">
-                                            <select data-default-text="12">
-                                                <option value="menu">1</option>
-                                                <option value="menu">2</option>
-                                                <option value="menu">3</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
                             </div>
 
@@ -892,8 +844,27 @@
                                                         <span>Mileage</span>
                                                         {{vehicle.mileage}}
                                                     </div>
-
                                                 </div>
+                                                <div class="pricing-area">
+
+                                                    <div class="mpg">
+                                                        <span>Engine Size</span>
+                                                        {{vehicle.engine_size}}
+                                                    </div>
+                                                    <div class="mpg">
+                                                        <span>Engine Type</span>
+                                                        {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel
+                                                        {% elif vehicle.fuel_type_id==3 %} Hybrid {% else %} N/A {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="pricing-area">
+                                                     <div class="mpg">
+                                                        <span>Transmission</span>
+                                                        {% if vehicle.transmission_id==1 %} Automatic {% elif vehicle.transmission_id==2
+                                                       %} Manual {% else %} N/A {% endif %}
+                                                    </div>
+                                                </div>
+
 
                                                 <p>{{vehicle.description}}</p>
 
@@ -918,9 +889,7 @@
 
                                                         <div class="contact-section">
 
-                                                            <div class="contact-item">
-                                                                <span class="contact-title"><i class="licon-map-marker"></i>5 mi away</span>
-                                                            </div>
+
 
                                                             <div class="contact-item">
                                                                 <span class="contact-title"><i
@@ -929,11 +898,11 @@
 
                                                         </div>
 
-                                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}" class="btn btn-small">get Best Price</a>
+                                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}" class="btn btn-small">Make an Enquiry</a>
 
                                                     </div>
 
-                                                    <a href="#" class="link-text2">Similar cars at this dealership</a>
+                                                    <a href="#" class="link-text2">Similar cars</a>
 
                                                 </div>
 

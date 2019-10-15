@@ -5,26 +5,6 @@
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
     <div id="content">
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-      <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
-
-        <div class="container">
-
-          <h1 class="page-title">View Car</h1>
-
-          <ul class="breadcrumbs">
-
-            <li><a href="{{ url_for('home.index') }}">Home</a></li>
-            <li>View Car</li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
 
       <div class="page-section" style="padding-top: 25px;">
 
@@ -38,17 +18,9 @@
               <span>Share</span>
               <ul>
                 <li><a href="#" class="sh-facebook"><i class="icon-facebook"></i></a></li>
-                <li class="share-menu">
-                  <a href="#"><i class="icon-ellipsis"></i></a>
-                  <ul class="dropdown-list social-icons share type2">
-
-                    <li><a href="#" class="sh-twitter"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#" class="sh-google"><i class="icon-gplus"></i></a></li>
-                    <li><a href="#" class="sh-pinterest"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#" class="sh-mail"><i class="icon-mail"></i></a></li>
-
-                  </ul>
-                </li>
+                <li><a href="#" class="sh-twitter"><i class="icon-twitter"></i></a></li>
+                <li><a href="#" class="sh-google"><i class="icon-gplus"></i></a></li>
+                <li><a href="#" class="sh-mail"><i class="icon-mail"></i></a></li>
                 <li><a href="#"><i class="icon-print-6"></i></a></li>
               </ul>
 
@@ -293,7 +265,7 @@
 
                 <div class="content-element3">
 
-                  <h4><b>StandardFeatures</b></h4>
+                  <h4><b>Standard Features</b></h4>
                   <div class="features-section">
 
                     <div class="row">
@@ -358,18 +330,14 @@
 
                 <div class="content-element3">
 
-                  <h4><b>Seller Comments</b></h4>
+                  <h4><b>Description</b></h4>
                   <p>{{vehicle.description}}</p>
-                  <a href="javascript:;" class="link-text2 contact-button"><i class="icon-help-circled-alt"></i>Ask a Question</a>
-
                 </div>
 
 
 
                 <div class="content-element3">
-
-                  <h4><b>More</b></h4>
-
+                  <a href="{{ url_for('home.inventory') }}" class="info-btn">View More Stock</a>
                 </div>
 
               </div>
@@ -418,11 +386,12 @@
 
                 </div>
 
-                <a href="#" class="btn btn-big btn-style-3 sidebar-btn" content="telephone=no"><i class="licon-telephone"></i><b>{{vehicle.phone_number}}</b></a>
+                <a href="#" class="btn btn-big btn-style-3 sidebar-btn" content="telephone=no">
+                  <i class="licon-telephone"></i><b>Contact Us</b></a>
 
                 <div class="question-form bg-sidebar-item">
 
-                  <h5>Contact The Seller</h5>
+                  <h5>Enquire</h5>
                   <p class="type-2">All fields are required.</p>
 
                   <form>
@@ -436,9 +405,7 @@
 
                     </div>
 
-
-                    <textarea rows="4" placeholder="I have a question about the {{vehicle.name}} for {{vehicle.price}}"></textarea>
-
+                    <textarea rows="4" placeholder="Type here to let us know how we can be of assistance. You can book a test drive or request for more photos, we are here to assist."></textarea>
 
                   </form>
 
@@ -448,29 +415,28 @@
 
               </div>
 
-              <h5 class="section-title">More from this Seller</h5>
-
+              <h6>Similar Cars</h6>
               <div class="products-holder view-list">
 
                 <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
+                {% for mv in more_vehicles %}
                 <div class="product">
 
                   <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
                   <div class="product-image">
-                    <a href="#"><img src="" alt=""></a>
+                    <a href="{{ url_for('home.view_car', id=mv.id) }}"><img style="height: 87px; width:130px;" src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" alt=""></a>
                   </div>
                   <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                   <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                   <div class="product-description">
 
-                    <h5 class="product-name"><a href="#">2016 Porsche Cayenne E-Hybrid</a></h5>
+                    <h5 class="product-name"><a href="{{ url_for('home.view_car', id=mv.id) }}">{{ mv.year }} {{mv.make.name}} {{mv.model.name}}</a></h5>
 
                     <div class="pricing-area">
 
                       <div class="product-price">
-                        $72,000
+                        {{mv.price}}
                       </div>
 
                     </div>
@@ -479,72 +445,12 @@
                   <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
 
                 </div>
-
+                {% endfor %}
                 <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
 
-                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                <div class="product">
-
-                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                  <div class="product-image">
-                    <a href="#"><img src="" alt=""></a>
-                  </div>
-                  <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                  <div class="product-description">
-
-                    <h5 class="product-name"><a href="#">2014 Porsche Macan</a></h5>
-
-                    <div class="pricing-area">
-
-                      <div class="product-price">
-                        $55,679
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                </div>
-
-                <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
-
-                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                <div class="product">
-
-                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                  <div class="product-image">
-                    <a href="#"><img src="" alt=""></a>
-                  </div>
-                  <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                  <div class="product-description">
-
-                    <h5 class="product-name"><a href="#">2011 Porsche Cayenne</a></h5>
-
-                    <div class="pricing-area">
-
-                      <div class="product-price">
-                        $22,000
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                </div>
-
-                <!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
 
               </div>
 
-              <a href="#" class="info-btn">View All Cars at This Seller</a>
 
             </aside>
           </div>

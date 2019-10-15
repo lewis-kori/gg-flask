@@ -1,181 +1,167 @@
 {% extends 'home/home_base.html' %}
-
+{% block custom_head_tags %}
+{{ super() }}
+<style>
+  #content{background:#fff}
+  .mario{
+    width: 33%;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(5,7,15,.1);
+    padding: 2rem 2rem;
+    }
+  .bh{
+    border-left: 1px solid #000;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .contact-item .contact-title i {
+    font-size: 52px;
+    vertical-align: 4px;
+  }
+  .contact-desc{
+    display: block;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
-    <div id="content">
+<div id="content">
 
-      <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-      <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
+    <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
 
         <div class="container">
 
-          <h1 class="page-title">Contact Us</h1>
+            <h1 class="page-title">Contact Us</h1>
 
-          <ul class="breadcrumbs">
+            <ul class="breadcrumbs">
 
-            <li><a href="{{ url_for('home.index') }}">Home</a></li>
-            <li>Import Vehicle</li>
+                <li><a href="{{ url_for('home.index') }}">Home</a></li>
+                <li>Contact Us</li>
 
-          </ul>
+            </ul>
 
         </div>
 
-      </div>
+    </div>
 
-      <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
-
-
-<div class="page-section">
-
-    <div class="container">
+    <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
 
 
-        <h2 class="section-title">Get In Touch</h2>
+    <div class="page-section"
+         >
 
-        <div class="row">
+        <div class="container">
+            <div class="mario">
+                <h4 class="section-title mt-1">How can we help</h4>
 
-            <div class="col-md-8 col-sm-12">
-                <form id="contact-form" class="contact-form">
+                <div class="row">
 
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="col-md-12 col-sm-12">
+                        <form id="contact-form" class="contact-form">
 
-                            <label class="required">Your Name</label>
-                            <input type="text" name="cf-name">
+                            <div class="row">
+                                <div class="col-sm-12">
 
-                            <label class="required">Your email</label>
-                            <input type="text" name="cf-email">
+                                    <label class="required">Your Name</label>
+                                    <input type="text" name="cf-name">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="required">Your email</label>
+                                    <input type="text" name="cf-email">
 
-                        </div>
-                        <div class="col-sm-6">
+                                </div>
+                                <div class="col-sm-12">
 
-                            <label class="required">Phone number</label>
-                            <input type="text" name="phone">
+                                    <label class="required">Phone number</label>
+                                    <input type="text" name="phone">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="required">Subject</label>
+                                    <input type="text" name="phone">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>Message</label>
+                                    <textarea name="cf-message" rows="5"></textarea>
 
-                            <label>Message</label>
-                            <textarea name="cf-message" rows="5"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
 
 
-                        </div>
+                                    <button type="submit" class="btn btn-style-3" data-type="submit">Send Message</button>
+
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
 
-
-                            <button type="submit" class="btn btn-style-3" data-type="submit">Send Message</button>
-
-                        </div>
-                    </div>
-
-                </form>
-
+                </div>
             </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="content-element7">
+        </div>
 
-                    <div class="tabs tabs-section clearfix">
+    </div>
 
-                        <!--tabs content-->
-                        <div class="tabs-content">
-                            <div id="tab-1">
+    <div class="page-section">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="content-element7">
 
-                                <div class="contact-section">
+                            <div class="tabs tabs-section clearfix">
 
-                                    <div class="contact-item">
-                                        <h6 class="contact-title"><i class="licon-clock3"></i>Working Hours</h6>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Monday</span>
-                                            <span class="contact-desc">9:00 AM - 5:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Tuesday</span>
-                                            <span class="contact-desc">9:00 AM - 5:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Wednesday</span>
-                                            <span class="contact-desc">9:00 AM - 5:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Thursday</span>
-                                            <span class="contact-desc">9:00 AM - 5:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Friday</span>
-                                            <span class="contact-desc">9:00 AM - 5:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Saturday</span>
-                                            <span class="contact-desc">9:00 AM - 2:00 PM</span>
-                                        </div>
-                                        <div class="flex-row flex-justify">
-                                            <span class="contact-desc">Sunday</span>
-                                            <span class="contact-desc">Closed</span>
-                                        </div>
-                                    </div>
-                                    <div class="contact-item">
-                                        <h6 class="contact-title"><i class="licon-map-marker"></i>Address</h6>
-                                        <span class="contact-desc">1.
-                                        Hurlingham, Near Chaka Place, Argwings Kodhek Road, Nairobi</span>
-                                        <span class="contact-desc">2.
-                                        Thika Road, Thika Road Mall (TRM), Second Floor, Nairobi</span>
-                                    </div>
+                                <!--tabs content-->
+                                <div class="">
+                                    <div id="tab-1">
 
-
-                                    <div class="contact-item">
-                                        <h6 class="contact-title"><i class="licon-at-sign"></i>email</h6>
-                                        <a href="#" class="contact-desc">info@gigimotors.com</a>
-                                    </div>
-
-                                    <div class="contact-item">
-                                        <h6 class="contact-title"><i class="licon-telephone"></i>Phone</h6>
-                                        <span class="contact-desc">1. 0726 310 490 - Hurlingham</span>
-                                        <span class="contact-desc">2. 0758 949 232 - Thika Road</span>
+                                        <div class="contact-section">
+                                            <div class="col-md-4">
+                                                <div class="contact-item">
+                                                    <h4>Get In Touch</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="contact-item bh">
+                                                    <h6 class="contact-title"><i class="licon-map-marker"></i></h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                    <span class="contact-desc">1.
+                                                Hurlingham, Near Chaka Place, Argwings Kodhek Road, Nairobi</span>
+                                                    <span class="contact-desc">2.
+                                                Thika Road, Thika Road Mall (TRM), Second Floor, Nairobi</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="contact-item bh">
+                                                    <h6 class="contact-title"><i class="licon-telephone"></i></h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="contact-item">
+                                                    <span class="contact-desc">1. 0726 310 490 - Hurlingham</span>
+                                                    <span class="contact-desc">2. 0758 949 232 - Thika Road</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-
                 </div>
-
-                <div class="content-element7 sm">
-
-                    <div class="contact-item">
-                        <h6 class="contact-title"><i class="licon-share2"></i>Social Media</h6>
-                        <ul class="social-icons style-2">
-
-                            <li class="fb-icon"><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li class="tweet-icon"><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li class="insta-icon"><a href="#"><i class="icon-instagram-5"></i></a></li>
-                            <li class="youtube-icon"><a href="#"><i class="icon-youtube"></i></a></li>
-
-                        </ul>
-                    </div>
-
-                </div>
-
             </div>
-
         </div>
-
     </div>
 
 </div>
-
-<div class="page-section-bg">
-
-    <div class="container">
-
-        <!-- Google map -->
-                <div class="map-section">
-                    <div id="googleMap" class="map-container type-2"></div>
-                </div>
-
-    </div>
-
-</div>
-
-    </div>
 {% endblock %}

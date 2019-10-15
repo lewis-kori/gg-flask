@@ -23,8 +23,9 @@ home = Blueprint('home', __name__)
 def index():
     """Admin dashboard page."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(8)
+    featured_vehicles = Vehicle.query.filter_by(featured=True).limit(4)
     return render_template('home/index.html',
-                           all_vehicles=all_vehicles)
+                           all_vehicles=all_vehicles, featured_vehicles=featured_vehicles)
 
 
 @home.route('/buy_a_car', methods=['post', 'get'])
@@ -43,7 +44,6 @@ def inventory():
     )
     maxlist = Vehicle.query.order_by(Vehicle.createdAt.desc()).all()
     total_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).all()
-    print(len(total_vehicles))
     vehicles_count = len(total_vehicles)
     return render_template('home/inventory.html',
                            all_vehicles=all_vehicles.items, vehicles_count=vehicles_count, next_url=next_url,
@@ -53,12 +53,12 @@ def inventory():
 @home.route('/view_car/<id>', methods=['post', 'get'])
 def view_car(id):
     """Admin dashboard page."""
-    all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(5)
+    more_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(3)
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
     car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
     return render_template('home/single_car_view.html',
-                           all_vehicles=all_vehicles, vehicle=vehicle, car_fuel_type=car_fuel_type)
+                           more_vehicles=more_vehicles, vehicle=vehicle, car_fuel_type=car_fuel_type)
 
 
 @home.route('/contact_us')
@@ -69,6 +69,11 @@ def contact():
 @home.route('/blog')
 def blog():
     return render_template('home/blog.html')
+
+
+@home.route('/single_post')
+def single_post():
+    return render_template('home/single_post.html')
 
 
 @home.route('/privacy_policy')

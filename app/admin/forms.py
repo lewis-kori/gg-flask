@@ -11,7 +11,8 @@ from wtforms.fields import (
     FileField,
     FormField,
     HiddenField,
-    SelectMultipleField
+    SelectMultipleField,
+    BooleanField
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, EqualTo, InputRequired, Length
@@ -83,6 +84,7 @@ class EditMakeForm(Form):
 
 class AddVehicleForm(FlaskForm):
     plate = StringField("Plate")
+    featured = BooleanField("Featured")
     description = TextAreaField("Description", validators=[InputRequired()])
     name = StringField("Name", validators=[InputRequired()])
     price = StringField("Price", validators=[InputRequired()])
