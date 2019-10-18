@@ -97,6 +97,10 @@ class DevelopmentConfig(Config):
         os.environ.get("DATABASE_URI")
         or "postgresql+psycopg2://jina:jinakubwa@localhost/gg"
     )
+    #SQLALCHEMY_DATABASE_URI = (
+    #        os.environ.get("DATABASE_URI")
+    #       or "msql+pymysql://jina:jinakubwa@localhost/gg"
+    #)
     # DB_URL = 'postgresql+psycopg2://jina:jinakubwa@localhost/gg'
     #
     # SQLALCHEMY_DATABASE_URI = DB_URL

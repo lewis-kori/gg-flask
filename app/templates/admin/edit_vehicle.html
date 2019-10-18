@@ -5,111 +5,483 @@
 {% block custom_head_tags %}
 {{ super() }}
 <!-- CORE CSS-->
-<link href="{{ url_for('static', filename='css/themes/fixed-menu/materialize.css')}}" type="text/css"
+<link href="{{ url_for('static', filename='vendor/select2/css/select2.css')}}" type="text/css"
       rel="stylesheet">
-<link href="{{ url_for('static', filename='css/themes/fixed-menu/style.css') }}" type="text/css" rel="stylesheet">
+<!--dropzone-->
+<link href="{{ url_for('static', filename='vendor/dropzone/dropzone.min.css')}}" rel="stylesheet">
+<!--jqery steps-->
+<link href="{{ url_for('static', filename='vendor/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
+<!--multiple select-->
+<link href="{{ url_for('static', filename='vendor/multi-select/css/multi-select.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/icheck/skins/all.css')}}" rel="stylesheet">
+<!--dropzone-->
+<script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
+<!--init dropzone-->
+<script src="{{ url_for('static', filename='vendor/js-init/init-dropzone.js') }}"></script>
+
 {% endblock %}
 
 {% block content %}
 
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Inventory</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit New Vehicles</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
 
-<!-- START CONTENT -->
-<section id="content">
-    <!--start container-->
-    <div class="container">
-
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="card-panel">
-                    <h4 class="header2">Add New Wildlife</h4>
-                    <div class="row">
-                        <form class="col s12" method="post" enctype="multipart/form-data">
-                            {{ form.hidden_tag() }}
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix"></i>
-                                    {{ form.name() }}
-                                    <label>Name</label>
-
-                                    {%for error in form.name.errors%}
-                                    <div class="error">{{ error }}</div>
-                                    {%endfor%}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix"></i>
-                                    {{ form.description(class_="materialize-textarea") }}
-                                    <label>Description</label>
-
-                                    {%for error in form.description.errors%}
-                                    <div class="error">{{ error }}</div>
-                                    {%endfor%}
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-
-                                    <i class="material-icons prefix"></i>
-                                    {{ form.park_id() }}
-                                    <label>Park</label>
-
-                                    {%for error in form.park_id.errors%}
-                                    <div class="error">{{ error }}</div>
-                                    {%endfor%}
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix"></i>
-                                    {{ form.frequency(class_="materialize-textarea") }}
-                                    <label>Frequency</label>
-
-                                    {%for error in form.frequency.errors%}
-                                    <div class="error">{{ error }}</div>
-                                    {%endfor%}
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="file-field input-field col s6">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        {{ form.image_url() }}
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" disabled value="Upload"
-                                                   id="disabled">
-                                        </div>
-                                    </div>
-
-                                    {%for error in form.image_url.errors%}
-                                    <div class="error">{{ error }}</div>
-                                    {%endfor%}
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="center-align">
-                                    <button id="submit" class="btn cyan waves-effect waves-light" type="submit">Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.vehicles') }}">ALL VEHICLES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.add_vehicle') }}">ADD NEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--end container-->
-</section>
-<!-- END CONTENT -->
+</div>
+<!--/profile nav-->
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card card-shadow mb-4">
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="stepy-tab">
+                        <ul id="default-titles" class="stepy-titles">
+                            <li id="default-title-0" class="current-step">
+                                <div>1.Edit Car Details</div>
+                            </li>
+                            <li id="default-title-1" class="">
+                                <div>2.Edit Car Images</div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                        <div class="alert alert-error">
+                            <strong>Error!</strong> {{error}}:{{field}}
+                        </div>
+                        {% endfor %}
+                    {% endfor %}
+                    <form class="picker-form"
+                          method="post" enctype="multipart/form-data" id="default">
+                        {{ form.hidden_tag() }}
+                        <fieldset title="1. Car Details" class="step" id="default-step-0">
+                            <legend> </legend>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Name</label>
+                                        {{ form.name(class='form-control') }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Plate</label>
+                                        {{ form.plate(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Make</label>
+                                        {{ form.make_id(class="form-control", id="car-makes") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Model</label>
+                                        {{ form.model_id(class="form-control", id='car-models') }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Condition</label>
+                                        {{ form.condition(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Price</label>
+                                        {{ form.price(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Year</label>
+                                        {{ form.year(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Color</label>
+                                        {{ form.color(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Description</label>
+                                        {{ form.description(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Mileage</label>
+                                        {{ form.mileage(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for error_field, errors in form.errors.items() %}
+                                <div class="invalid-feedback">
+                                    {{ error_field }}: {{ errors|join(', ') }}
+                                </div>
+                                {%endfor%}
+                            </div>
+                            <div class="card-header border-0">
+                                <div class="custom-title-wrap bar-primary">
+                                    <div class="custom-title">Additional Features</div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Fuel Type</label>
+                                        {{ form.fuel_type_id(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Transmission</label>
+                                        {{ form.transmission_id(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Engine Size</label>
+                                        {{ form.engine_size(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Interior</label>
+                                        {{ form.interior(class="form-control") }}
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm control-label">Featured Vehicle?</label>
+                                        <div>{{ form.featured(class="form-control iCheck-red") }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header border-0 mt-4 mb-4">
+                                <div class="custom-title-wrap bar-primary">
+                                    <div class="custom-title">Select Your Vehicle Features</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    {{ form.features_id(class="form-control", id='car-features') }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset title="2. Car Images" class="step" id="default-step-1" >
+                            <legend> </legend>
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    {{ form.front_image_url(id="front_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="front_image">
+                                        <div class="dz-message needsclick" style="margin: 0;">
+
+                                            <span class="note needsclick">Front Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    {{ form.back_image_url(id="back_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="back_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Back Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    {{ form.left_image_url(id="left_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="left_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Left Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    {{ form.right_image_url(id="right_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="right_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Right Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    {{ form.dash_image_url(id="dash_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="dash_image">
+                                        <div class="dz-message needsclick" style="margin: 0">
+                                            <span class="note needsclick">Dashboard Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    {{ form.interior_image_url(id="interior_image_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="interior_image">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Interior Image</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for error_field, errors in form.errors.items() %}
+                                <div class="invalid-feedback">
+                                    {{ error_field }}: {{ errors|join(', ') }}
+                                </div>
+                                {%endfor%}
+                            </div>
+                        </fieldset>
+
+                        <fieldset title="3. User Details" class="step" id="default-step-2">
+                            <legend> </legend>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Name</label>
+                                        {{ form.seller_name(class='form-control') }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Email</label>
+                                        {{ form.seller_email(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Phone Number</label>
+                                        {{ form.phone_number(class="form-control") }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-form-label-sm">Area</label>
+                                        {{ form.area(class="form-control") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for error_field, errors in form.errors.items() %}
+                                <div class="invalid-feedback">
+                                    {{ error_field }}: {{ errors|join(', ') }}
+                                </div>
+                                {%endfor%}
+                            </div>
+
+                        </fieldset>
+                        <input type="submit" class="finish btn btn-danger" value="submit" name="submit-image_details" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+    var dropdown = {
+        make: $('#car-makes'),
+        model:$('#car-models')
+    };
+
+    updateModel();
+
+  function updateModel() {
+      var send = {
+          make_id: dropdown.make.val()
+      };
+      dropdown.model.attr('disabled', 'disabled');
+      dropdown.model.empty();
+      $.getJSON("{{ url_for('admin._get_model') }}", send, function(data) {
+          data.forEach(function(item) {
+              dropdown.model.append(
+                  $('<option>', {
+                      value: item[0],
+                      text: item[1]
+                  })
+              );
+          });
+          dropdown.model.removeAttr('disabled');
+      });
+  }
+  dropdown.make.on('change', function() {
+      updateModel();
+  });
+});
+</script>
+<script>
+$( document ).ready(function() {
+    var myDropzone = new Dropzone("div#front_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone2 = new Dropzone("div#back_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone3 = new Dropzone("div#left_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone4 = new Dropzone("div#right_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone5 = new Dropzone("div#dash_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+
+   myDropzone.on("addedfile", function(file) {
+       $('#front_image_field').val(file.name)
+       console.log(file.name);
+      });
+
+
+   myDropzone2.on("addedfile", function(file) {
+       $('#back_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone3.on("addedfile", function(file) {
+       $('#left_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone4.on("addedfile", function(file) {
+       $('#right_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone5.on("addedfile", function(file) {
+       $('#dash_image_field').val(file.name)
+       console.log(file.name);
+      });
+   myDropzone6.on("addedfile", function(file) {
+       $('#interior_image_field').val(file.name)
+       console.log(file.name);
+      });
+
+      $('select[multiple]').multiselect({
+        columns: 3,
+        search : true,
+        // plugin texts
+        texts: {
+            placeholder    : 'Select Additional Features',
+        },
+
+
+
+        });
+    // myDropzone is the configuration for the element that has an id attribute
+      // with the value my-dropzone (or myDropzone)
+      Dropzone.options.myDropzone = {
+        init: function() {
+          this.on("addedfile", function(file) {
+
+            // Create the remove button
+            var removeButton = Dropzone.createElement("<button>Remove file</button>");
+
+
+            // Capture the Dropzone instance as closure.
+            var _this = this;
+
+            // Listen to the click event
+            removeButton.addEventListener("click", function(e) {
+              // Make sure the button click doesn't submit the form:
+              e.preventDefault();
+              e.stopPropagation();
+
+              // Remove the file preview.
+              _this.removeFile(file);
+              // If you want to the delete the file on the server as well,
+              // you can do the AJAX request here.
+              $('#front_image_field').val()
+            });
+
+            // Add the button to the file preview element.
+            file.previewElement.appendChild(removeButton);
+          });
+        }
+      };
+
+
+
+});
+
+
+Dropzone.autoDiscover = false;
+
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-select2.js') }}"></script>
+<!--jquery validate-->
+<script src="{{ url_for('static', filename='vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+
+<!--jquery steps-->
+<script src="{{ url_for('static', filename='vendor/jquery-steps/jquery.steps.min.js') }}"></script>
+<!--init steps-->
+<script src="{{ url_for('static', filename='vendor/js-init/init-form-wizard.js') }}"></script>
+
+<!--jquery stepy-->
+<script src="{{ url_for('static', filename='vendor/jquery-steps/jquery.stepy.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/multi-select/js/jquery.multi-select.js') }}"></script>
+<!--init multiple select-->
+<script src="{{ url_for('static', filename='vendor/js-init/init-multiple-select.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/icheck/skins/icheck.min.js') }}"></script>
+    <!--init icheck-->
+    <script src="{{ url_for('static', filename='vendor/js-init/init-icheck.js') }}"></script>
 {% endblock %}

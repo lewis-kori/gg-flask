@@ -7331,6 +7331,7 @@ button.search-button:before{content: "\e922";}
     height: 100%;
     transition: all .4s;
     background-color: #fff;
+    border: 1px solid #d0d0d0;
   }
 
   .product:hover{
@@ -8734,6 +8735,8 @@ button.search-button:before{content: "\e922";}
 
 #sidebar{
   position: relative;
+  box-shadow: 0 2px 8px 0 rgba(5,7,15,.1);
+    padding: 30px;
 }
 
 #sidebar:before{

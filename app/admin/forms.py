@@ -137,19 +137,39 @@ class GiantForm(FlaskForm):
 
 
 class EditVehicleForm(Form):
-    name = StringField("Name", validators=[InputRequired(), Length(1, 64)])
-    description = TextAreaField(
-        "Description", validators=[InputRequired(), Length(1, 64)]
-    )
+    plate = StringField("Plate")
+    featured = BooleanField("Featured")
+    description = TextAreaField("Description", validators=[InputRequired()])
+    name = StringField("Name", validators=[InputRequired()])
     price = StringField("Price", validators=[InputRequired()])
     mileage = StringField("Mileage", validators=[InputRequired()])
     color = StringField("Color", validators=[InputRequired()])
-    plate = StringField("Plate", validators=[InputRequired()])
+    condition = StringField("Condition")
     year = StringField("Year", validators=[InputRequired()])
-    image_url = FileField(validators=[FileAllowed(photos, u"Image only!")])
     model_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
-    submit = SubmitField("Add")
+    fuel_type_id = SelectField(choices=[], coerce=int)
+    transmission_id = SelectField(choices=[], coerce=int)
+    interior = StringField("Interior")
+    engine_size = StringField("Engine Size")
+    features_id = SelectMultipleField(choices=[], coerce=int)
+    front_image_url = StringField(
+    )
+    back_image_url = StringField(
+    )
+    left_image_url = StringField(
+    )
+    right_image_url = StringField(
+    )
+    dash_image_url = StringField(
+    )
+    interior_image_url = StringField(
+    )
+    seller_email = StringField('Email', validators=[InputRequired()])
+    seller_name = StringField('Name', validators=[InputRequired()])
+    phone_number = StringField('Phone', validators=[InputRequired()])
+    area = StringField('Area', validators=[InputRequired()])
+    submit = SubmitField("Edit")
 
 
 class AddModelForm(Form):

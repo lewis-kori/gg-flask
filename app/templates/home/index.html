@@ -16,28 +16,7 @@
               <div class="tabs-content">
                   <div id="tab-1">
                       <div class="select-area tab-col-2">
-                          <div class="select-col">
-
-                              <form class="lineform">
-                                  <input type="text" placeholder="Make">
-                              </form>
-
-                          </div>
-
-                          <div class="select-col">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Year | From">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-                              </div>
-
-                          </div>
-
-
-                          <div class="select-col">
+                          <div class="select-col"  style="width:100%;">
 
                               <div class="auto-custom-select">
                                   <select data-default-text="Model">
@@ -50,7 +29,32 @@
                               </div>
 
                           </div>
+                          <div class="select-col"  style="width:100%;">
 
+                              <div class="auto-custom-select">
+                                  <select data-default-text="Model">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+
+
+                              </div>
+
+                          </div>
+                      </div>
+                      <div class="select-area tab-col-2">
+                          <div class="select-col">
+
+                              <div class="auto-custom-select">
+                                  <select data-default-text="Year | From">
+                                      <option value="Option 1">Option 1</option>
+                                      <option value="Option 2">Option 2</option>
+                                      <option value="Option 3">Option 3</option>
+                                  </select>
+                              </div>
+
+                          </div>
                           <div class="select-col">
 
                               <div class="auto-custom-select">
@@ -154,9 +158,10 @@
                           <div class="model-loc">
                               <ul>
                                   <li><span>Year of Make</span> {{vehicle.year}}</li>
-                                  <li><span>Engine Size</span> {% if engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %}</li>
-                                  <li><span>Engine Type</span> {% if fuel_type %} {{vehicle.fuel_type}} {% else %} N/A {% endif %}</li>
-                                  <li><span>Transmission</span> {% if transmission %} {{vehicle.transmission}} {% else %} N/A {% endif %}</li>
+                                  <li><span>Engine Size</span> {% if vehicle.engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %}</li>
+                                  <li><span>Engine Type</span> {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel {% else %} N/A {% endif %}</li>
+                                  <li><span>Transmission</span> {% if vehicle.transmission_id==1 %} Automatic {% elif vehicle.transmission_id==2
+                                                       %} Manual {% else %} N/A {% endif %}</li>
                               </ul>
                           </div>
 
@@ -813,7 +818,7 @@
           </div>
 
           <div class="align-center">
-            <a href="#" class="btn">More Reviews</a>
+            <a href="#" class="btn">More From Gigi Motors</a>
           </div>
 
         </div>

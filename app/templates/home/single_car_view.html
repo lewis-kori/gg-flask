@@ -220,7 +220,7 @@
                         <span>Model</span><span>{{vehicle.model.name}}</span>
                       </div>
                       <div class="detail-col">
-                        <span>Engine</span><span>{{vehicle.engine}}</span>
+                        <span>Engine</span><span>{{vehicle.engine_size}}</span>
                       </div>
 
                     </li>
@@ -230,7 +230,8 @@
                         <span>VIN</span><span>WP1AD2A20GLA80654</span>
                       </div>
                       <div class="detail-col">
-                        <span>Transmission</span><span>{{vehicle.transmission}}</span>
+                        <span>Transmission</span><span>{% if vehicle.transmission_id==1 %} Automatic {% elif vehicle.transmission_id==2
+                                                       %} Manual {% else %} N/A {% endif %}</span>
                       </div>
 
                     </li>
@@ -387,7 +388,7 @@
                 </div>
 
                 <a href="#" class="btn btn-big btn-style-3 sidebar-btn" content="telephone=no">
-                  <i class="licon-telephone"></i><b>Contact Us</b></a>
+                  <i class="licon-telephone"></i><b>{{vehicle.phone_number}}</b></a>
 
                 <div class="question-form bg-sidebar-item">
 

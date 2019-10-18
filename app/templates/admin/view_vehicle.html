@@ -17,7 +17,8 @@
             <ol class="breadcrumb p-0">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Inventory</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{vehicle.name}}<span style="padding: 0 10px;">{{vehicle.model.name}}</span></li>
+                <li class="breadcrumb-item active" aria-current="page">{{vehicle.name}}<span style="padding: 0 10px;">{{vehicle.model.name}}</span>
+                </li>
             </ol>
         </nav>
     </div>
@@ -112,7 +113,7 @@
                             <p>
                                 {{vehicle.description}}
                             </p>
-                        <br/>
+                            <br/>
                         </div>
                         <div class="col-md-6">
                             <h4>Make</h4>
@@ -129,8 +130,7 @@
                             </p>
 
 
-
-                        <br/>
+                            <br/>
                         </div>
                     </div>
                     <div class="row">
@@ -139,19 +139,19 @@
                             <p>
                                 {{vehicle.mileage}}
                             </p>
-                             <h4>Fuel Type</h4>
+                            <h4>Fuel Type</h4>
                             <p>
-                                    {{car_fuel_type.type}}
-                                </p>
+                                {{car_fuel_type.type}}
+                            </p>
                             <h4>Transmission</h4>
                             <p>
-                                    {% if vehicle.transmission %}
+                                {% if vehicle.transmission %}
                                 {{vehicle.transmission}}
                                 {% else %}
                                 N/A
                                 {% endif %}
-                                </p>
-                        <br/>
+                            </p>
+                            <br/>
                         </div>
                         <div class="col-md-6">
                             <h4>Engine</h4>
@@ -161,12 +161,12 @@
                                 N/A
                                 {% endif %}
                             </p>
-                             <h4>Color</h4>
+                            <h4>Color</h4>
                             <p>
-                                    {{vehicle.color}}
-                                </p>
+                                {{vehicle.color}}
+                            </p>
 
-                        <br/>
+                            <br/>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,20 @@
         </div>
     </div>
     <div class="row mt-4">
-         <div class="offset-8 col-xl-4 col-md-6 profile-info-position">
+        <div class="offset-4 col-xl-4 col-md-6 profile-info-position">
+            <div class="card card-shadow mb-4 ">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="mt-4 mb-3">
+
+                            <a href="{{ url_for('admin.edit_vehicle', id=vehicle.id) }}"
+                               class="btn btn-info btn-pill btn-sm">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 profile-info-position">
             <div class="card card-shadow mb-4 ">
                 <div class="card-body">
                     <div class="text-center">
@@ -187,16 +200,17 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </div>
+</div>
 
-{% endblock %}
+    {% endblock %}
 
-{% block scripts %}
-<script type="text/javascript"
-        src="{{ url_for('static', filename='vendor/data-tables/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript"
-        src="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-datatable.js') }}"></script>
+    {% block scripts %}
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='vendor/data-tables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-datatable.js') }}"></script>
 
-{% endblock %}
+    {% endblock %}

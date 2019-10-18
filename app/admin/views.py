@@ -21,6 +21,7 @@ from app.auth.email import send_password_reset_email
 from app.auth.admin_decorators import check_confirmed
 from sqlalchemy import func
 from flask_ckeditor import upload_success, upload_fail
+from werkzeug.datastructures import FileStorage
 
 
 admin = Blueprint("admin", __name__)
@@ -141,6 +142,45 @@ def add_vehicle():
         db.session.commit()
         return redirect(url_for("admin.vehicles"))
     return render_template("admin/new_vehicle.html", form=form)
+
+
+@admin.route("/vehicle/edit/<id>", methods=["GET", "POST"])
+@login_required
+@admin_required
+@check_confirmed
+def edit_vehicle(id):
+    vehicle = Vehicle.query.filter_by(id=id).first_or_404()
+
+    """Create a new vehicle."""
+    form = EditVehicleForm(obj=vehicle)
+    form.make_id.choices = [(row.id, row.name) for row in Make.query.all()]
+    form.model_id.choices = [(row.id, row.name) for row in Model.query.all()]
+    form.transmission_id.choices = [(row.id, row.type) for row in Transmission.query.all()]
+    form.fuel_type_id.choices = [(row.id, row.type) for row in Fuel.query.all()]
+    form.features_id.choices = [(row.id, row.name) for row in Feature.query.all()]
+
+    if form.validate_on_submit():
+        form.make = Make.query.filter_by(id=form.make_id.data).first_or_404()
+        form.model = Model.query.filter_by(id=form.model_id.data).first_or_404()
+        form.transmission = Transmission.query.filter_by(
+            id=form.transmission_id.data
+        ).first_or_404()
+        form.fuel = Fuel.query.filter_by(id=form.fuel_type_id.data).first_or_404()
+        form.image_url = form.front_image_url.data,
+        form.back_image_url = form.back_image_url.data,
+        form.dash_image_url = form.dash_image_url.data,
+        form.front_image_url = form.front_image_url.data,
+        form.interior_image_url = form.interior_image_url.data,
+        form.left_image_url = form.left_image_url.data,
+        form.right_image_url = form.right_image_url.data,
+        for form.feature_id in form.features_id.data:
+            form.feature = Feature.query.filter_by(id=form.feature_id).first_or_404()
+            vehicle.features_id.append(form.feature)
+
+        form.populate_obj(vehicle)
+        db.session.commit()
+        return redirect(url_for("admin.view_vehicle", id=id))
+    return render_template("admin/edit_vehicle.html", form=form, vehicle=vehicle)
 
 
 @admin.route("/_get_model")
