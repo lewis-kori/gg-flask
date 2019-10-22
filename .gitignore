@@ -1,7 +1,12 @@
 venv
 app/static/uploads
+app/static/ckeditor_uploads
 .env
 *.pyc
 app/api/__pycache__/auth.cpython-36.pyc
 app/api/__pycache__/routes.cpython-36.pyc
+app/admin/__pycache__/forms.cpython-36.pyc
+app/home/__pycache__/views.cpython-36.pyc
+app/home/__pycache__/forms.cpython-36.pyc
+app/admin/__pycache__/views.cpython-36.pyc
 *.py[cod]

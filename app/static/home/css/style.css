@@ -3323,8 +3323,8 @@ button.search-button:before{content: "\e922";}
     input[type="checkbox"] + label::before{
       top: 5px;
       border-radius: 3px;
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
     }
 
     input[type="radio"] + label::after,
@@ -3347,9 +3347,9 @@ button.search-button:before{content: "\e922";}
       content: "\E813";
       color: #fff;
       font-size: 12px;
-      left: 6px;
+      left: 3px;
       text-align: center;
-      top: 6px;
+      top: 3px;
     }
 
     input[type="radio"]:checked + label::after,
@@ -8516,8 +8516,8 @@ button.search-button:before{content: "\e922";}
     position: relative;
     padding: 0;
     text-transform: uppercase;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 0px;
     margin-bottom: 0;
     font-weight: bold;
     background: none;
@@ -8532,13 +8532,13 @@ button.search-button:before{content: "\e922";}
     top: 0;
     font-family: 'linearicons';
     content: "\e98e";
-    font-size: 20px;
+    font-size: 16px;
     font-weight: normal;
     color: #999a9d;
   }
 
   .filter-section .accordion:not(:last-child){
-    margin-bottom: 40px;
+    margin-bottom: 25px;
   }
 
   .filter-section .accordion .a-title.active:before{
@@ -9178,4 +9178,13 @@ display: block;
 .switch{
     padding: 0 12px;
     border-bottom: solid 1px #d5d7d8;
+}
+
+@media (min-width: 769px) {
+#header.sticky.header-2 .top-header, #header.sticky.header-3 .top-header, #header.sticky.header-3 .top-bar,
+#header.sticky.header-4 .top-bar {
+        display: table !important;
+        width: 100%;
+        opacity: 1 !important;
+    }
 }
