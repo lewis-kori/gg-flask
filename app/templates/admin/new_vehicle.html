@@ -388,32 +388,54 @@ $( document ).ready(function() {
     var myDropzone5 = new Dropzone("div#dash_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
 
-   myDropzone.on("addedfile", function(file) {
+    myDropzone.on("addedfile", function(file) {
        $('#front_image_field').val(file.name)
        console.log(file.name);
-      });
-   myDropzone2.on("addedfile", function(file) {
+    });
+    myDropzone2.on("addedfile", function(file) {
        $('#back_image_field').val(file.name)
        console.log(file.name);
-      });
-   myDropzone3.on("addedfile", function(file) {
+    });
+    myDropzone3.on("addedfile", function(file) {
        $('#left_image_field').val(file.name)
        console.log(file.name);
-      });
-   myDropzone4.on("addedfile", function(file) {
+    });
+    myDropzone4.on("addedfile", function(file) {
        $('#right_image_field').val(file.name)
        console.log(file.name);
-      });
-   myDropzone5.on("addedfile", function(file) {
+    });
+    myDropzone5.on("addedfile", function(file) {
        $('#dash_image_field').val(file.name)
        console.log(file.name);
-      });
-   myDropzone6.on("addedfile", function(file) {
+    });
+    myDropzone6.on("addedfile", function(file) {
        $('#interior_image_field').val(file.name)
        console.log(file.name);
-      });
+    });
 
-      $('select[multiple]').multiselect({
+    Dropzone.options.myDropzone = {
+        init: function() {
+          this.on("addedfile", function(file) {
+
+            var removeButton = Dropzone.createElement("<button>Remove file</button>");
+
+            var _this = this;
+
+            removeButton.addEventListener("click", function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              _this.removeFile(file);
+
+              $('#front_image_field').val()
+            });
+
+            file.previewElement.appendChild(removeButton);
+          });
+        }
+    };
+
+    $('select[multiple]').multiselect({
         columns: 3,
         search : true,
         // plugin texts
@@ -422,7 +444,6 @@ $( document ).ready(function() {
         },
 
     });
-
 });
 
 

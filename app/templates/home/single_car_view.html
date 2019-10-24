@@ -197,7 +197,7 @@
                     <li class="flex-row flex-justify">
 
                       <div class="detail-col">
-                        <span>Mileage</span><span>{{vehicle.mileage}}</span>
+                        <span>Mileage</span><span>{{vehicle.mileage}} km</span>
                       </div>
                       <div class="detail-col">
                         <span>Fuel</span><span>{{car_fuel_type.type}}</span>
@@ -220,7 +220,7 @@
                         <span>Model</span><span>{{vehicle.model.name}}</span>
                       </div>
                       <div class="detail-col">
-                        <span>Engine</span><span>{{vehicle.engine_size}}</span>
+                        <span>Engine</span><span>{{vehicle.engine_size}} cc</span>
                       </div>
 
                     </li>
@@ -230,8 +230,8 @@
                         <span>VIN</span><span>WP1AD2A20GLA80654</span>
                       </div>
                       <div class="detail-col">
-                        <span>Transmission</span><span>{% if vehicle.transmission_id==1 %} Automatic {% elif vehicle.transmission_id==2
-                                                       %} Manual {% else %} N/A {% endif %}</span>
+                        <span>Transmission</span><span>{% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
+                                                       %} Automatic {% else %} N/A {% endif %}</span>
                       </div>
 
                     </li>

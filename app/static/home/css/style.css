@@ -6030,6 +6030,7 @@ button.search-button:before{content: "\e922";}
     padding-left: 11px;
     padding-right: 7px;
     padding-top: 0px;
+    padding-bottom: 10px;
   }
 
   .tabs.type-2 .tabs-nav{
@@ -7381,7 +7382,6 @@ button.search-button:before{content: "\e922";}
 
   .product img{
     width: 100%;
-    height: 48%;
   }
 
   .product .dealer-item .personal{

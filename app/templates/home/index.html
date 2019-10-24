@@ -102,8 +102,6 @@
 
                       </div>
 
-                      <a href="#" class="info-btn">More search options</a>
-
                   </div>
               </div>
           </div>
@@ -158,10 +156,10 @@
                           <div class="model-loc">
                               <ul>
                                   <li><span>Year of Make</span> {{vehicle.year}}</li>
-                                  <li><span>Engine Size</span> {% if vehicle.engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %}</li>
+                                  <li><span>Engine Size</span> {% if vehicle.engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %} cc</li>
                                   <li><span>Engine Type</span> {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel {% else %} N/A {% endif %}</li>
-                                  <li><span>Transmission</span> {% if vehicle.transmission_id==1 %} Automatic {% elif vehicle.transmission_id==2
-                                                       %} Manual {% else %} N/A {% endif %}</li>
+                                  <li><span>Transmission</span> {% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
+                                                       %} Automatic {% else %} N/A {% endif %}</li>
                               </ul>
                           </div>
 
