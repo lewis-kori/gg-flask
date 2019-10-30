@@ -25,6 +25,7 @@ class Vehicle(db.Model):
     left_image_url = db.Column(db.String(64), index=True)
     dash_image_url = db.Column(db.String(64), index=True)
     interior_image_url = db.Column(db.String(64), index=True)
+    extra_images_url = db.Column(db.String(500))
     mileage = db.Column(db.String(80), index=True)
     condition = db.Column(db.String(80), index=True)
     color = db.Column(db.String(80), index=True)

@@ -112,6 +112,8 @@ class AddVehicleForm(FlaskForm):
     )
     interior_image = StringField(
     )
+    extra_images = StringField(
+    )
     seller_email = StringField('Email', validators=[InputRequired()])
     seller_name = StringField('Name', validators=[InputRequired()])
     phone_number = StringField('Phone', validators=[InputRequired()])
@@ -164,6 +166,8 @@ class EditVehicleForm(Form):
     dash_image_url = StringField(
     )
     interior_image_url = StringField(
+    )
+    extra_images = StringField(
     )
     seller_email = StringField('Email', validators=[InputRequired()])
     seller_name = StringField('Name', validators=[InputRequired()])

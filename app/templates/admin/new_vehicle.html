@@ -286,6 +286,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xl-3">
+                                    {{ form.extra_images(id="extra_field", type="hidden") }}
+                                    <div class="dropzone mb-4" id="extra">
+                                        <div class="dz-message needsclick" style="margin:0;">
+                                            <span class="note needsclick">Extra Images</span>
+                                            <img src=" {{ url_for('static', filename='images/front.png')}}">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 {% for error_field, errors in form.errors.items() %}
@@ -387,30 +396,34 @@ $( document ).ready(function() {
     var myDropzone4 = new Dropzone("div#right_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone5 = new Dropzone("div#dash_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var myDropzone7 = new Dropzone("div#extra.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
 
     myDropzone.on("addedfile", function(file) {
        $('#front_image_field').val(file.name)
-       console.log(file.name);
+
     });
     myDropzone2.on("addedfile", function(file) {
        $('#back_image_field').val(file.name)
-       console.log(file.name);
     });
     myDropzone3.on("addedfile", function(file) {
        $('#left_image_field').val(file.name)
-       console.log(file.name);
     });
     myDropzone4.on("addedfile", function(file) {
        $('#right_image_field').val(file.name)
-       console.log(file.name);
     });
     myDropzone5.on("addedfile", function(file) {
        $('#dash_image_field').val(file.name)
-       console.log(file.name);
     });
     myDropzone6.on("addedfile", function(file) {
        $('#interior_image_field').val(file.name)
-       console.log(file.name);
+    });
+    myDropzone7.on("addedfile", function(file) {
+       var old = $('#extra_field').val().split(',')
+       old.push(file.name)
+       var newArray = !old[0] ? [file.name]: old
+
+       $('#extra_field').val(newArray.toString())
+
     });
 
     Dropzone.options.myDropzone = {

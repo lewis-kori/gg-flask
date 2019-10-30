@@ -121,6 +121,7 @@ def add_vehicle():
             interior_image_url=form.interior_image.data,
             left_image_url=form.left_image.data,
             right_image_url=form.right_image.data,
+            extra_images_url=form.extra_images.data,
             mileage=form.mileage.data,
             color=form.color.data,
             condition=form.condition.data,
@@ -171,6 +172,7 @@ def edit_vehicle(id):
         form.dash_image_url = form.dash_image_url.data,
         form.front_image_url = form.front_image_url.data,
         form.interior_image_url = form.interior_image_url.data,
+        form.extra_images_url = form.extra_images.data,
         form.left_image_url = form.left_image_url.data,
         form.right_image_url = form.right_image_url.data,
         for form.feature_id in form.features_id.data:
