@@ -13,7 +13,6 @@ from flask_login import (
 from datetime import datetime
 from app.models import *
 from app.home.forms import *
-from app.home.forms import Search, PaymentForm, BookingForm
 from sqlalchemy import or_, and_, func
 
 home = Blueprint('home', __name__)
@@ -24,8 +23,11 @@ def index():
     """Admin dashboard page."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(8)
     featured_vehicles = Vehicle.query.filter_by(featured=True).limit(4)
+    form = SearchVehicleForm
+    form.make.choices = [(row.id, row.name) for row in Make.query.all()]
+    form.model.choices = [(row.id, row.name) for row in Model.query.all()]
     return render_template('home/index.html',
-                           all_vehicles=all_vehicles, featured_vehicles=featured_vehicles)
+                           all_vehicles=all_vehicles, featured_vehicles=featured_vehicles, form=form)
 
 
 @home.route('/buy_a_car', methods=['post', 'get'])
@@ -173,7 +175,6 @@ def import_vehicle():
         db.session.commit()
         return redirect(url_for("home.index"))
     return render_template("home/import.html", form=form)
-
 
 
 @home.route("/_get_model")

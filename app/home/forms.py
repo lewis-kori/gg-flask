@@ -27,16 +27,6 @@ from app.models import User
 from app.models import *
 
 
-class Search(Form):
-
-    destinations = StringField('Destinations')
-    kids = DecimalField('Kids')
-    adults = DecimalField('Adults')
-    check_in = DateField('Check In', format='%d/%m/%Y')
-    check_out = DateField('Check Out', format='%d/%m/%Y')
-    search = SubmitField('SEARCH NOW')
-
-
 class BookingForm(Form):
     departure_date = DateField('Check In', validators=[DataRequired()], format='%m/%d/%Y')
     kids = IntegerField('Kids', validators=[DataRequired()])
@@ -104,4 +94,12 @@ class ImportVehicleForm(FlaskForm):
     phone_number = StringField('Phone', validators=[InputRequired()])
     area = StringField('Area')
     submit = SubmitField("Add")
+
+
+class SearchVehicleForm(FlaskForm):
+    price = StringField("Price", validators=[InputRequired()])
+    year = StringField("Year", validators=[InputRequired()])
+    model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
+    make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
+    submit = SubmitField("SEARCH")
 

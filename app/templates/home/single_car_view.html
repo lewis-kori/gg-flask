@@ -37,7 +37,7 @@
                   <h2 class="section-title">{{vehicle.name}}</h2>
                   <div class="flex-row flex-justify">
                     <div class="product-price" style="color: #da1919;">
-                      {{vehicle.price}}
+                      KSH {{vehicle.price}}
                     </div>
                     <div class="slash-list">
                       <a href="#" class="link-text2"><i class="licon-heart"></i>Wishlist </a>
@@ -363,7 +363,6 @@
                           <li><i class="licon-star"></i></li>
                           <li class="empty-half"><i class="licon-star"></i></li>
                         </ul>
-                        <div class="rating-number">(4.5)</div>
                         <a href="#" class="review">7 reviews</a>
                         <a href="#" class="link-text2">Write a Review</a>
 
@@ -425,7 +424,8 @@
 
                   <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
                   <div class="product-image">
-                    <a href="{{ url_for('home.view_car', id=mv.id) }}"><img style="height: 87px; width:130px;" src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" alt=""></a>
+                    <a href="{{ url_for('home.view_car', id=mv.id) }}">
+                      <img style="height: 87px; width:130px;" src="{{ url_for('static', filename='ckeditor_uploads/{}'.format(mv.image_url))}}" alt=""></a>
                   </div>
                   <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 

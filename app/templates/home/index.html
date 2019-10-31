@@ -19,7 +19,7 @@
                           <div class="select-col"  style="width:100%;">
 
                               <div class="auto-custom-select">
-                                  <select data-default-text="Model">
+                                  <select data-default-text="Make">
                                       <option value="Option 1">Option 1</option>
                                       <option value="Option 2">Option 2</option>
                                       <option value="Option 3">Option 3</option>
@@ -189,7 +189,7 @@
               
               <div class="products-holder">
             
-                <h3 class="section-title">Browse Car Inventory By</h3>
+                <h3 class="section-title">Browse Inventory By Make</h3>
                 <div class="tabs tabs-section style-2 clearfix">
                   <!--tabs navigation-->                  
                   <ul class="tabs-nav clearfix">
@@ -208,20 +208,19 @@
                     <div id="tab-5">
 
                       <div class="row flex-row">
-                        
                         <div class="col-md-3 col-sm-4 col-xs-4">
-                          
+
                           <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                           <div class="product">
-                            
+
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img1.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/sedan.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Mini SUV</a></h6>
+                              <h6 class="product-name"><a href="#">Saloon</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -229,6 +228,7 @@
                           </div>
 
                         </div>
+                        
 
                         <div class="col-md-3 col-sm-4 col-xs-4">
                           
@@ -236,7 +236,7 @@
                           <div class="product">
                             
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img2.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/SUVs.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
@@ -257,7 +257,7 @@
                           <div class="product">
                             
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img3.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/trucks.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
@@ -272,19 +272,20 @@
 
                         </div>
 
+
                         <div class="col-md-3 col-sm-4 col-xs-4">
                           
                           <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                           <div class="product">
                             
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img4.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/hatchbacks.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Convertible</a></h6>
+                              <h6 class="product-name"><a href="#">Hatchbacks</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -294,18 +295,18 @@
                         </div>
 
                         <div class="col-md-3 col-sm-4 col-xs-4">
-                          
+
                           <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                           <div class="product">
-                            
+
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img5.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/wagons.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Saloon</a></h6>
+                              <h6 class="product-name"><a href="#">Wagons</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -314,26 +315,6 @@
 
                         </div>
 
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img6.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Coupe</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
 
                         <div class="col-md-3 col-sm-4 col-xs-4">
                           
@@ -341,97 +322,13 @@
                           <div class="product">
                             
                             <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img7.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ url_for('static', filename='home/images/minivans.png') }}" alt=""></a>
                             <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                             <div class="product-description align-center">
 
-                              <h6 class="product-name"><a href="#">Luxury Car</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img8.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Wagon/Hatchback</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img9.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Green Car/Hybrid</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img10.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Sports Car</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img11.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Minivan/Van</a></h6>
+                              <h6 class="product-name"><a href="#">Vans/Buses</a></h6>
 
                             </div>
                             <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
@@ -516,9 +413,9 @@
                           
                           <ul class="custom-list type-5">
 
-                            <li><a href="#">Less than KES 1,000,000</a></li>
-                            <li><a href="#">KES1,000,001-KES1,500,000</a></li>
-                            <li><a href="#">KES1,500,001-KES2,000,000</a></li>
+                            <li><a href="#">Less than KSH 1,000,000</a></li>
+                            <li><a href="#">KSH 1,000,001-KSH 1,500,000</a></li>
+                            <li><a href="#">KSH 1,500,001-KSH 2,000,000</a></li>
 
                           </ul>
 
@@ -527,9 +424,9 @@
                           
                           <ul class="custom-list type-5">
 
-                            <li><a href="#">KES2,000,001-KES3,000,000</a></li>
-                            <li><a href="#">KES3,000,001-KES4,000,000</a></li>
-                            <li><a href="#">KES4,000,001-KES5,000,000</a></li>
+                            <li><a href="#">KSH 2,000,001-KSH 3,000,000</a></li>
+                            <li><a href="#">KSH 3,000,001-KSH 4,000,000</a></li>
+                            <li><a href="#">KSH 4,000,001-KSH 5,000,000</a></li>
 
                           </ul>
 
@@ -538,7 +435,7 @@
                           
                           <ul class="custom-list type-5">
 
-                            <li><a href="#">KES5,000,001 - KES10,000,000</a></li>
+                            <li><a href="#">KSH 5,000,001 - KSH 10,000,000</a></li>
 
 
                           </ul>
@@ -548,7 +445,7 @@
                           
                           <ul class="custom-list type-5">
 
-                            <li><a href="#">More than KES10,000,000</a></li>
+                            <li><a href="#">More than KSH 10,000,000</a></li>
 
                           </ul>
 
@@ -588,9 +485,6 @@
 
                 <article class="entry review-item">
 
-                  <div class="review-label">
-                    4.5<span>out of 5</span>
-                  </div>
 
                   <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
 
@@ -639,9 +533,7 @@
 
                 <article class="entry review-item">
 
-                  <div class="review-label">
-                    4.7<span>out of 5</span>
-                  </div>
+
 
                   <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
 
@@ -692,9 +584,7 @@
 
                 <article class="entry review-item">
 
-                  <div class="review-label size2">
-                    4.9<span>out of 5</span>
-                  </div>
+
 
                   <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
 
@@ -733,9 +623,6 @@
 
                 <article class="entry review-item">
 
-                  <div class="review-label size2">
-                    3.2<span>out of 5</span>
-                  </div>
 
                   <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
 
@@ -774,9 +661,7 @@
 
                 <article class="entry review-item">
 
-                  <div class="review-label size2">
-                    4.8<span>out of 5</span>
-                  </div>
+                  
 
                   <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
 

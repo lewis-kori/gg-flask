@@ -495,12 +495,12 @@
 			slider = $('#price').slider({ 
 		 		animate: true,
 				range: true,
-				values: [ 1, 99],
+				values: [ 5, 99],
 				min: 0,
 				max: 100,
 				slide : function(event ,ui){
-					$('.range-values').find('.first-limit').val('$' + ui.values[0] + ',000');
-					$('.range-values').find('.last-limit').val('$' + ui.values[1] + ',000');
+					$('.range-values').find('.first-limit').val('KSH' + ui.values[0] + '00,000');
+					$('.range-values').find('.last-limit').val('KSH' + ui.values[1] + '00,000');
 				}
 			});
 		}
