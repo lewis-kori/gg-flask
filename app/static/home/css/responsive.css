@@ -1035,7 +1035,7 @@
 	    margin: 0;
 	    padding: 0;
 	    opacity: 0;
-	    overflow: hidden;
+	    /*overflow: hidden;*/
 	    height: 0;
 	    font-size: 0;
 	    display: block;
