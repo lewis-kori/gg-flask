@@ -3702,7 +3702,7 @@ button.search-button:before{content: "\e922";}
     /* Price Scale */
 
     .price-scale{
-      padding: 0;
+      padding: 16px 8px;
     }
 
     .price-scale:not(.distance) .range-values:not(:last-child){

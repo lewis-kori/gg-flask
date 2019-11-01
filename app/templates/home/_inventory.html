@@ -16,9 +16,11 @@
                         <span>Sort by</span>
                         <div class="auto-custom-select">
                             <select data-default-text="Price: highest first">
+                                <option value="menu">Price: highest first</option>
                                 <option value="menu">Price: lowest first</option>
-                                <option value="menu">Option 2</option>
-                                <option value="menu">Option 3</option>
+                                <option value="menu">Mileage</option>
+                                <option value="menu">Age (Newest)</option>
+                                <option value="menu">New Stock</option>
                             </select>
                         </div>
 
@@ -74,7 +76,7 @@
                                 <div class="pricing-area">
 
                                     <div class="product-price">
-                                        {{vehicle.price}}
+                                        {{'KSH {:,}'.format(vehicle.price)}}
                                     </div>
 
                                 </div>
@@ -110,7 +112,7 @@
                                 </div>
 
 
-                                <p>{{vehicle.description}}</p>
+                                <p style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{vehicle.description}}</p>
 
                                 <div class="brends flex-row flex-center">
                                     <a href="#"><img src="" alt=""></a>

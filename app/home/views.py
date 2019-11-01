@@ -20,12 +20,12 @@ def index():
     fuel = [(row.id, row.type) for row in Fuel.query.all()]
     year_to = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
     year_from = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
-    make.insert(0, (0, "--Any make--"))
-    year_from.insert(0, (0, "--Year from--"))
-    year_to.insert(0, (0, "--Year to--"))
-    model.insert(0, (0, "--Any model--"))
-    transmission.insert(0, (0, "--Transmission--"))
-    fuel.insert(0, (0, "--Fuel Type--"))
+    make.insert(0, (0, "Make"))
+    year_from.insert(0, (0, "Year from"))
+    year_to.insert(0, (0, "Year to"))
+    model.insert(0, (0, "Model"))
+    transmission.insert(0, (0, "Transmission"))
+    fuel.insert(0, (0, "Fuel Type"))
     form.year_from.choices = year_from
     form.year_to.choices = year_to
     form.make.choices = make

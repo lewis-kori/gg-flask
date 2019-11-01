@@ -83,7 +83,7 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title">Price</h6>
+                  <h6 class="a-title active">Price</h6>
                   <div class="a-content">
 
                     <!--price-->
@@ -624,8 +624,8 @@
         min: {{ min_price }},
         max: {{ max_price }},
         slide : function(event ,ui){
-          $('.range-values').find('.first-limit').val('ksh' + Intl.NumberFormat().format(ui.values[0]));
-          $('.range-values').find('.last-limit').val('ksh' + Intl.NumberFormat().format(ui.values[1]));
+          $('.range-values').find('.first-limit').val('Ksh' + Intl.NumberFormat().format(ui.values[0]));
+          $('.range-values').find('.last-limit').val('Ksh' + Intl.NumberFormat().format(ui.values[1]));
         }
       });
     }
