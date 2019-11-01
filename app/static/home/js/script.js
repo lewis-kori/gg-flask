@@ -47,9 +47,9 @@
 			        	hide_delay: 200,
 			        	hide_under: 0,
 			        	hide_over: 9999,
-			        	tmp:'<span class="circle-bullet"></span>', 
+			        	tmp:'<span class="circle-bullet"></span>',
 			        	direction:"horisontal",
-			        	space: 10,       
+			        	space: 10,
 			        	h_align: "center",
 			        	v_align: "bottom",
 			        	v_offset: 60
@@ -82,7 +82,7 @@
 		    });
 
 		    $.mad_core.isotope();
-		     
+
 		});
 
 		/* ---------------------------------------------------- */
@@ -126,7 +126,7 @@
 		if(pageCarousel.length){
 
 			$('.owl-carousel').not('#thumbnails').each(function(){
-	
+
 				/* Max items counting */
 				var max_items = $(this).data('max-items');
 				var small_items = max_items;
@@ -149,7 +149,7 @@
 				var center_carousel = $(this).data('center');
 
 				var item_margin = $(this).data('item-margin');
-				
+
 				/* Install Owl Carousel */
 				$(this).owlCarousel({
 				    smartSpeed : 450,
@@ -202,7 +202,7 @@
 
 			if($('#thumbnails').length){
 				$('#thumbnails').each(function(){
-					
+
 					/* Max items counting */
 					var data = $(this).data();
 					var max_items = $(this).data('max-items');
@@ -213,7 +213,7 @@
 					var mobile_items = 1;
 
 					var autoplay_carousel = $(this).data('autoplay');
-					
+
 					$(this).owlCarousel({
 						items : max_items,
 						URLhashListener : false,
@@ -236,7 +236,7 @@
 					    }
 				    });
 				});
-			    
+
 			}
 
 		}
@@ -379,7 +379,7 @@
 			       $('#' + this.options.target).find('.fancybox').fancybox();
 			      }
 			    });
-			      
+
 			    feed.run();
 
 	    	});
@@ -393,7 +393,7 @@
 	    $(".close-product").on('click',function(e){
 
 		    e.preventDefault();
-		    var id = $(this).attr('data-id'); 
+		    var id = $(this).attr('data-id');
 		    $("div").each(function(){
 		        if($(this).attr('data-id') == id) {
 		            $(this).fadeOut("slow");
@@ -425,7 +425,7 @@
 
 			});
 
-			var popup_btn = 
+			var popup_btn =
 
 			$('.map-button').on('click', function() {
 		      $('.popup-map').fadeIn("slow");
@@ -485,26 +485,11 @@
 			});
 
 		}
-		
+
 		/* ---------------------------------------------------- */
         /*	Price Scale										    */
         /* ---------------------------------------------------- */
 
-		var slider;
-		if($('#price').length){
-			slider = $('#price').slider({ 
-		 		animate: true,
-				range: true,
-				values: [ 1, 99],
-				min: 0,
-				max: 100,
-				slide : function(event ,ui){
-					$('.range-values').find('.first-limit').val('$' + ui.values[0] + ',000');
-					$('.range-values').find('.last-limit').val('$' + ui.values[1] + ',000');
-				}
-			});
-		}
-		
 		/* ---------------------------------------------------- */
         /*	Accordion & Toggle									*/
         /* ---------------------------------------------------- */
@@ -627,7 +612,7 @@
 		               map: map,
 		               icon: '/static/home/images/map_marker.png'
 		            });
-		            
+
 		            marker.setMap(map);
 
 		            //Zoom to 7 when clicked on marker
@@ -640,7 +625,7 @@
 				google.maps.event.addDomListener(window, 'load', loadMap);
 
 			});
-			
+
 		}
 
 		if ($('#googleMap2').length) {
@@ -662,7 +647,7 @@
 				    	var map = new google.maps.Map(document.getElementById("googleMap2"),mapProp);
 
 					}
-		            
+
 		            setMarkers(map);
 
 				}
@@ -691,7 +676,7 @@
 				google.maps.event.addDomListener(window, 'load', loadMap);
 
 			});
-			
+
 		}
 
 		if ($('#googleMap3').length) {
@@ -721,7 +706,7 @@
 		               map: map,
 		               icon: '/static/home/images/map_marker.png'
 		            });
-		            
+
 		            marker.setMap(map);
 
 		            //Zoom to 7 when clicked on marker
@@ -734,7 +719,7 @@
 				google.maps.event.addDomListener(window, 'load', loadMap);
 
 			});
-			
+
 		}
 
 		/* ---------------------------------------------------- */
@@ -747,7 +732,7 @@
 
 	      subscribe.on('submit',function(e){
 	        var self = $(this);
-	        
+
 	        if(self.find('input[type="email"]').val() == ''){
 	          text = "Please enter your e-mail!";
 	          message.html('<div class="alert-box warning"><p>'+text+'</p></div>')
@@ -762,7 +747,7 @@
 	          $.ajax({
 	            type: "POST",
 	            url: "",
-	            data: self.serialize(), 
+	            data: self.serialize(),
 	            success: function(data){
 	              if(data == '1'){
 	                text = "Your email has been sent successfully!";
@@ -794,7 +779,7 @@
 
 	      subscribe.on('submit',function(e){
 	        var self = $(this);
-	        
+
 	        if(self.find('input[type="email"]').val() == ''){
 	          text = "Please enter your e-mail!";
 	          message.html('<div class="alert-box warning"><p>'+text+'</p></div>')
@@ -809,7 +794,7 @@
 	          $.ajax({
 	            type: "POST",
 	            url: "",
-	            data: self.serialize(), 
+	            data: self.serialize(),
 	            success: function(data){
 	              if(data == '1'){
 	                text = "Your email has been sent successfully!";

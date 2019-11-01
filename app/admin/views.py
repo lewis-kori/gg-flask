@@ -83,8 +83,13 @@ def view_vehicle(id):
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
     car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
-    return render_template("admin/view_vehicle.html", all_vehicles=all_vehicles, vehicle=vehicle, fuel_id=fuel_id,
-                           car_fuel_type=car_fuel_type)
+    return render_template(
+        "admin/view_vehicle.html",
+        all_vehicles=all_vehicles,
+        vehicle=vehicle,
+        fuel_id=fuel_id,
+        car_fuel_type=car_fuel_type,
+    )
 
 
 @admin.route("/vehicle/add", methods=["GET", "POST"])
@@ -156,7 +161,9 @@ def edit_vehicle(id):
     form = EditVehicleForm(obj=vehicle)
     form.make_id.choices = [(row.id, row.name) for row in Make.query.all()]
     form.model_id.choices = [(row.id, row.name) for row in Model.query.all()]
-    form.transmission_id.choices = [(row.id, row.type) for row in Transmission.query.all()]
+    form.transmission_id.choices = [
+        (row.id, row.type) for row in Transmission.query.all()
+    ]
     form.fuel_type_id.choices = [(row.id, row.type) for row in Fuel.query.all()]
     form.features_id.choices = [(row.id, row.name) for row in Feature.query.all()]
 
@@ -167,14 +174,14 @@ def edit_vehicle(id):
             id=form.transmission_id.data
         ).first_or_404()
         form.fuel = Fuel.query.filter_by(id=form.fuel_type_id.data).first_or_404()
-        form.image_url = form.front_image_url.data,
-        form.back_image_url = form.back_image_url.data,
-        form.dash_image_url = form.dash_image_url.data,
-        form.front_image_url = form.front_image_url.data,
-        form.interior_image_url = form.interior_image_url.data,
-        form.extra_images_url = form.extra_images.data,
-        form.left_image_url = form.left_image_url.data,
-        form.right_image_url = form.right_image_url.data,
+        form.image_url = (form.front_image_url.data,)
+        form.back_image_url = (form.back_image_url.data,)
+        form.dash_image_url = (form.dash_image_url.data,)
+        form.front_image_url = (form.front_image_url.data,)
+        form.interior_image_url = (form.interior_image_url.data,)
+        form.extra_images_url = (form.extra_images.data,)
+        form.left_image_url = (form.left_image_url.data,)
+        form.right_image_url = (form.right_image_url.data,)
         for form.feature_id in form.features_id.data:
             form.feature = Feature.query.filter_by(id=form.feature_id).first_or_404()
             vehicle.features_id.append(form.feature)
@@ -186,8 +193,6 @@ def edit_vehicle(id):
 
 
 @admin.route("/_get_model")
-@login_required
-@admin_required
 def _get_model():
     make_id = request.args.get("make_id", 0, type=int)
     models = [

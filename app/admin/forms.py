@@ -12,10 +12,12 @@ from wtforms.fields import (
     FormField,
     HiddenField,
     SelectMultipleField,
-    BooleanField
+    BooleanField,
+    IntegerField,
+    DecimalField,
 )
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import Email, EqualTo, InputRequired, Length
+from wtforms.validators import Email, EqualTo, InputRequired, Length, DataRequired
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from app import db
@@ -87,11 +89,11 @@ class AddVehicleForm(FlaskForm):
     featured = BooleanField("Featured")
     description = TextAreaField("Description", validators=[InputRequired()])
     name = StringField("Name", validators=[InputRequired()])
-    price = StringField("Price", validators=[InputRequired()])
+    price = DecimalField("Price", validators=[DataRequired()])
     mileage = StringField("Mileage", validators=[InputRequired()])
     color = StringField("Color", validators=[InputRequired()])
     condition = StringField("Condition")
-    year = StringField("Year", validators=[InputRequired()])
+    year = IntegerField("Year", validators=[InputRequired()])
     model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     fuel_type = SelectField(choices=[], coerce=int)
@@ -99,25 +101,17 @@ class AddVehicleForm(FlaskForm):
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
     features = SelectMultipleField(choices=[], coerce=int)
-    front_image = StringField(
-        validators=[InputRequired()]
-    )
-    back_image = StringField(
-    )
-    left_image = StringField(
-    )
-    right_image = StringField(
-    )
-    dash_image = StringField(
-    )
-    interior_image = StringField(
-    )
-    extra_images = StringField(
-    )
-    seller_email = StringField('Email', validators=[InputRequired()])
-    seller_name = StringField('Name', validators=[InputRequired()])
-    phone_number = StringField('Phone', validators=[InputRequired()])
-    area = StringField('Area', validators=[InputRequired()])
+    front_image = StringField(validators=[InputRequired()])
+    back_image = StringField()
+    left_image = StringField()
+    right_image = StringField()
+    dash_image = StringField()
+    interior_image = StringField()
+    extra_images = StringField()
+    seller_email = StringField("Email", validators=[InputRequired()])
+    seller_name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    area = StringField("Area", validators=[InputRequired()])
     submit = SubmitField("Add")
 
 
@@ -143,11 +137,11 @@ class EditVehicleForm(Form):
     featured = BooleanField("Featured")
     description = TextAreaField("Description", validators=[InputRequired()])
     name = StringField("Name", validators=[InputRequired()])
-    price = StringField("Price", validators=[InputRequired()])
+    price = DecimalField("Price", validators=[DataRequired()])
     mileage = StringField("Mileage", validators=[InputRequired()])
     color = StringField("Color", validators=[InputRequired()])
     condition = StringField("Condition")
-    year = StringField("Year", validators=[InputRequired()])
+    year = IntegerField("Year", validators=[InputRequired()])
     model_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make_id = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     fuel_type_id = SelectField(choices=[], coerce=int)
@@ -155,24 +149,17 @@ class EditVehicleForm(Form):
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
     features_id = SelectMultipleField(choices=[], coerce=int)
-    front_image_url = StringField(
-    )
-    back_image_url = StringField(
-    )
-    left_image_url = StringField(
-    )
-    right_image_url = StringField(
-    )
-    dash_image_url = StringField(
-    )
-    interior_image_url = StringField(
-    )
-    extra_images = StringField(
-    )
-    seller_email = StringField('Email', validators=[InputRequired()])
-    seller_name = StringField('Name', validators=[InputRequired()])
-    phone_number = StringField('Phone', validators=[InputRequired()])
-    area = StringField('Area', validators=[InputRequired()])
+    front_image_url = StringField()
+    back_image_url = StringField()
+    left_image_url = StringField()
+    right_image_url = StringField()
+    dash_image_url = StringField()
+    interior_image_url = StringField()
+    extra_images = StringField()
+    seller_email = StringField("Email", validators=[InputRequired()])
+    seller_name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    area = StringField("Area", validators=[InputRequired()])
     submit = SubmitField("Edit")
 
 

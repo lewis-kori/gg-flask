@@ -3,10 +3,7 @@ from flask_wtf import Form, FlaskForm
 from wtforms import ValidationError
 from flask_ckeditor import CKEditorField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.fields import (
-    TextAreaField,
-    SelectMultipleField
-)
+from wtforms.fields import TextAreaField, SelectMultipleField
 from flask_wtf import Form
 from wtforms import ValidationError
 from wtforms.fields import (
@@ -18,7 +15,7 @@ from wtforms.fields import (
     DecimalField,
     SelectField,
     HiddenField,
-    IntegerField
+    IntegerField,
 )
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import Email, EqualTo, InputRequired, Length, DataRequired
@@ -27,39 +24,78 @@ from app.models import User
 from app.models import *
 
 
-class Search(Form):
+class SearchForm(Form):
+    year_from = SelectField(id="car-years_from", coerce=int)
+    year_to = SelectField(id="car-years_to", coerce=int)
+    make = SelectField(id="car-makes", coerce=int)
+    model = SelectField(id="car-models", coerce=int)
+    transmission = SelectField(choices=[], id="car-trans", coerce=int)
+    fuel = SelectField(choices=[], id="car-fuel", coerce=int)
+    submit = SubmitField("FIND A CAR")
 
-    destinations = StringField('Destinations')
-    kids = DecimalField('Kids')
-    adults = DecimalField('Adults')
-    check_in = DateField('Check In', format='%d/%m/%Y')
-    check_out = DateField('Check Out', format='%d/%m/%Y')
-    search = SubmitField('SEARCH NOW')
+    def __init__(self, *args, **kwargs):
+        if "formdata" not in kwargs:
+            kwargs["formdata"] = request.args
+        if "csrf_enabled" not in kwargs:
+            kwargs["csrf_enabled"] = False
+        super(SearchForm, self).__init__(*args, **kwargs)
 
 
 class BookingForm(Form):
-    departure_date = DateField('Check In', validators=[DataRequired()], format='%m/%d/%Y')
-    kids = IntegerField('Kids', validators=[DataRequired()])
+    departure_date = DateField(
+        "Check In", validators=[DataRequired()], format="%m/%d/%Y"
+    )
+    kids = IntegerField("Kids", validators=[DataRequired()])
     total = HiddenField(validators=[DataRequired()])
-    adults = IntegerField('Adults', validators=[DataRequired()])
-    book = SubmitField('BOOK NOW')
+    adults = IntegerField("Adults", validators=[DataRequired()])
+    book = SubmitField("BOOK NOW")
 
 
 class PaymentForm(Form):
-    email = StringField('Email', validators=[DataRequired()])
-    card_holder_name = StringField('Card Holder Name', validators=[DataRequired()])
-    card_number = StringField('Card Number', validators=[DataRequired()])
-    select_card = SelectField('Select Card', validators=[DataRequired()], choices=[('1', 'EUR 6524 1254 6212 2541'), ('2', 'EUR 6524 1254 6212 2541'), ('3', 'USD 1254 6524 2541 6212')])
-    month = SelectField(validators=[DataRequired()],
-                        choices=[('jan', 'January'), ('feb', 'February'), ('mar', 'March'), ('apri', 'April')
-                            , ('may', 'May'), ('jun', 'June'), ('jul', 'July'), ('aug', 'August'),
-                                 ('sep', 'September'), ('octo', 'October'), ('nov', 'November'), ('dec', 'December')])
-    years = SelectField(validators=[DataRequired()], choices=[('2018', '2018'), ('2019', '2019'), ('2020', '2020'), ('2021', '2021'), ('2022', '2022')])
+    email = StringField("Email", validators=[DataRequired()])
+    card_holder_name = StringField("Card Holder Name", validators=[DataRequired()])
+    card_number = StringField("Card Number", validators=[DataRequired()])
+    select_card = SelectField(
+        "Select Card",
+        validators=[DataRequired()],
+        choices=[
+            ("1", "EUR 6524 1254 6212 2541"),
+            ("2", "EUR 6524 1254 6212 2541"),
+            ("3", "USD 1254 6524 2541 6212"),
+        ],
+    )
+    month = SelectField(
+        validators=[DataRequired()],
+        choices=[
+            ("jan", "January"),
+            ("feb", "February"),
+            ("mar", "March"),
+            ("apri", "April"),
+            ("may", "May"),
+            ("jun", "June"),
+            ("jul", "July"),
+            ("aug", "August"),
+            ("sep", "September"),
+            ("octo", "October"),
+            ("nov", "November"),
+            ("dec", "December"),
+        ],
+    )
+    years = SelectField(
+        validators=[DataRequired()],
+        choices=[
+            ("2018", "2018"),
+            ("2019", "2019"),
+            ("2020", "2020"),
+            ("2021", "2021"),
+            ("2022", "2022"),
+        ],
+    )
 
     # card_identification_number =  StringField('Card Identification Number', validators=[DataRequired()])
-    billing_zip_code = StringField('Billing Zip Code', validators=[DataRequired()])
+    billing_zip_code = StringField("Billing Zip Code", validators=[DataRequired()])
 
-    confirm_booking = SubmitField('Confirm Booking')
+    confirm_booking = SubmitField("Confirm Booking")
 
 
 class SellVehicleForm(FlaskForm):
@@ -77,10 +113,10 @@ class SellVehicleForm(FlaskForm):
     transmission = SelectField(choices=[], coerce=int)
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
-    seller_email = StringField('Email', validators=[InputRequired()])
-    seller_name = StringField('Name', validators=[InputRequired()])
-    phone_number = StringField('Phone', validators=[InputRequired()])
-    area = StringField('Area', validators=[InputRequired()])
+    seller_email = StringField("Email", validators=[InputRequired()])
+    seller_name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    area = StringField("Area", validators=[InputRequired()])
     submit = SubmitField("Add")
 
 
@@ -99,9 +135,8 @@ class ImportVehicleForm(FlaskForm):
     transmission = SelectField(choices=[], coerce=int)
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
-    seller_email = StringField('Email', validators=[InputRequired()])
-    seller_name = StringField('Name', validators=[InputRequired()])
-    phone_number = StringField('Phone', validators=[InputRequired()])
-    area = StringField('Area')
+    seller_email = StringField("Email", validators=[InputRequired()])
+    seller_name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    area = StringField("Area")
     submit = SubmitField("Add")
-

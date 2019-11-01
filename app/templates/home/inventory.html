@@ -21,122 +21,28 @@
             <div class="filter-section">
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h5>Filter</h5>
                 </div>
 
               </div>
 
-              <div class="accordion toggle">
-
-                <!--accordion item-->
-                <div class="accordion-item">
-                  <h6 class="a-title">Condition</h6>
-                  <div class="a-content">
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                      <label for="checkbox-1">New</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-2" id="checkbox-2">
-                      <label for="checkbox-2">Used</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-3" id="checkbox-3">
-                      <label for="checkbox-3">Certified Pre-Owned</label>
-
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
+              <form id="form" method="get">
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title active">Year</h6>
                   <div class="a-content">
 
+                    {% for year in years %}
                     <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-4" id="checkbox-4" checked="">
-                      <label for="checkbox-4">Any</label>
-
+                      <input type="checkbox" name="year" class="year" id="{{ year }}" value="{{ year }}">
+                      <label for="{{ year }}">{{ year }}</label>
                     </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-5" id="checkbox-5">
-                      <label for="checkbox-5">2018</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-6" id="checkbox-6">
-                      <label for="checkbox-6">2017</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-7" id="checkbox-7">
-                      <label for="checkbox-7">2016</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-8" id="checkbox-8">
-                      <label for="checkbox-8">2015</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-9" id="checkbox-9">
-                      <label for="checkbox-9">2014</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-10" id="checkbox-10">
-                      <label for="checkbox-10">2013</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-11" id="checkbox-11">
-                      <label for="checkbox-11">2012</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-12" id="checkbox-12">
-                      <label for="checkbox-12">2011</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-13" id="checkbox-13">
-                      <label for="checkbox-13">2010</label>
-
-                    </div>
+                    {% endfor %}
 
                   </div>
                 </div>
@@ -145,87 +51,16 @@
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Make</h6>
                   <div class="a-content">
-
+                    {% for make in makes %}
                     <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-14" id="checkbox-14" checked>
-                      <label for="checkbox-14">Any</label>
-
+                      <input type="checkbox" class="make" id="mak{{ make[0] }}" value="{{ make[0] }}" >
+                      <label for="mak{{ make[0] }}">{{ make[1] }}</label>
                     </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-15" id="checkbox-15">
-                      <label for="checkbox-15">Acura</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-16" id="checkbox-16">
-                      <label for="checkbox-16">Alfa Romeo </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-17" id="checkbox-17">
-                      <label for="checkbox-17">Am General </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-18" id="checkbox-18">
-                      <label for="checkbox-18">Aston Martin </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-19" id="checkbox-19">
-                      <label for="checkbox-19">Audi </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-20" id="checkbox-20">
-                      <label for="checkbox-20">Bentley</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-21" id="checkbox-21">
-                      <label for="checkbox-21">BMW</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-22" id="checkbox-22">
-                      <label for="checkbox-22">Lexus</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-23" id="checkbox-23">
-                      <label for="checkbox-23">Toyota</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-24" id="checkbox-24">
-                      <label for="checkbox-24">Mitsubishi</label>
-
-                    </div>
+                    {% endfor %}
 
                   </div>
                 </div>
@@ -234,89 +69,19 @@
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Model</h6>
-                  <div class="a-content">
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-25" id="checkbox-25" checked="">
-                      <label for="checkbox-25">Any</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-26" id="checkbox-26">
-                      <label for="checkbox-26">1 Series M</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-27" id="checkbox-27">
-                      <label for="checkbox-27">124 Spider </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-28" id="checkbox-28">
-                      <label for="checkbox-28">128 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-29" id="checkbox-29">
-                      <label for="checkbox-29">135 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-30" id="checkbox-30">
-                      <label for="checkbox-30">1500 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-31" id="checkbox-31">
-                      <label for="checkbox-31">190 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-32" id="checkbox-32">
-                      <label for="checkbox-32">1900 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-33" id="checkbox-33">
-                      <label for="checkbox-33">190 </label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-34" id="checkbox-34">
-                      <label for="checkbox-34">1900 </label>
-
-                    </div>
+                  <div id="model-container" class="a-content">
 
                   </div>
                 </div>
 
               </div>
 
-              <div class="accordion toggle no-of">
+              <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Price</h6>
                   <div class="a-content">
@@ -324,8 +89,8 @@
                     <!--price-->
                     <fieldset class="price-scale">
                       <div class="clearfix range-values">
-                        <input class="f-left first-limit" readonly type="text" value="$1,000">
-                        <input class="f-right last-limit" readonly type="text" value="$99,000">
+                        <input id="min_price" class="f-left first-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(min_price) }}">
+                        <input id="max_price" class="f-right last-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(max_price) }}">
                       </div>
                       <div id="price"></div>
                     </fieldset>
@@ -334,15 +99,33 @@
                 </div>
 
               </div>
+              <div class="accordion toggle">
 
-              <div class="accordion toggle no-of">
 
-                <!--accordion item-->
+                <div class="accordion-item">
+                  <h6 class="a-title">Transmission</h6>
+                  <div class="a-content">
+
+                    {% for transmission in transmissions %}
+                    <div class="input-wrapper">
+                      <input type="checkbox" class="transmission" id="trans{{ transmission[0] }}" value="{{ transmission[0] }}" >
+                      <label for="trans{{ transmission[0] }}">{{ transmission[1] }}</label>
+                    </div>
+
+                    {% endfor %}
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- <div class="accordion toggle">
+
+
                 <div class="accordion-item">
                   <h6 class="a-title">Mileage</h6>
                   <div class="a-content">
 
-                    <form>
+
 
                       <div class="auto-custom-select">
                         <select data-default-text="Any">
@@ -352,16 +135,16 @@
                         </select>
                       </div>
 
-                    </form>
+
 
                   </div>
                 </div>
 
-              </div>
+              </div> -->
 
-              <div class="accordion toggle">
+              <!-- <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Body Style</h6>
                   <div class="a-content">
@@ -439,11 +222,11 @@
                   </div>
                 </div>
 
-              </div>
+              </div> -->
 
-              <div class="accordion toggle">
+              <!-- <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Drivetrain</h6>
                   <div class="a-content">
@@ -500,65 +283,13 @@
                   </div>
                 </div>
 
-              </div>
+              </div> -->
 
-              <div class="accordion toggle">
 
-                <!--accordion item-->
-                <div class="accordion-item">
-                  <h6 class="a-title">Transmission</h6>
-                  <div class="a-content">
 
-                    <div class="input-wrapper">
+              <!-- <div class="accordion toggle">
 
-                      <input type="checkbox" name="checkbox-52" id="checkbox-52" checked="">
-                      <label for="checkbox-52">Any</label>
 
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-53" id="checkbox-53">
-                      <label for="checkbox-53">Manual</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-54" id="checkbox-54">
-                      <label for="checkbox-54">Automatic</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-55" id="checkbox-55">
-                      <label for="checkbox-55">Automanual</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-56" id="checkbox-56">
-                      <label for="checkbox-56">CVT</label>
-
-                    </div>
-
-                    <div class="input-wrapper">
-
-                      <input type="checkbox" name="checkbox-57" id="checkbox-57">
-                      <label for="checkbox-57">Other / Unknown</label>
-
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="accordion toggle">
-
-                <!--accordion item-->
                 <div class="accordion-item">
                   <h6 class="a-title">Exterior Color</h6>
                   <div class="a-content">
@@ -640,7 +371,7 @@
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Interior Color</h6>
                   <div class="a-content">
@@ -722,7 +453,7 @@
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Photos</h6>
                   <div class="a-content">
@@ -741,212 +472,163 @@
 
               <div class="accordion toggle">
 
-                <!--accordion item-->
+
                 <div class="accordion-item">
                   <h6 class="a-title">Keywords</h6>
                   <div class="a-content">
 
-                    <form>
+
 
                       <input type="text" placeholder="Additional keywords">
 
-                    </form>
+
 
                   </div>
                 </div>
 
-              </div>
+              </div> -->
+            </form>
 
             </div>
 
           </aside>
-            <main id="main" class="col-md-9 col-sm-12">
+          <main id="main" class="col-md-9 col-sm-12">
+            {% include('home/_inventory.html') %}
 
-                <div class="dealers-section product-type">
-                    <div class="dealers-section product-type">
+          </main>
 
-                        <h3 class="section-title">{{vehicles_count}} Vehicles</h3>
-
-                        <!-- dealer sorting -->
-
-                        <div class="flex-row flex-justify">
-
-                            <div class="sort-dealer">
-
-                                <div class="sort-col">
-
-                                    <div class="flex-row flex-center">
-
-                                        <span>Sort by</span>
-                                        <div class="auto-custom-select">
-                                            <select data-default-text="Price: highest first">
-                                                <option value="menu">Price: lowest first</option>
-                                                <option value="menu">Option 2</option>
-                                                <option value="menu">Option 3</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div id="product-holder" class="products-holder view-list">
-
-                        <div class="row flex-row">
-                        {% for vehicle in all_vehicles %}
-                            <div class="col-sm-4 col-xs-6">
-
-                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                <div class="product">
-
-                                    <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                    <figure class="product-image">
-                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{% if vehicle.image_url %}
-                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
-                                       {% else %}
-                                            {{ url_for('static', filename='images/toyota.jpeg')}}
-                                       {% endif %}" alt=""></a>
-                                        <div class="overlay full-width-block">
-                                            <div class="icon-fancy">
-                                                <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" class="fancybox" data-fancybox="group"><i
-                                                        class="licon-camera2"></i><span>7</span></a>
-                                                <a href="#"><i class="licon-camera"></i><span>1</span></a>
-                                            </div>
-                                            <div>
-                                                <a href="#"><i class="licon-heart"></i></a>
-                                                <a href="#"><i class="licon-copy"></i></a>
-                                            </div>
-                                        </div>
-                                    </figure>
-                                    <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                                    <div class="product-description">
-
-                                        <div class="row">
-                                            <div class="col-xs-8">
-
-                                                <h5 class="product-name"><a href="{{ url_for('home.view_car', id=vehicle.id) }}">{{vehicle.name}}</a></h5>
-
-                                                <div class="pricing-area">
-
-                                                    <div class="product-price">
-                                                        {{vehicle.price}}
-                                                    </div>
-
-                                                </div>
-                                                <div class="pricing-area">
-
-                                                    <div class="mpg">
-                                                        <span>Year</span>
-                                                        {{vehicle.year}}
-                                                    </div>
-                                                    <div class="mpg">
-                                                        <span>Mileage</span>
-                                                        {{vehicle.mileage}} km
-                                                    </div>
-                                                </div>
-                                                <div class="pricing-area">
-
-                                                    <div class="mpg">
-                                                        <span>Engine Size</span>
-                                                        {{vehicle.engine_size}} cc
-                                                    </div>
-                                                    <div class="mpg">
-                                                        <span>Engine Type</span>
-                                                        {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel
-                                                        {% elif vehicle.fuel_type_id==3 %} Hybrid {% else %} N/A {% endif %}
-                                                    </div>
-                                                </div>
-                                                <div class="pricing-area">
-                                                     <div class="mpg">
-                                                        <span>Transmission</span>
-                                                        {% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
-                                                       %} Automatic {% else %} N/A {% endif %}
-                                                    </div>
-                                                </div>
-
-
-                                                <p>{{vehicle.description}}</p>
-
-                                                <div class="brends flex-row flex-center">
-                                                    <a href="#"><img src="" alt=""></a>
-                                                    <a href="#"><img src="" alt=""></a>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-xs-4">
-
-                                                <div class="dealer-item">
-
-                                                    <div class="dealer-title">
-                                                        <img src="" alt="">
-                                                        <div class="wrapper">
-                                                            <a href="#"><b>Gigi Motors</b></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="dealer-desc">
-
-                                                        <div class="contact-section">
-
-
-
-                                                            <div class="contact-item">
-                                                                <span class="contact-title"><i
-                                                                        class="licon-telephone"></i>{{vehicle.phone_number}}</span>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}" class="btn btn-small">Enquire</a>
-
-                                                    </div>
-
-                                                    <a href="#" class="link-text2">Similar cars</a>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                                </div>
-                                <!-- - - - - - - - - - - - - - / Product - - - - - - - - - - - - - - - - -->
-
-                            </div>
-                        {% endfor %}
-
-                        </div>
-
-                    </div>
-
-                    <ul class="pagination">
-                        <li>
-                          {% if prev_url %}
-                          <a href="{{ prev_url or '#' }}" class="prev-page"></a>
-                          {% endif %}
-                        </li>
-
-                        <li>
-                          {% if next_url %}
-                          <a href="{{ next_url or '#' }}" class="next-page {% if not next_url %} disabled{% endif %}"></a>
-                          {% endif %}
-                        </li>
-                    </ul>
-                </div>
-            </main>
         </div>
       </div>
     </div>
 
+{% endblock %}
+
+{% block scripts %}
+  <script>
+
+
+  $(document).ready(function() {
+    var csrftoken = "{{ csrf_token() }}"
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+              if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken)
+              }
+          }
+        })
+
+    var data = {
+      years:[],
+      makes: [],
+      models: [],
+      transmissions: [],
+      min_price: parseNumber($('#min_price').val()),
+      max_price: parseNumber($('#max_price').val())
+    }
+
+    $( ".year").on( "click",function() {
+      if ($(this).prop('checked')) {
+        data.years.push(parseInt($(this).val()));
+      } else {
+        selectedYear = parseInt($(this).val())
+        data.years = data.years.filter(function(year) { return year !== selectedYear })
+      }
+      getData();
+    });
+
+    $( ".make").on( "click",function() {
+      selectedMake = $(this).val()
+      if ($(this).prop('checked')) {
+        data.makes.push(selectedMake);
+      } else {
+
+        data.makes = data.makes.filter(function(make) { return make !== selectedMake })
+      }
+      getData();
+      updateModel();
+    });
+
+    $( ".model").on( "click",function() {
+      selected = $(this).val()
+      if ($(this).prop('checked')) {
+        data.models.push(selected);
+      } else {
+
+        data.models = data.models.filter(function(model) { return model !== selected })
+      }
+      getData();
+    });
+
+    $( ".transmission").on( "click",function() {
+      selected = $(this).val()
+      if ($(this).prop('checked')) {
+        data.transmissions.push(selected);
+      } else {
+
+        data.transmissions = data.transmissions.filter(function(transmission) { return transmission !== selected })
+      }
+      getData();
+    });
+
+    function parseNumber(str) {
+      return parseInt(str.replace(/[^\d\.\-eE+]/g, ""));
+    }
+
+      $("#price").on("slidestop", function(event, ui) {
+        data.min_price = parseNumber($('#min_price').val());
+        data.max_price = parseNumber($('#max_price').val());
+        getData();
+      });
+
+    function getData() {
+      $.ajax({
+        url: "{{ url_for('home._get_cars') }}",
+        method:'POST',
+        contentType: 'application/json',
+        data:JSON.stringify (data),
+        success: function(data) {
+          $('#inventory').html(data)
+        }
+      })
+    }
+
+    function updateModel() {
+      var send = {
+          makes: data.makes
+      };
+        var container = $('#model-container').empty()
+        $.ajax({
+          url: "{{ url_for('home._get_models') }}",
+          method:'POST',
+          contentType: 'application/json',
+          data:JSON.stringify (send),
+          success: function(data) {
+            data.forEach(function(item) {
+                container.append(`
+                  <div class="input-wrapper">
+                    <input type="checkbox" class="model" name="model" id="mod${item[0]}">
+                    <label for="mod${item[0]}">${item[1]}</label>
+                  </div>
+                `);
+            });
+          }
+        })
+    }
+
+    var slider;
+    if($('#price').length){
+      slider = $('#price').slider({
+        animate: true,
+        range: true,
+        values: [ {{ min_price }}, {{ max_price }}],
+        min: {{ min_price }},
+        max: {{ max_price }},
+        slide : function(event ,ui){
+          $('.range-values').find('.first-limit').val('ksh' + Intl.NumberFormat().format(ui.values[0]));
+          $('.range-values').find('.last-limit').val('ksh' + Intl.NumberFormat().format(ui.values[1]));
+        }
+      });
+    }
+});
+  </script>
 {% endblock %}

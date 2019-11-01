@@ -1,0 +1,186 @@
+<div id="inventory" class="dealers-section product-type">
+    <div class="dealers-section product-type">
+
+        <h3 class="section-title">{{vehicles_count}} Vehicles</h3>
+
+        <!-- dealer sorting -->
+
+        <div class="flex-row flex-justify">
+
+            <div class="sort-dealer">
+
+                <div class="sort-col">
+
+                    <div class="flex-row flex-center">
+
+                        <span>Sort by</span>
+                        <div class="auto-custom-select">
+                            <select data-default-text="Price: highest first">
+                                <option value="menu">Price: lowest first</option>
+                                <option value="menu">Option 2</option>
+                                <option value="menu">Option 3</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="product-holder" class="products-holder view-list">
+
+        <div class="row flex-row">
+        {% for vehicle in all_vehicles %}
+            <div class="col-sm-4 col-xs-6">
+
+                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                <div class="product">
+
+                    <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                    <figure class="product-image">
+                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{% if vehicle.image_url %}
+                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
+                       {% else %}
+                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                       {% endif %}" alt=""></a>
+                        <div class="overlay full-width-block">
+                            <div class="icon-fancy">
+                                <a href="{{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}" class="fancybox" data-fancybox="group"><i
+                                        class="licon-camera2"></i><span>7</span></a>
+                                <a href="#"><i class="licon-camera"></i><span>1</span></a>
+                            </div>
+                            <div>
+                                <a href="#"><i class="licon-heart"></i></a>
+                                <a href="#"><i class="licon-copy"></i></a>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                    <div class="product-description">
+
+                        <div class="row">
+                            <div class="col-xs-8">
+
+                                <h5 class="product-name"><a href="{{ url_for('home.view_car', id=vehicle.id) }}">{{vehicle.name}}</a></h5>
+
+                                <div class="pricing-area">
+
+                                    <div class="product-price">
+                                        {{vehicle.price}}
+                                    </div>
+
+                                </div>
+                                <div class="pricing-area">
+
+                                    <div class="mpg">
+                                        <span>Year</span>
+                                        {{vehicle.year}}
+                                    </div>
+                                    <div class="mpg">
+                                        <span>Mileage</span>
+                                        {{vehicle.mileage}} km
+                                    </div>
+                                </div>
+                                <div class="pricing-area">
+
+                                    <div class="mpg">
+                                        <span>Engine Size</span>
+                                        {{vehicle.engine_size}} cc
+                                    </div>
+                                    <div class="mpg">
+                                        <span>Engine Type</span>
+                                        {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel
+                                        {% elif vehicle.fuel_type_id==3 %} Hybrid {% else %} N/A {% endif %}
+                                    </div>
+                                </div>
+                                <div class="pricing-area">
+                                     <div class="mpg">
+                                        <span>Transmission</span>
+                                        {% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
+                                       %} Automatic {% else %} N/A {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <p>{{vehicle.description}}</p>
+
+                                <div class="brends flex-row flex-center">
+                                    <a href="#"><img src="" alt=""></a>
+                                    <a href="#"><img src="" alt=""></a>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-4">
+
+                                <div class="dealer-item">
+
+                                    <div class="dealer-title">
+                                        <img src="" alt="">
+                                        <div class="wrapper">
+                                            <a href="#"><b>Gigi Motors</b></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dealer-desc">
+
+                                        <div class="contact-section">
+
+
+
+                                            <div class="contact-item">
+                                                <span class="contact-title"><i
+                                                        class="licon-telephone"></i>{{vehicle.phone_number}}</span>
+                                            </div>
+
+                                        </div>
+
+                                        <a href="{{ url_for('home.view_car', id=vehicle.id) }}" class="btn btn-small">Enquire</a>
+
+                                    </div>
+
+                                    <a href="#" class="link-text2">Similar cars</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+
+                </div>
+                <!-- - - - - - - - - - - - - - / Product - - - - - - - - - - - - - - - - -->
+
+            </div>
+        {% else %}
+          <div class="alert alert-warning">
+            No cars found!!
+          </div>
+        {% endfor %}
+
+        </div>
+
+    </div>
+
+    <ul class="pagination">
+        <li>
+          {% if prev_url %}
+          <a href="{{ prev_url or '#' }}" class="prev-page"></a>
+          {% endif %}
+        </li>
+
+        <li>
+          {% if next_url %}
+          <a href="{{ next_url or '#' }}" class="next-page {% if not next_url %} disabled{% endif %}"></a>
+          {% endif %}
+        </li>
+    </ul>
+</div>

@@ -1,832 +1,754 @@
-{% extends 'home/home_base.html' %}
-
-{% block content %}
-  <div class="media-holder type-2" data-bg="{{ url_for('static', filename='home/images/at.png') }}" style="margin-top: 0;">
-
-      <div class="container">
-
-          <div class="tabs type-2 style-3 tabs-section clearfix">
-              <!--tabs navigation-->
-              <ul class="tabs-nav clearfix">
-                  <li class="">
-                      <a href="#tab-1">Find a Car</a>
-                  </li>
-              </ul>
-              <!--tabs content-->
-              <div class="tabs-content">
-                  <div id="tab-1">
-                      <div class="select-area tab-col-2">
-                          <div class="select-col"  style="width:100%;">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Model">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-
-
-                              </div>
-
-                          </div>
-                          <div class="select-col"  style="width:100%;">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Model">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-
-
-                              </div>
-
-                          </div>
-                      </div>
-                      <div class="select-area tab-col-2">
-                          <div class="select-col">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Year | From">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-                              </div>
-
-                          </div>
-                          <div class="select-col">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Year | To">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-                              </div>
-
-                          </div>
-
-                      </div>
-
-                      <div class="select-area tab-col-2">
-
-                          <div class="select-col">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Min Price">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-                              </div>
-
-                          </div>
-
-
-                          <div class="select-col">
-
-                              <div class="auto-custom-select">
-                                  <select data-default-text="Max Price">
-                                      <option value="Option 1">Option 1</option>
-                                      <option value="Option 2">Option 2</option>
-                                      <option value="Option 3">Option 3</option>
-                                  </select>
-                              </div>
-
-                          </div>
-
-                          <div class="select-col" style="width: 100%">
-                              <a href="#" class="btn btn-style-3"><i class="licon-magnifier"></i>Search</a>
-                          </div>
-
-                      </div>
-
-                  </div>
+{% extends 'home/home_base.html' %} {% block content %}
+<div
+  class="media-holder type-2"
+  data-bg="{{ url_for('static', filename='home/images/at.png') }}"
+  style="margin-top: 0;"
+>
+  <div class="container">
+    <div class="tabs type-2 style-3 tabs-section clearfix">
+      <!--tabs navigation-->
+      <ul class="tabs-nav clearfix">
+        <li class="">
+          <a href="#tab-1">Find a Car</a>
+        </li>
+      </ul>
+      <!--tabs content-->
+      <div class="tabs-content">
+        <form method="get" action="{{ url_for('home.inventory') }}">
+          <div id="tab-1">
+            <div class="select-area tab-col-2">
+              <div class="select-col" style="width:100%;">
+                <div class="auto-custom-select">
+                  {{ form.make() }}
+                </div>
               </div>
-          </div>
+              <div class="select-col" style="width:100%;">
+                <div class="auto-custom-select">
+                  {{ form.model() }}
+                </div>
+              </div>
+            </div>
+            <div class="select-area tab-col-2">
+              <div class="select-col">
+                <div class="auto-custom-select">
+                  {{ form.year_from() }}
+                </div>
+              </div>
+              <div class="select-col">
+                <div class="auto-custom-select">
+                  {{ form.year_to() }}
+                </div>
+              </div>
+            </div>
 
-      </div>
+            <div class="select-area tab-col-2">
+              <div class="select-col">
+                <div class="auto-custom-select">
+                  {{ form.transmission() }}
+                </div>
+              </div>
 
-  </div>
+              <div class="select-col">
+                <div class="auto-custom-select">
+                  {{ form.fuel() }}
+                </div>
+              </div>
 
-  <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
-
-  <div id="content">
-      <div class="container">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="products-holder">
-                <h4 class="section-title" style="padding: 40px 57px 0;">Featured Cars</h4>
+              <div class="select-col" style="width: 100%">
+                <button type="submit" class="btn btn-style-3">
+                  <i class="licon-magnifier"></i>Search
+                </button>
               </div>
             </div>
           </div>
+        </form>
       </div>
+    </div>
+  </div>
+</div>
 
-      <div class="page-section-bg psb1">
+<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
-          <div class="row flex-row">
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="products-holder">
+          <h4 class="section-title" style="padding: 40px 57px 0;">
+            Featured Cars
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
 
-              {% for vehicle in featured_vehicles %}
-              <div class="col-md-3 col-xs-6 mb-4">
-
-                  <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                  <div class="product">
-
-                      <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                      <a href="{{ url_for('home.view_car', id=vehicle.id) }}"><img src="{% if vehicle.image_url %}
+  <div class="page-section-bg psb1">
+    <div class="row flex-row">
+      {% for vehicle in featured_vehicles %}
+      <div class="col-md-3 col-xs-6 mb-4">
+        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+        <div class="product">
+          <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+          <a href="{{ url_for('home.view_car', id=vehicle.id) }}"
+            ><img
+              src="{% if vehicle.image_url %}
                                             {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
                                        {% else %}
                                             {{ url_for('static', filename='home/images/262x173_img3.jpg')}}
-                                       {% endif %}" alt=""></a>
-                      <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+                                       {% endif %}"
+              alt=""
+          /></a>
 
-                      <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                      <div class="product-description">
+          <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
-                          <h5 class="product-name"><a href="{{ url_for('home.view_car', id=vehicle.id) }}">{{vehicle.name}}</a></h5>
+          <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+          <div class="product-description">
+            <h5 class="product-name">
+              <a href="{{ url_for('home.view_car', id=vehicle.id) }}"
+                >{{vehicle.name}}</a
+              >
+            </h5>
 
-                          <div class="pricing-area">
-
-                              <div class="product-price">
-                                  {{vehicle.price}}
-                              </div>
-
-                          </div>
-                          <div class="model-loc">
-                              <ul>
-                                  <li><span>Year of Make</span> {{vehicle.year}}</li>
-                                  <li><span>Engine Size</span> {% if vehicle.engine_size %} {{vehicle.engine_size}} {% else %} N/A {% endif %} cc</li>
-                                  <li><span>Engine Type</span> {% if vehicle.fuel_type_id==1 %} Petrol {% elif vehicle.fuel_type_id==2 %} Diesel {% else %} N/A {% endif %}</li>
-                                  <li><span>Transmission</span> {% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
-                                                       %} Automatic {% else %} N/A {% endif %}</li>
-                              </ul>
-                          </div>
-
-                      </div>
-                      <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                  </div>
-
-              </div>
-              {% endfor %}
-
-          </div>
-      </div>
-      <div class="container" style="margin-top: -4%;">
-          <div class="row">
-                <div class="align-center">
-                <a href="#" class="btn">View All Stock</a>
+            <div class="pricing-area">
+              <div class="product-price">
+                {{vehicle.price}}
               </div>
             </div>
+            <div class="model-loc">
+              <ul>
+                <li><span>Year of Make</span> {{vehicle.year}}</li>
+                <li>
+                  <span>Engine Size</span> {% if vehicle.engine_size %}
+                  {{vehicle.engine_size}} {% else %} N/A {% endif %} cc
+                </li>
+                <li>
+                  <span>Engine Type</span> {% if vehicle.fuel_type_id==1 %}
+                  Petrol {% elif vehicle.fuel_type_id==2 %} Diesel {% else %}
+                  N/A {% endif %}
+                </li>
+                <li>
+                  <span>Transmission</span> {% if vehicle.transmission_id==1 %}
+                  Manual {% elif vehicle.transmission_id==2 %} Automatic {% else
+                  %} N/A {% endif %}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+        </div>
       </div>
-      
-      <div class="page-section-bg psb3">
-        
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              
-              <div class="products-holder">
-            
-                <h3 class="section-title">Browse Car Inventory By</h3>
-                <div class="tabs tabs-section style-2 clearfix">
-                  <!--tabs navigation-->                  
-                  <ul class="tabs-nav clearfix">
-                    <li>
-                      <a href="#tab-5">Body Type</a>
-                    </li>
-                    <li>
-                      <a href="#tab-6">Make</a>
-                    </li>
-                    <li>
-                      <a href="#tab-7">Price</a>
-                    </li>
-                  </ul>
-                  <!--tabs content-->                 
-                  <div class="tabs-content">
-                    <div id="tab-5">
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container" style="margin-top: -4%;">
+    <div class="row">
+      <div class="align-center">
+        <a href="#" class="btn">View All Stock</a>
+      </div>
+    </div>
+  </div>
 
-                      <div class="row flex-row">
-                        
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img1.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+  <div class="page-section-bg psb3">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="products-holder">
+            <h3 class="section-title">Browse Car Inventory By</h3>
+            <div class="tabs tabs-section style-2 clearfix">
+              <!--tabs navigation-->
+              <ul class="tabs-nav clearfix">
+                <li>
+                  <a href="#tab-5">Body Type</a>
+                </li>
+                <li>
+                  <a href="#tab-6">Make</a>
+                </li>
+                <li>
+                  <a href="#tab-7">Price</a>
+                </li>
+              </ul>
+              <!--tabs content-->
+              <div class="tabs-content">
+                <div id="tab-5">
+                  <div class="row flex-row">
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img1.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Mini SUV</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name"><a href="#">Mini SUV</a></h6>
                         </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img2.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">SUV</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img3.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Pickup</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img4.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Convertible</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img5.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Saloon</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img6.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Coupe</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img7.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Luxury Car</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img8.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Wagon/Hatchback</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img9.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Green Car/Hybrid</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img10.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Sports Car</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-4 col-xs-4">
-                          
-                          <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                          <div class="product">
-                            
-                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                            <a href="#"><img src="{{ url_for('static', filename='home/images/165x110_img11.jpg') }}" alt=""></a>
-                            <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
-                            <div class="product-description align-center">
-
-                              <h6 class="product-name"><a href="#">Minivan/Van</a></h6>
-
-                            </div>
-                            <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
-
-                          </div>
-
-                        </div>
-
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
                       </div>
-
                     </div>
-                    <div id="tab-6">
 
-                      <div class="row">
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img2.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
-                            <li><a href="#">Acura</a></li>
-                            <li><a href="#">Alfa Romeo</a></li>
-                            <li><a href="#">Aston Martin</a></li>
-                            <li><a href="#">Audi</a></li>
-                            <li><a href="#">Bentley</a></li>
-                            <li><a href="#">BMW</a></li>
-                            <li><a href="#">Buick</a></li>
-
-                          </ul>
-
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name"><a href="#">SUV</a></h6>
                         </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">Cadillac</a></li>
-                            <li><a href="#">Chevrolet</a></li>
-                            <li><a href="#">Chrysler</a></li>
-                            <li><a href="#">Dodge</a></li>
-                            <li><a href="#">Ferrari</a></li>
-                            <li><a href="#">Fiat</a></li>
-                            <li><a href="#">Ford</a></li>
-
-                          </ul>
-
-                        </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">Genesis</a></li>
-                            <li><a href="#">GMC</a></li>
-                            <li><a href="#">Honda</a></li>
-                            <li><a href="#">Hyundai</a></li>
-                            <li><a href="#">Infiniti</a></li>
-                            <li><a href="#">Jaguar</a></li>
-                            <li><a href="#">Jeep</a></li>
-
-                          </ul>
-
-                        </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">Kia</a></li>
-                            <li><a href="#">Lamborghini</a></li>
-                            <li><a href="#">Land Rover</a></li>
-                            <li><a href="#">Lexus</a></li>
-                            <li><a href="#">Lincoln</a></li>
-                            <li><a href="#">Maserati</a></li>
-                            <li><a href="#">Mazda</a></li>
-
-                          </ul>
-
-                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
                       </div>
-
                     </div>
-                    <div id="tab-7">
 
-                      <div class="row">
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img3.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
 
-                            <li><a href="#">Less than KES 1,000,000</a></li>
-                            <li><a href="#">KES1,000,001-KES1,500,000</a></li>
-                            <li><a href="#">KES1,500,001-KES2,000,000</a></li>
-
-                          </ul>
-
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name"><a href="#">Pickup</a></h6>
                         </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">KES2,000,001-KES3,000,000</a></li>
-                            <li><a href="#">KES3,000,001-KES4,000,000</a></li>
-                            <li><a href="#">KES4,000,001-KES5,000,000</a></li>
-
-                          </ul>
-
-                        </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">KES5,000,001 - KES10,000,000</a></li>
-
-
-                          </ul>
-
-                        </div>
-                        <div class="col-sm-3">
-                          
-                          <ul class="custom-list type-5">
-
-                            <li><a href="#">More than KES10,000,000</a></li>
-
-                          </ul>
-
-                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
                       </div>
+                    </div>
 
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img4.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Convertible</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img5.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name"><a href="#">Saloon</a></h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img6.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name"><a href="#">Coupe</a></h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img7.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Luxury Car</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img8.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Wagon/Hatchback</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img9.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Green Car/Hybrid</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img10.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Sports Car</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4 col-xs-4">
+                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                      <div class="product">
+                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                        <a href="#"
+                          ><img
+                            src="{{ url_for('static', filename='home/images/165x110_img11.jpg') }}"
+                            alt=""
+                        /></a>
+                        <!-- - - - - - - - - - - - - - End of Product Image - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
+                        <div class="product-description align-center">
+                          <h6 class="product-name">
+                            <a href="#">Minivan/Van</a>
+                          </h6>
+                        </div>
+                        <!-- - - - - - - - - - - - - - End of Product Description - - - - - - - - - - - - - - - - -->
+                      </div>
                     </div>
                   </div>
                 </div>
-
-              </div>
-
-            </div>
-            <div class="col-sm-4">
-              
-              <div class="align-center">
-                <a href="#"><img src="" alt=""></a>
-              </div>
-
-            </div>
-          </div>  
-        </div>
-
-      </div>
-      
-
-      <div class="page-section-bg psb1">
-
-        <div class="container">
-
-          <h4 class="section-title">Latest Posts</h4>
-
-          <div class="review-section">
-
-            <div class="row">
-              <div class="col-md-6">
-
-                <article class="entry review-item">
-
-                  <div class="review-label">
-                    4.5<span>out of 5</span>
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-attachment">
-
-                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/555x377_img2.jpg')}}" alt=""></figure>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-body">
-
-                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-meta">
-
-                      <time class="entry-date" datetime="2018-10-28">October 28, 2019</time>
-
+                <div id="tab-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">Acura</a></li>
+                        <li><a href="#">Alfa Romeo</a></li>
+                        <li><a href="#">Aston Martin</a></li>
+                        <li><a href="#">Audi</a></li>
+                        <li><a href="#">Bentley</a></li>
+                        <li><a href="#">BMW</a></li>
+                        <li><a href="#">Buick</a></li>
+                      </ul>
                     </div>
-
-                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                    <h4 class="entry-title"><a href="#">Aliquam Dapibus Tincidunt Metus</a></h4>
-
-                    <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-content">
-
-                      <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget. <a href="#" class="info-btn">Read More</a></p>
-
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">Cadillac</a></li>
+                        <li><a href="#">Chevrolet</a></li>
+                        <li><a href="#">Chrysler</a></li>
+                        <li><a href="#">Dodge</a></li>
+                        <li><a href="#">Ferrari</a></li>
+                        <li><a href="#">Fiat</a></li>
+                        <li><a href="#">Ford</a></li>
+                      </ul>
                     </div>
-
-                    <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-
-                </article>
-
-              </div>
-              <div class="col-md-6">
-
-                <article class="entry review-item">
-
-                  <div class="review-label">
-                    4.7<span>out of 5</span>
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-attachment">
-
-                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/555x377_img1.jpg')}}" alt=""></figure>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-body">
-
-                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-meta">
-
-                      <time class="entry-date" datetime="2018-10-27">October 27, 2018</time>
-
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">Genesis</a></li>
+                        <li><a href="#">GMC</a></li>
+                        <li><a href="#">Honda</a></li>
+                        <li><a href="#">Hyundai</a></li>
+                        <li><a href="#">Infiniti</a></li>
+                        <li><a href="#">Jaguar</a></li>
+                        <li><a href="#">Jeep</a></li>
+                      </ul>
                     </div>
-
-                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                    <h4 class="entry-title"><a href="#">Vestibulum Ante Ipsum</a></h4>
-
-                    <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-content">
-
-                      <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus. <a href="#" class="info-btn">Read More</a></p>
-
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">Kia</a></li>
+                        <li><a href="#">Lamborghini</a></li>
+                        <li><a href="#">Land Rover</a></li>
+                        <li><a href="#">Lexus</a></li>
+                        <li><a href="#">Lincoln</a></li>
+                        <li><a href="#">Maserati</a></li>
+                        <li><a href="#">Mazda</a></li>
+                      </ul>
                     </div>
-
-                    <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
-
                   </div>
-
-                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-
-                </article>
-
+                </div>
+                <div id="tab-7">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">Less than KES 1,000,000</a></li>
+                        <li><a href="#">KES1,000,001-KES1,500,000</a></li>
+                        <li><a href="#">KES1,500,001-KES2,000,000</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">KES2,000,001-KES3,000,000</a></li>
+                        <li><a href="#">KES3,000,001-KES4,000,000</a></li>
+                        <li><a href="#">KES4,000,001-KES5,000,000</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">KES5,000,001 - KES10,000,000</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-3">
+                      <ul class="custom-list type-5">
+                        <li><a href="#">More than KES10,000,000</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 col-sm-6">
-
-                <article class="entry review-item">
-
-                  <div class="review-label size2">
-                    4.9<span>out of 5</span>
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-attachment">
-
-                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img1.jpg')}}" alt=""></figure>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-body">
-
-                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-meta">
-
-                      <time class="entry-date" datetime="2018-10-26">October 26, 2018</time>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                    <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-
-                </article>
-
-              </div>
-              <div class="col-md-4 col-sm-6">
-
-                <article class="entry review-item">
-
-                  <div class="review-label size2">
-                    3.2<span>out of 5</span>
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-attachment">
-
-                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img2.jpg')}}" alt=""></figure>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-body">
-
-                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-meta">
-
-                      <time class="entry-date" datetime="2018-10-14">October 14, 2018</time>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                    <h5 class="entry-title"><a href="#">Mauris Fermentum Dictum Magna</a></h5>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-
-                </article>
-
-              </div>
-              <div class="col-md-4 col-sm-6">
-
-                <article class="entry review-item">
-
-                  <div class="review-label size2">
-                    4.8<span>out of 5</span>
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-attachment">
-
-                    <figure class="thumbnail-attachment"><img src="{{ url_for('static', filename='home/images/360x240_img6.jpg')}}" alt=""></figure>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                  <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                  <div class="entry-body">
-
-                    <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-meta">
-
-                      <time class="entry-date" datetime="2016-10-07">October 7, 2018</time>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                    <h5 class="entry-title"><a href="#">Neque Porro Quisquam </a></h5>
-
-                  </div>
-
-                  <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-
-                </article>
-
-              </div>
-            </div>
-
           </div>
-
+        </div>
+        <div class="col-sm-4">
           <div class="align-center">
-            <a href="#" class="btn">More From Gigi Motors</a>
+            <a href="#"><img src="" alt=""/></a>
           </div>
-
         </div>
-
       </div>
-
+    </div>
   </div>
 
-    <!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+  <div class="page-section-bg psb1">
+    <div class="container">
+      <h4 class="section-title">Latest Posts</h4>
+
+      <div class="review-section">
+        <div class="row">
+          <div class="col-md-6">
+            <article class="entry review-item">
+              <div class="review-label">4.5<span>out of 5</span></div>
+
+              <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-attachment">
+                <figure class="thumbnail-attachment">
+                  <img
+                    src="{{ url_for('static', filename='home/images/555x377_img2.jpg')}}"
+                    alt=""
+                  />
+                </figure>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+              <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-body">
+                <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-meta">
+                  <time class="entry-date" datetime="2018-10-28"
+                    >October 28, 2019</time
+                  >
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                <h4 class="entry-title">
+                  <a href="#">Aliquam Dapibus Tincidunt Metus</a>
+                </h4>
+
+                <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-content">
+                  <p>
+                    Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac
+                    turpis. Integer rutrum ante eu lacus. Vestibulum libero
+                    nisl, porta vel, scelerisque eget.
+                    <a href="#" class="info-btn">Read More</a>
+                  </p>
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="entry review-item">
+              <div class="review-label">4.7<span>out of 5</span></div>
+
+              <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-attachment">
+                <figure class="thumbnail-attachment">
+                  <img
+                    src="{{ url_for('static', filename='home/images/555x377_img1.jpg')}}"
+                    alt=""
+                  />
+                </figure>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+              <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-body">
+                <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-meta">
+                  <time class="entry-date" datetime="2018-10-27"
+                    >October 27, 2018</time
+                  >
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                <h4 class="entry-title">
+                  <a href="#">Vestibulum Ante Ipsum</a>
+                </h4>
+
+                <!-- - - - - - - - - - - - - - Entry Excerpt - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-content">
+                  <p>
+                    Vivamus eget nibh. Etiam cursus leo vel metus. Nulla
+                    facilisi. Aenean nec eros. Vestibulum ante ipsum primis in
+                    faucibus orci luctus.
+                    <a href="#" class="info-btn">Read More</a>
+                  </p>
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Entry Excerpt - - - - - - - - - - - - - - - - -->
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+            </article>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <article class="entry review-item">
+              <div class="review-label size2">4.9<span>out of 5</span></div>
+
+              <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-attachment">
+                <figure class="thumbnail-attachment">
+                  <img
+                    src="{{ url_for('static', filename='home/images/360x240_img1.jpg')}}"
+                    alt=""
+                  />
+                </figure>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+              <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-body">
+                <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-meta">
+                  <time class="entry-date" datetime="2018-10-26"
+                    >October 26, 2018</time
+                  >
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                <h5 class="entry-title">
+                  <a href="#">Mauris Fermentum Dictum Magna</a>
+                </h5>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+            </article>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <article class="entry review-item">
+              <div class="review-label size2">3.2<span>out of 5</span></div>
+
+              <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-attachment">
+                <figure class="thumbnail-attachment">
+                  <img
+                    src="{{ url_for('static', filename='home/images/360x240_img2.jpg')}}"
+                    alt=""
+                  />
+                </figure>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+              <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-body">
+                <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-meta">
+                  <time class="entry-date" datetime="2018-10-14"
+                    >October 14, 2018</time
+                  >
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                <h5 class="entry-title">
+                  <a href="#">Mauris Fermentum Dictum Magna</a>
+                </h5>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+            </article>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <article class="entry review-item">
+              <div class="review-label size2">4.8<span>out of 5</span></div>
+
+              <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-attachment">
+                <figure class="thumbnail-attachment">
+                  <img
+                    src="{{ url_for('static', filename='home/images/360x240_img6.jpg')}}"
+                    alt=""
+                  />
+                </figure>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+
+              <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+
+              <div class="entry-body">
+                <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
+
+                <div class="entry-meta">
+                  <time class="entry-date" datetime="2016-10-07"
+                    >October 7, 2018</time
+                  >
+                </div>
+
+                <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
+
+                <h5 class="entry-title">
+                  <a href="#">Neque Porro Quisquam </a>
+                </h5>
+              </div>
+
+              <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="align-center">
+        <a href="#" class="btn">More From Gigi Motors</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
 {% endblock content %}
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+    var dropdown = {
+        make: $('#car-makes'),
+        model:$('#car-models')
+    };
 
+    updateModel();
 
-
+  function updateModel() {
+      var send = {
+          make_id: dropdown.make.val()
+      };
+      dropdown.model.attr('disabled', 'disabled');
+      dropdown.model.empty();
+      $.getJSON("{{ url_for('admin._get_model') }}", send, function(data) {
+          data.forEach(function(item) {
+              dropdown.model.append(
+                  $('<option>', {
+                      value: item[0],
+                      text: item[1]
+                  })
+              );
+          });
+          dropdown.model.removeAttr('disabled');
+      });
+  }
+  dropdown.make.on('change', function() {
+      updateModel();
+  });
+});
+</script>
+{% endblock %}
