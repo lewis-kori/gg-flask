@@ -8516,8 +8516,8 @@ button.search-button:before{content: "\e922";}
   .filter-section .accordion .a-title{
     position: relative;
     padding: 0;
-    text-transform: uppercase;
-    font-size: 12px;
+    text-transform: capitalize;
+    font-size: 18px;
     line-height: 0px;
     margin-bottom: 0;
     font-weight: bold;
@@ -8539,7 +8539,7 @@ button.search-button:before{content: "\e922";}
   }
 
   .filter-section .accordion:not(:last-child){
-    margin-bottom: 25px;
+    margin-bottom: 40px;
   }
 
   .filter-section .accordion .a-title.active:before{
