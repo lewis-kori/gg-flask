@@ -6109,6 +6109,10 @@ button.search-button:before{content: "\e922";}
         min-width: 120px;
       }
 
+      .select-area.tab-col-auto > * .auto-custom-select1{
+        min-width: 120px;
+      }
+
       .select-area.tab-col-auto > *:not([class*="col-"]) form{
         max-width: 108px;
       }
@@ -6116,18 +6120,32 @@ button.search-button:before{content: "\e922";}
       .tabs.type-2.style-3 .tabs-content .select-area.tab-col-auto > * .auto-custom-select{
         min-width: 150px;
       }
+      .tabs.type-2.style-3 .tabs-content .select-area.tab-col-auto > * .auto-custom-select1{
+        min-width: 150px;
+      }
 
       .tabs.type-2 .tabs-content .select-area.tab-col-auto > *:nth-child(1) .auto-custom-select,
       .tabs.type-2:not(.style-3) .tabs-content .select-area.tab-col-auto > *:nth-child(2) .auto-custom-select{
+        min-width: 180px;
+      }
+      .tabs.type-2 .tabs-content .select-area.tab-col-auto > *:nth-child(1) .auto-custom-select1,
+      .tabs.type-2:not(.style-3) .tabs-content .select-area.tab-col-auto > *:nth-child(2) .auto-custom-select1{
         min-width: 180px;
       }
 
       .tabs.type-2 .tabs-content #tab-3 .select-area.tab-col-auto > *:nth-child(1) .auto-custom-select{
         min-width: 230px;
       }
+      .tabs.type-2 .tabs-content #tab-3 .select-area.tab-col-auto > *:nth-child(1) .auto-custom-select1{
+        min-width: 230px;
+      }
 
       .select-area.tab-col-auto.full-with-area > *:nth-child(1) .auto-custom-select,
       .select-area.tab-col-auto.full-with-area > *:nth-child(2) .auto-custom-select{
+        min-width: 210px;
+      }
+      .select-area.tab-col-auto.full-with-area > *:nth-child(1) .auto-custom-select1,
+      .select-area.tab-col-auto.full-with-area > *:nth-child(2) .auto-custom-select1{
         min-width: 210px;
       }
 
@@ -8578,6 +8596,11 @@ button.search-button:before{content: "\e922";}
   .filter-section form .auto-custom-select .auto-selected-option,
   .filter-section form input,
   .filter-section form .auto-custom-select .auto-options-list{
+    background-color: #f2f3f3;
+  }
+  .filter-section form .auto-custom-select1 .auto-selected-option,
+  .filter-section form input,
+  .filter-section form .auto-custom-select1 .auto-options-list{
     background-color: #f2f3f3;
   }
 
