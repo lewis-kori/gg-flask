@@ -8525,11 +8525,27 @@ button.search-button:before{content: "\e922";}
     font-size: 16px;
     border-radius: 3px;
   }
+  .share-list ul > li > a:hover{
+    color: #da1e26;
+  }
 
   .share-list ul > li > a.sh-facebook{
     background-color: #3b5998;
     color: #fff;
   }
+  .share-list ul > li > a.sh-twitter{
+    background-color: #00acee;
+    color: #fff;
+  }
+  .share-list ul > li > a.sh-google{
+    background-color: #CC3333;
+    color: #fff;
+  }
+  .share-list ul > li > a.sh-instagram{
+    background-color: #3f729b;
+    color: #fff;
+  }
+
 
   .filter-section .accordion .a-title{
     position: relative;
@@ -9212,3 +9228,9 @@ display: block;
         opacity: 1 !important;
     }
 }
+.s-i > li > a{
+        color: #fff;
+      }
+.s-i > li > a:hover{
+        color: #da1919;
+      }

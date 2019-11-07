@@ -1,5 +1,22 @@
 {% extends 'home/home_base.html' %}
-
+{% block custom_head_tags %}
+{{ super() }}
+  <style>
+  .breadcrumbs > li:not(:first-child):before {
+    color: #000;
+}
+.breadcrumbs-wrap {
+    padding: 5px 0;
+}
+.breadcrumbs-wrap .breadcrumbs > li > a{
+    color:  #31353c;;
+}
+.breadcrumbs-wrap .breadcrumbs > li > a:hover{
+    color: #da1919;
+    border-color: #000;
+}
+  </style>
+{% endblock %}
 {% block content %}
 
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
@@ -7,7 +24,20 @@
     <div id="content">
 
       <div class="page-section" style="padding-top: 25px;">
+        <div class="breadcrumbs-wrap">
 
+        <div class="container">
+          <ul class="breadcrumbs" style="color: #31353c;">
+
+            <li style="color: #31353c;"><a href="{{ url_for('home.index') }}">Home</a></li>
+            <li style="color: #31353c;"><a href="{{ url_for('home.inventory') }}">View All Cars</a></li>
+            <li style="color: #31353c;">Single Car</li>
+
+          </ul>
+
+        </div>
+
+      </div>
         <div class="container">
           <div class="share-section flex-row flex-justify flex-center">
 
@@ -20,7 +50,7 @@
                 <li><a href="#" class="sh-facebook"><i class="icon-facebook"></i></a></li>
                 <li><a href="#" class="sh-twitter"><i class="icon-twitter"></i></a></li>
                 <li><a href="#" class="sh-google"><i class="icon-gplus"></i></a></li>
-                <li><a href="#" class="sh-mail"><i class="icon-mail"></i></a></li>
+                <li><a href="#" class="sh-instagram"><i class="icon-instagram"></i></a></li>
                 <li><a href="#"><i class="icon-print-6"></i></a></li>
               </ul>
 
@@ -37,13 +67,13 @@
                   <h2 class="section-title">{{vehicle.name}}</h2>
                   <div class="flex-row flex-justify">
                     <div class="product-price" style="color: #da1919;">
-                      {{'KSH {:,.2f}'.format(vehicle.price)}}
+                      {{'KSh {:,}'.format(vehicle.price)}}
 
                     </div>
-                    <div class="slash-list">
-                      <a href="#" class="link-text2"><i class="licon-heart"></i>Wishlist </a>
-                      <a href="#" class="link-text2"><i class="licon-copy"></i>Compare </a>
-                    </div>
+<!--                    <div class="slash-list">-->
+<!--                      <a href="#" class="link-text2"><i class="licon-heart"></i>Wishlist </a>-->
+<!--                      <a href="#" class="link-text2"><i class="licon-copy"></i>Compare </a>-->
+<!--                    </div>-->
                   </div>
 
                 </div>
@@ -242,8 +272,8 @@
                     </li>
                     <li class="flex-row flex-justify">
 
-                      <div class="detail-col">
-                        <span>VIN</span><span>WP1AD2A20GLA80654</span>
+                       <div class="detail-col">
+                        <span>Interior Color</span><span>{{vehicle.interior}}</span>
                       </div>
                       <div class="detail-col">
                         <span>Transmission</span><span>{% if vehicle.transmission_id==1 %} Manual {% elif vehicle.transmission_id==2
@@ -258,16 +288,6 @@
                       </div>
                       <div class="detail-col">
                         <span>Drivetype</span><span>AWD</span>
-                      </div>
-
-                    </li>
-                    <li class="flex-row flex-justify">
-
-                      <div class="detail-col">
-                        <span>Interior Color</span><span>Gray</span>
-                      </div>
-                      <div class="detail-col">
-                        <span>MPG</span><span>18 City / 24 Highway</span>
                       </div>
 
                     </li>
@@ -296,43 +316,13 @@
                         </ul>
 
                       </div>
-                      <div class="col-xs-6">
-
-                        <ul class="custom-list type-5">
-
-                          <li>ABS brakes</li>
-                          <li>AM/FM radio</li>
-                          <li>Air Conditioning</li>
-                          <li>Automatic temperature control</li>
-                          <li>Automatically Dimming Interior & Exterior Mirrors</li>
-
-                        </ul>
-
-                      </div>
                     </div>
                     <div class="row other-items">
                       <div class="col-xs-6">
 
                         <ul class="custom-list type-5">
 
-                          <li>10 Speakers</li>
-                          <li>20" Wheels</li>
-                          <li>3.27 Axle Ratio</li>
-                          <li>4-Wheel Disc Brakes</li>
-                          <li>8-Way Power Front Seats</li>
-
-                        </ul>
-
-                      </div>
-                      <div class="col-xs-6">
-
-                        <ul class="custom-list type-5">
-
-                          <li>ABS brakes</li>
-                          <li>AM/FM radio</li>
-                          <li>Air Conditioning</li>
-                          <li>Automatic temperature control</li>
-                          <li>Automatically Dimming Interior & Exterior Mirrors</li>
+                          <li>Speakers</li>
 
                         </ul>
 
@@ -369,18 +359,8 @@
                   <div class="dealer-title">
 
                     <div class="wrapper">
-                      <h5><a href="#">Gigi Motors</a></h5>
+                      <h5><a href="#">Gigi Motors Limited</a></h5>
                       <div class="rating-area">
-
-                        <ul class="rating">
-                          <li><i class="licon-star"></i></li>
-                          <li><i class="licon-star"></i></li>
-                          <li><i class="licon-star"></i></li>
-                          <li><i class="licon-star"></i></li>
-                          <li class="empty-half"><i class="licon-star"></i></li>
-                        </ul>
-                        <a href="#" class="review">7 reviews</a>
-                        <a href="#" class="link-text2">Write a Review</a>
 
                       </div>
                     </div>
@@ -391,8 +371,10 @@
                     <div class="contact-section">
 
                       <div class="contact-item">
-                        <h6 class="contact-title"><i class="licon-map-marker"></i><span>{{vehicle.area}}</span></h6>
-                        <span class="contact-desc with-icon"><a href="javascript:;" class="link-text2 map-button">
+                        <h6 class="contact-title"><i class="licon-map-marker"></i><span>{% if vehicle.area %}{{vehicle.area}}
+                        {% else %} Nairobi {% endif %}</span></h6>
+                        <span class="contact-desc with-icon"><a href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"
+                                target="_blank" class="link-text2 map-button">
                             Map & Directions</a></span>
                       </div>
 
@@ -448,12 +430,12 @@
                   <!-- - - - - - - - - - - - - - Product Description - - - - - - - - - - - - - - - - -->
                   <div class="product-description">
 
-                    <h5 class="product-name"><a href="{{ url_for('home.view_car', id=mv.id) }}">{{ mv.year }} {{mv.make.name}} {{mv.model.name}}</a></h5>
+                    <h5 class="product-name"><a href="{{ url_for('home.view_car', id=mv.id) }}">{{ mv.year }} {{mv.name }}</a></h5>
 
                     <div class="pricing-area">
 
                       <div class="product-price">
-                        {{mv.price}}
+                        {{'KSh {:,}'.format(mv.price)}}
                       </div>
 
                     </div>

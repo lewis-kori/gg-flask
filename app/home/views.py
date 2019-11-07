@@ -12,7 +12,7 @@ home = Blueprint("home", __name__)
 def index():
     """Admin dashboard page."""
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(8)
-    featured_vehicles = Vehicle.query.filter_by(featured=True).limit(4)
+    featured_vehicles = Vehicle.query.filter_by(featured=True).limit(8)
     form = SearchForm()
     make = [(row.id, row.name) for row in Make.query.all()]
     model = [(row.id, row.name) for row in Model.query.all()]
@@ -37,6 +37,7 @@ def index():
         all_vehicles=all_vehicles,
         featured_vehicles=featured_vehicles,
         form=form,
+        car_makes=Make.query.all()
     )
 
 
@@ -170,9 +171,10 @@ def _get_cars():
 @home.route("/view_car/<id>", methods=["post", "get"])
 def view_car(id):
     """Admin dashboard page."""
-    more_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).limit(3)
+
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
+    more_vehicles = Vehicle.query.filter_by(make_id=vehicle.make_id).order_by(Vehicle.createdAt.desc()).limit(3)
     car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
     return render_template(
         "home/single_car_view.html",

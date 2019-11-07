@@ -7,14 +7,15 @@
     <!-- Basic Page Needs
     ================================================== -->
 
-    <title>Gigi</title>
+    <title>Gigi Motors Limited - Find New & Used Cars for Sale.</title>
 
     <!--meta info-->
     <meta charset="utf-8" />
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-
+   <!-- Favicons-->
+    <link rel="icon" href="{{url_for('static', filename='images/favicon/Gigi-Favicon.png')}}" sizes="32x32">
     <!-- Mobile Specific Metas
     ================================================== -->
     <meta
@@ -80,7 +81,7 @@
                   <div class="flex-row flex-center"></div>
                 </div>
               </div>
-              <div style="position: absolute;right: 20%;">
+              <div style="position: absolute;right: 8%;">
                 <ul class="social-icons">
                   <li>
                     <a href="#"><i class="icon-facebook"></i></a>
@@ -96,11 +97,11 @@
                   </li>
                 </ul>
               </div>
-              <div class="slash-list">
-                <span>Account: </span>
-                <a href="#">Sign in</a>
-                <a href="#">Sign up</a>
-              </div>
+<!--              <div class="slash-list">-->
+<!--                <span>Account: </span>-->
+<!--                <a href="#">Sign in</a>-->
+<!--                <a href="#">Sign up</a>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -254,16 +255,25 @@ We have been dedicated to providing our clients both private and corporate with 
               </div>
               <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                 <div class="widget">
-                  <h5 class="widget-title">Services</h5>
+                  <h5 class="widget-title">Shop</h5>
                   <ul class="info-links">
-                    <li><a href="#">New Cars For Sale</a></li>
-                    <li><a href="#">Pre-owned Cars</a></li>
-                    <li><a href="#">Sell My Car</a></li>
-                    <li><a href="#">Car Valuations</a></li>
+                    <li><a href="{{ url_for('home.inventory') }}">View Inventory</a></li>
+                    <li><a href="#">New Stock</a></li>
+                    <li><a href="#">Import</a></li>
+                    <li><a href="#">Trade In</a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                <div class="widget">
+                  <h5 class="widget-title">Sell</h5>
+                  <ul class="info-links">
+                    <li><a href="#">Schedule an Appraisal</a></li>
+                    <li><a href="#">Car Valuations</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
                 <div class="widget">
                   <h5 class="widget-title">Locations</h5>
                   <ul class="info-links">
@@ -271,7 +281,7 @@ We have been dedicated to providing our clients both private and corporate with 
                       <a
                         href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"
                         target="_blank"
-                        >Hurlingham</a
+                        > Head Office: Hurlingham between Chaka Place and Nairobi Women's Hospital, Argwings Kodhek Road, Nairobi, Kenya</a
                       >
                     </li>
                     <li>
@@ -282,75 +292,14 @@ We have been dedicated to providing our clients both private and corporate with 
                       >
                     </li>
                   </ul>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12">
-                <div class="widget">
-                  <h5 class="widget-title">Latest News & Tips</h5>
-                  <article class="entry">
-                    <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-                    <div class="thumbnail-attachment">
-                      <a href="#"
-                        ><img
-                          src="{{ url_for('static', filename='home/images/130x87_img1.jpg') }}"
-                          alt=""
-                      /></a>
-                    </div>
-                    <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
+                  <ul class="social-icons s-i" style="padding-top: 10px;">
 
-                    <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
+                    <li style="font-size: 21px;"><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li style="font-size: 21px;"><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li style="font-size: 21px;"><a href="#"><i class="icon-youtube-play"></i></a></li>
+                    <li style="font-size: 21px;"><a href="#"><i class="icon-instagram-5"></i></a></li>
 
-                    <div class="entry-body">
-                      <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                      <div class="entry-meta">
-                        <time class="entry-date" datetime="2016-01-27"
-                          >December 28, 2019</time
-                        >
-                      </div>
-
-                      <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                      <h5 class="entry-title slime">
-                        <a href="#">Mauris Fermentum Dictum Magna</a>
-                      </h5>
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-                  </article>
-                  <article class="entry">
-                    <!-- - - - - - - - - - - - - - Attachment - - - - - - - - - - - - - - - - -->
-                    <div class="thumbnail-attachment">
-                      <a href="#"
-                        ><img
-                          src="{{ url_for('static', filename='home/images/130x87_img1.jpg') }}"
-                          alt=""
-                      /></a>
-                    </div>
-                    <!-- - - - - - - - - - - - - - End of Attachment - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Entry body - - - - - - - - - - - - - - - - -->
-
-                    <div class="entry-body">
-                      <!-- - - - - - - - - - - - - - Entry Meta - - - - - - - - - - - - - - - - -->
-
-                      <div class="entry-meta">
-                        <time class="entry-date" datetime="2016-01-27"
-                          >December 23, 2019</time
-                        >
-                      </div>
-
-                      <!-- - - - - - - - - - - - - - End of Meta - - - - - - - - - - - - - - - - -->
-
-                      <h5 class="entry-title slime">
-                        <a href="#"
-                          >Vestibulum Ante Ipsum Primis in Faucibus
-                        </a>
-                      </h5>
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of Entry body - - - - - - - - - - - - - - - - -->
-                  </article>
+                  </ul>
                 </div>
               </div>
             </div>
