@@ -84,16 +84,16 @@
               <div style="position: absolute;right: 8%;">
                 <ul class="social-icons">
                   <li>
-                    <a href="#"><i class="icon-facebook"></i></a>
+                    <a href="https://www.facebook.com/GigiMotorsKenya"><i class="icon-facebook"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-twitter"></i></a>
+                    <a href="https://twitter.com/gigimotors"><i class="icon-twitter"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-youtube-play"></i></a>
+                    <a href="https://youtube.com"><i class="icon-youtube-play"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="icon-instagram-5"></i></a>
+                    <a href="https://www.instagram.com/gigimotors_ke/"><i class="icon-instagram-5"></i></a>
                   </li>
                 </ul>
               </div>
@@ -154,53 +154,57 @@
                         >News &amp; Reviews</a
                       >
                     </li>
-                    <li class="dropdown has-megamenu">
-                      <a>About</a>
-                      <!--sub menu-->
-                      <div class="sub-menu-wrap mega-menu">
-                        <div class="mega-submenu">
-                          <h5>Who We Are</h5>
-                          <ul
-                            style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;"
-                          >
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Why Gigi Motors</a></li>
-                          </ul>
-                        </div>
-                        <div class="mega-submenu">
-                          <h5>Other Services</h5>
-                          <ul
-                            style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;"
-                          >
-                            <li><a href="#">Trade In</a></li>
-                            <li><a href="#">Finance</a></li>
-                            <li><a href="#">Insurance</a></li>
-                            <li><a href="#">Partners</a></li>
-                          </ul>
-                        </div>
-                        <div class="mega-submenu">
-                          <h5>More</h5>
-                          <ul
-                            style="border-top: 2px solid #fff;margin-right: 2%;"
-                          >
-                            <li>
-                              <a href="{{ url_for('home.contact') }}"
-                                >Contact Us</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"
-                                target="_blank"
-                                >Find Us</a
-                              >
-                            </li>
-                            <li><a href="#">FAQs</a></li>
-                          </ul>
-                        </div>
-                      </div>
+                    <li>
+                      <a href="{{ url_for('home.contact') }}"
+                        >Contact Us</a
+                      >
                     </li>
+<!--                    <li class="dropdown has-megamenu">-->
+<!--                      <a>About</a>-->
+<!--                      <div class="sub-menu-wrap mega-menu">-->
+<!--                        <div class="mega-submenu">-->
+<!--                          <h5>Who We Are</h5>-->
+<!--                          <ul-->
+<!--                            style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;"-->
+<!--                          >-->
+<!--                            <li><a href="#">About Us</a></li>-->
+<!--                            <li><a href="#">Services</a></li>-->
+<!--                            <li><a href="#">Why Gigi Motors</a></li>-->
+<!--                          </ul>-->
+<!--                        </div>-->
+<!--                        <div class="mega-submenu">-->
+<!--                          <h5>Other Services</h5>-->
+<!--                          <ul-->
+<!--                            style="border-top: 2px solid #fff;margin-right: 2%;margin-left:2%;"-->
+<!--                          >-->
+<!--                            <li><a href="#">Trade In</a></li>-->
+<!--                            <li><a href="#">Finance</a></li>-->
+<!--                            <li><a href="#">Insurance</a></li>-->
+<!--                            <li><a href="#">Partners</a></li>-->
+<!--                          </ul>-->
+<!--                        </div>-->
+<!--                        <div class="mega-submenu">-->
+<!--                          <h5>More</h5>-->
+<!--                          <ul-->
+<!--                            style="border-top: 2px solid #fff;margin-right: 2%;"-->
+<!--                          >-->
+<!--                            <li>-->
+<!--                              <a href="{{ url_for('home.contact') }}"-->
+<!--                                >Contact Us</a-->
+<!--                              >-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                              <a-->
+<!--                                href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"-->
+<!--                                target="_blank"-->
+<!--                                >Find Us</a-->
+<!--                              >-->
+<!--                            </li>-->
+<!--                            <li><a href="#">FAQs</a></li>-->
+<!--                          </ul>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </li>-->
                   </ul>
                 </nav>
 
@@ -255,7 +259,7 @@ We have been dedicated to providing our clients both private and corporate with 
               </div>
               <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                 <div class="widget">
-                  <h5 class="widget-title">Shop</h5>
+                  <h5 class="widget-title">Browse</h5>
                   <ul class="info-links">
                     <li><a href="{{ url_for('home.inventory') }}">View Inventory</a></li>
                     <li><a href="#">New Stock</a></li>
@@ -266,10 +270,10 @@ We have been dedicated to providing our clients both private and corporate with 
               </div>
               <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                 <div class="widget">
-                  <h5 class="widget-title">Sell</h5>
+                  <h5 class="widget-title">Advice</h5>
                   <ul class="info-links">
-                    <li><a href="#">Schedule an Appraisal</a></li>
-                    <li><a href="#">Car Valuations</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Guides</a></li>
                   </ul>
                 </div>
               </div>
@@ -281,23 +285,23 @@ We have been dedicated to providing our clients both private and corporate with 
                       <a
                         href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"
                         target="_blank"
-                        > Head Office: Hurlingham between Chaka Place and Nairobi Women's Hospital, Argwings Kodhek Road, Nairobi, Kenya</a
+                        > Hurlingham, Near Four Points by Sheraton Hotel, Argwings Kodhek Road, Nairobi.</a
                       >
                     </li>
-                    <li>
+                    <li style="margin-top: 7%;">
                       <a
                         href="https://goo.gl/maps/wnEMPBVSiBwUUKJ6A"
                         target="_blank"
-                        >Thika Road Mall</a
+                        >Thika Road Mall, 2ND Floor, Next to Housing Finance.</a
                       >
                     </li>
                   </ul>
                   <ul class="social-icons s-i" style="padding-top: 10px;">
 
-                    <li style="font-size: 21px;"><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li style="font-size: 21px;"><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li style="font-size: 21px;"><a href="https://www.facebook.com/GigiMotorsKenya"><i class="icon-facebook"></i></a></li>
+                    <li style="font-size: 21px;"><a href="https://twitter.com/gigimotors"><i class="icon-twitter"></i></a></li>
                     <li style="font-size: 21px;"><a href="#"><i class="icon-youtube-play"></i></a></li>
-                    <li style="font-size: 21px;"><a href="#"><i class="icon-instagram-5"></i></a></li>
+                    <li style="font-size: 21px;"><a href="https://www.instagram.com/gigimotors_ke/"><i class="icon-instagram-5"></i></a></li>
 
                   </ul>
                 </div>
@@ -310,7 +314,7 @@ We have been dedicated to providing our clients both private and corporate with 
         <div class="copyright-section">
           <div class="container">
             <div class="copyright align-center">
-              Copyright Gigi © 2019. All Rights Reserved.
+               Copyright Gigi Motors Limited © 2019. All Rights Reserved. Designed by Simply Vivid Media
             </div>
           </div>
         </div>
