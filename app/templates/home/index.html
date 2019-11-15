@@ -586,6 +586,12 @@
       };
       dropdown.model.attr('disabled', 'disabled');
       dropdown.model.empty();
+      dropdown.model.append(
+          $('<option>', {
+              value: '',
+              text: '--All models--'
+          })
+      );
       $.getJSON("{{ url_for('admin._get_model') }}", send, function(data) {
           data.forEach(function(item) {
               dropdown.model.append(
