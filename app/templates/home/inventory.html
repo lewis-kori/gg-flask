@@ -3,13 +3,39 @@
 {{ super() }}
   <style>
   #content{border-top: 1px solid #ccc;}
+  .breadcrumbs > li:not(:first-child):before {
+    color: #000;
+}
+.breadcrumbs-wrap {
+    padding: 35px 0;
+}
+.breadcrumbs-wrap .breadcrumbs > li > a{
+    color:  #31353c;;
+}
+.breadcrumbs-wrap .breadcrumbs > li > a:hover{
+    color: #da1919;
+    border-color: #000;
+}
   </style>
 {% endblock %}
 {% block content %}
 
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
-    <div id="content" class="page-content-wrap">
+    <div id="content" class="page-content-wrap" style="padding-top: 0px;">
+      <div class="breadcrumbs-wrap">
+
+        <div class="container">
+          <ul class="breadcrumbs" style="color: #31353c;">
+
+            <li style="color: #31353c;"><a href="{{ url_for('home.index') }}">Home</a></li>
+            <li style="color: #31353c;">Buy a Car</li>
+
+          </ul>
+
+        </div>
+
+      </div>
 
 
       <div class="container">
@@ -34,7 +60,7 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title active">Year</h6>
+                  <h6 class="a-title">Year</h6>
                   <div class="a-content">
 
                     {% for year in years %}
@@ -53,7 +79,7 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title">Make</h6>
+                  <h6 class="a-title active">Make</h6>
                   <div class="a-content">
                     {% for make in makes %}
                     <div class="input-wrapper">
