@@ -633,10 +633,12 @@
               );
           });
           dropdown.model.removeAttr('disabled');
+
       });
   }
-  dropdown.make.on('change', function() {
+  dropdown.make.change(function() {
       updateModel();
+
   });
 });
 </script>
