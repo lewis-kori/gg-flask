@@ -20,7 +20,7 @@ def index():
     fuel = [(row.id, row.type) for row in Fuel.query.all()]
     year_to = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
     year_from = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
-    make.insert(0, (0, "Make"))
+    make.insert(0, (0, "--All Makes--"))
     year_from.insert(0, (0, "Year from"))
     year_to.insert(0, (0, "Year to"))
     model.insert(0, (0, "Model"))
@@ -37,7 +37,7 @@ def index():
         all_vehicles=all_vehicles,
         featured_vehicles=featured_vehicles,
         form=form,
-        car_makes=Make.query.all()
+        car_makes=Make.query.all(),
     )
 
 
@@ -174,7 +174,11 @@ def view_car(id):
 
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
-    more_vehicles = Vehicle.query.filter_by(make_id=vehicle.make_id).order_by(Vehicle.createdAt.desc()).limit(3)
+    more_vehicles = (
+        Vehicle.query.filter_by(make_id=vehicle.make_id)
+        .order_by(Vehicle.createdAt.desc())
+        .limit(3)
+    )
     car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
     return render_template(
         "home/single_car_view.html",
