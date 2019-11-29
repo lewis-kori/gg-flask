@@ -1,0 +1,359 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Suppliers</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Suppliers</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.suppliers') }}">ADD SUPPLIERS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-shadow mb-4">
+                <div class="card-header border-0">
+                    <div class="custom-title-wrap bar-primary">
+                        <div class="custom-title">Suppliers</div>
+                        <a href="#" class="btn btn-primary rounded pull-right" data-toggle="modal" data-target="#add_supplier"><i class="fa fa-plus"></i> Add Supplier</a>
+                    </div>
+                </div>
+                <div class="card-body- pt-3 pb-4">
+                    <div class="table-responsive">
+                        <div class="table-responsive" id="table-row">
+                            <table id="data_table" class="table table-bordered table-striped" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Supplier ID</th>
+                                    <th>Supplier Type</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Action</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for supplier in suppliers %}
+                                <tr id="del{{ supplier.id }}">
+                                    <td>
+                                        <h2><a
+                                               href="{{ url_for('admin.view_supplier', id=supplier.id) }}">{{
+                                            supplier.supplier_name }}</a></h2>
+                                    </td>
+                                    <td>{{ supplier.id }}</td>
+                                    <td>{{ supplier.supplier_type }}</td>
+                                    <td>{{ supplier.email}}</td>
+                                    <td>{{ supplier.phone_number }}</td>
+                                    <td>{{ supplier.location }}</td>
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                               aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="#" onclick="edit_supplier('{{ supplier.id }}')" data-toggle="modal"
+                                                       data-target="#edit_supplier"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
+                                                <li><a href="#"
+                                                       onclick="delete_row('{{ supplier.id }}','Supplier', '#del{{ supplier.id }}')"><i
+                                                        class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+                                                <li><a href="{{ url_for('admin.view_supplier', id=supplier.id) }}"><i
+                                                        class="fa fa-eye m-r-5"></i> View</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="add_supplier" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Supplier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-b-30">
+                    <form class="add_form" method="post" action="">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Supplier Name <span
+                                            class="text-danger">*</span></label>
+                                    {{ form.supplier_name(class="form-control") }}
+                                    {% for error in form.supplier_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Supplier Type <span
+                                            class="text-danger">*</span></label>
+                                    {{ form.supplier_type(class="form-control") }}
+                                    {% for error in form.supplier_type.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number</label>
+                                    {{ form.phone_number(class="form-control") }}
+                                    {% for error in form.phone_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    {{ form.email(class="form-control") }}
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Location</label>
+                                    {{ form.location(class="form-control") }}
+                                    {% for error in form.location.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    {{ form.bank_name(class="form-control") }}
+                                    {% for error in form.bank_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Country</label>
+                                    {{ form.bank_country(class="form-control") }}
+                                    {% for error in form.bank_country.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Address</label>
+                                    {{ form.bank_address(class="form-control") }}
+                                    {% for error in form.bank_address.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    {{ form.account_number(class="form-control") }}
+                                    {% for error in form.account_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-t-20 text-center">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit_supplier" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Supplier</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-b-30">
+                    <form id="edit-form" class="add_form" method="post" action="/edit_supplier">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Supplier Name <span
+                                            class="text-danger">*</span></label>
+                                    {{ form.supplier_name(class="form-control") }}
+                                    {% for error in form.supplier_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Supplier Type <span
+                                            class="text-danger">*</span></label>
+                                    {{ form.supplier_type(class="form-control") }}
+                                    {% for error in form.supplier_type.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number</label>
+                                    {{ form.phone_number(class="form-control") }}
+                                    {% for error in form.phone_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    {{ form.email(class="form-control") }}
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Location</label>
+                                    {{ form.location(class="form-control") }}
+                                    {% for error in form.location.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    {{ form.bank_name(class="form-control") }}
+                                    {% for error in form.bank_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Country</label>
+                                    {{ form.bank_country(class="form-control") }}
+                                    {% for error in form.bank_country.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bank Address</label>
+                                    {{ form.bank_address(class="form-control") }}
+                                    {% for error in form.bank_address.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    {{ form.account_number(class="form-control") }}
+                                    {% for error in form.account_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-t-20 text-center">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+  function edit_supplier(id) {
+		$.ajax({
+	          type 		: 'GET',
+	          url 		: '/admin/edit_supplier/'+id,
+	          dataType 	: 'json',
+	          encode 		: true
+	        }).done(function(response) {
+							if(response['status'] == 1)
+										$("#edit-form").attr("action", "/admin/edit_supplier/" + id);
+										$('input[name="supplier_name"]').val(response.data.supplier_name)
+	                  $('input[name="phone_number"]').val(response.data.phone_number)
+										$('input[name="supplier_type"]').val(response.data.supplier_type)
+										$('input[name="email"]').val(response.data.email)
+										$('input[name="location"]').val(response.data.location)
+										$('input[name="bank_name"]').val(response.data.bank_name)
+										$('input[name="bank_country"]').val(response.data.bank_country)
+										$('input[name="bank_address"]').val(response.data.bank_address)
+										$('input[name="account_number"]').val(response.data.account_number)
+		}).fail(function() {
+			alertify.error('Error: Could not contact server.');
+		});
+
+      }
+
+
+</script>
+{% endblock %}

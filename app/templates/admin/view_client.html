@@ -1,0 +1,179 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Clients</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Clients</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.clients') }}">ADD CLIENTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+<div class="content container-fluid">
+    <div class="row">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-4 col-md-6 profile-info-position">
+                    <div class="card card-shadow mb-4 ">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="mt-4 mb-3">
+                                    <img class="rounded-circle" src="assets/img/avatar/avatar-large3.jpg" width="85"
+                                         alt=""/>
+                                </div>
+                                <h5 class="text-uppercase mb-0">{{ client.client_name }}</h5>
+                                <p class="text-muted mb-0">{{ client.client_type }} </p>
+                                <div class="rattings mb-4">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star-o text-warning"></i>
+                                </div>
+                                <div class="profile-social-link mb-4">
+                                    <a href="#" class="mx-2"><i class="fa fa-facebook-square"></i></a>
+                                    <a href="#" class="mx-2"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="mx-2"><i class="fa fa-youtube"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-8 col-md-6 profile-info-position">
+                    <div class="card card-shadow mb-4">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-danger">
+                                <div class="custom-title">Details</div>
+                            </div>
+                            <div class="progress mt-4" style="height: 5px;">
+                                <div class="progress-bar bg-purple-light" role="progressbar" style="width: 60%;"
+                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="float-left f12 text-muted">Total 7250</span>
+                                <span class="float-right f12 text-muted">1250 Left</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="card-body">
+                            <div class="row f12 mb-3">
+                                <div class="col-6">Phone Number</div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">{{ client.phone_number }}</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row f12 mb-3">
+                                <div class="col-6">Email</div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">{{ client.email }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row f12 mb-3">
+                                <div class="col-6">Address</div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">{{ client.location }}</div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <a href="#" class="btn btn-sm btn-pill btn-outline-primary">View All</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-shadow mb-4">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-success">
+                                <div class="custom-title">More</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="media text-muted mb-3">
+                                <img class="rounded mr-3" src="
+                                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                                       "
+                                     srcset="{{ url_for('static', filename='images/toyota.jpeg')}}
+                                       " width="80" alt=""/>
+                                <p class="media-body pb-3 mb-0">
+                                    <a href="#" class="d-block text-secondary"><strong class="">Car 1</strong></a>
+                                    Donec id elit non mi porta gravida at eget metus.
+                                </p>
+                            </div>
+                            <div class="media text-muted">
+                                <img class="rounded mr-3" src="
+                                            {{ url_for('static', filename='images/toyota.jpeg')}}
+                                      "
+                                     srcset="{{ url_for('static', filename='images/toyota.jpeg')}}"
+                                     width="80" alt=""/>
+                                <p class="media-body pb-3 mb-0">
+                                    <a href="#" class="d-block text-secondary"><strong class="">Car 2</strong></a>
+                                    Donec id elit non mi porta gravida at eget metus.
+                                </p>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="#" class="btn btn-sm btn-pill btn-outline-success">View All</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+

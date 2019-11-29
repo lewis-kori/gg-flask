@@ -64,7 +64,6 @@ class User(UserMixin, db.Model):
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
-    payment = db.relationship('Payment', backref='user')
     publisher = db.relationship('Publisher', backref='user', uselist=False, cascade='all,delete-orphan')
     reviews = db.relationship('Review', foreign_keys='Review.user_id', backref='user', lazy='dynamic')
     pub_reviews = db.relationship('Review', foreign_keys='Review.publisher_id', backref='publisher', lazy='dynamic')

@@ -16,12 +16,10 @@
 {% macro header_items(current_user, dropdown) %}
     {% set endpoints = [
       ('admin.vehicles', 'Inventory', ''),
-      ('admin.admin_settings', 'Sold', ''),
-      ('admin.admin_settings', 'Reserved', ''),
-      ('admin.admin_settings', 'Bazaar', ''),
-      ('admin.admin_settings', 'Clients', ''),
-      ('admin.admin_settings', 'Suppliers', ''),
-      ('admin.admin_settings', 'Enquiries', ''),
+      ('admin.bazaar', 'Bazaar', ''),
+      ('admin.clients', 'Clients', ''),
+      ('admin.suppliers', 'Suppliers', ''),
+      ('admin.enquiry', 'Enquiries', ''),
       ('account.logout', 'Logout', '')
 
     ]%}

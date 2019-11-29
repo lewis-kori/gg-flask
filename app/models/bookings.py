@@ -17,7 +17,6 @@ class Booking(db.Model):
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     # primary keys
     offers = db.relationship('Offer', backref='booking')
-    payments = db.relationship('Payment', backref='booking')
     orders = db.relationship('Order', backref='booking', uselist=False)
 
     def get_time(self):

@@ -17,7 +17,6 @@ from .roles import *
 from .notifications import *
 from .publisher import *
 from .customer import *
-from .payments import *
 from .activities import *
 from .places import *
 from .day import *
@@ -31,3 +30,15 @@ from .transmission import *
 from .fuel import *
 from .seller_vehicle import *
 from .import_vehicle import *
+from .bill import *
+from .invoice import *
+from .payment import *
+from .product import *
+from .product import *
+from .quotation import *
+from .trade_in import *
+from .bazaar import *
+from .client import *
+from .enquiry import *
+from .supplier import *
+

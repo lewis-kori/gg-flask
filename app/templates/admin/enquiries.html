@@ -1,0 +1,123 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Clients</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Clients</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.enquiry') }}">ENQUIRIES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-shadow mb-4">
+                <div class="card-header border-0">
+                    <div class="custom-title-wrap bar-primary">
+                        <div class="custom-title">Enquiries</div>
+                        <a href="{{ url_for('admin.create_enquiry') }}" class="btn btn-primary rounded pull-right"><i
+                                class="fa fa-plus"></i>
+                            Create New Enquiry
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body- pt-3 pb-4">
+                <div class="table-responsive">
+                    <div class="table-responsive" id="table-row">
+                        <table id="data_table" class="table table-bordered table-striped" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>user</th>
+                                <th>client name</th>
+                                <th>client email</th>
+                                <th>make</th>
+                                <th>model</th>
+                                <th>year</th>
+                                <th>Budget</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tab">
+                            {% for enquiry in enquiries %}
+
+                            <tr id='del{{ enquiry.id }}'>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ enquiry.author.email }}</td>
+                                <td>{{ enquiry.client.client_name }}</td>
+                                <td>{{ enquiry.client.email }}</td>
+                                <td>{{ enquiry.vehicle.make }}</td>
+                                <td>{{ enquiry.vehicle.model }}</td>
+                                <td>{{ enquiry.year }}</td>
+                                <td>{{ "%.2f"|format(enquiry.budget) }}</td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                           aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                        <ul class="dropdown-menu pull-right">
+                                            {% if current_user.role.permissions.write_inventory == True %}
+                                            <li><a href="{{ url_for('admin.edit_enquiry', id=enquiry.id) }}"><i
+                                                    class="fa fa-pencil m-r-5"></i> Edit</a></li>
+                                            {% endif %}
+                                            {% if current_user.role.permissions.delete_inventory == True %}
+                                            <li><a href="#"
+                                                   onclick="delete_row('{{ enquiry.id }}','Enquiry', '#del{{ enquiry.id }}')"><i
+                                                    class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

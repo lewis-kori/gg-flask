@@ -1,0 +1,282 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Clients</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Clients</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.clients') }}">ADD CLIENTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-sm-4 col-xs-3">
+            <h4 class="page-title">Clients</h4>
+        </div>
+        <div class="col-sm-8 col-xs-9 text-right m-b-20">
+            <a href="#" class="btn btn-primary rounded pull-right" data-toggle="modal" data-target="#add_client"><i
+                class="fa fa-plus"></i> Add Client</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="data_table" class="table table-bordered table-striped" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Client ID</th>
+                        <th>Client Type</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Action</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                    <tr id="del{{ client.id }}">
+                        <td>
+
+                            <h2><a
+                                   href="{{ url_for('admin.view_client', id=client.id) }}" >{{
+                                client.client_name }}</a></h2>
+                        </td>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.client_type }}</td>
+                        <td>{{ client.email}}</td>
+                        <td>{{ client.phone_number }}</td>
+                        <td>{{ client.location }}</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                   aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                <ul class="dropdown-menu pull-right">
+                                    {% if current_user.role.permissions.write_inventory == True %}
+                                    <li><a href="#" onclick="edit_client('{{ client.id }}')" data-toggle="modal"
+                                           data-target="#edit_client"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
+                                    {%endif%}
+                                    {% if current_user.role.permissions.read_inventory == True %}
+                                    <li><a href="{{ url_for('admin.view_client', id=client.id) }}"><i
+                                            class="fa fa-eye m-r-5"></i> View</a></li>
+                                    {% endif %}
+                                    {% if current_user.role.permissions.delete_inventory == True %}
+                                    <li><a href="#"
+                                           onclick="delete_row('{{ client.id }}','Client', '#del{{ client.id }}')"><i
+                                            class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+                                    {%endif%}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add_client" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Client</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-b-30">
+                    <form class="add_form" method="post" action="" novalidate>
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Client Name <span class="text-danger">*</span></label>
+                                    {{ form.client_name(class="form-control") }}
+                                    {% for error in form.client_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Client Type <span class="text-danger">*</span></label>
+                                    {{ form.client_type(class="form-control") }}
+                                    {% for error in form.client_type.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number</label>
+                                    {{ form.phone_number(class="form-control") }}
+                                    {% for error in form.phone_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    {{ form.email(class="form-control") }}
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Location</label>
+                                    {{ form.location(class="form-control") }}
+                                    {% for error in form.location.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-t-20 text-center">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit_client" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Client</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-b-30">
+                    <form id="edit-form" class="add_form" method="post" action="/edit_client" novalidate>
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Client Name <span class="text-danger">*</span></label>
+                                    {{ form.client_name(class="form-control") }}
+                                    {% for error in form.client_name.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Client Type <span class="text-danger">*</span></label>
+                                    {{ form.client_type(class="form-control") }}
+                                    {% for error in form.client_type.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number</label>
+                                    {{ form.phone_number(class="form-control") }}
+                                    {% for error in form.phone_number.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    {{ form.email(class="form-control") }}
+                                    {% for error in form.email.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Location</label>
+                                    {{ form.location(class="form-control") }}
+                                    {% for error in form.location.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-t-20 text-center">
+                            {{ form.submit(class="btn btn-primary") }}
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script>
+  function edit_client(id) {
+		$.ajax({
+	          type 		: 'GET',
+	          url 		: '/admin/edit_client/'+id,
+	          dataType 	: 'json',
+	          encode 		: true
+	        }).done(function(response) {
+							if(response['status'] == 1)
+										$("#edit-form").attr("action", "/admin/edit_client/" + id);
+										$('input[name="client_name"]').val(response.data.client_name)
+	                  $('input[name="phone_number"]').val(response.data.phone_number)
+										$('input[name="client_type"]').val(response.data.client_type)
+										$('input[name="email"]').val(response.data.email)
+										$('input[name="location"]').val(response.data.location)
+		}).fail(function() {
+			alertify.error('Error: Could not contact server.');
+		});
+
+      }
+
+
+</script>
+{% endblock %}

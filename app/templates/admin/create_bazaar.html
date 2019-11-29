@@ -1,0 +1,117 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="content container-fluid">
+    <!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Create Bazaar</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url_for('admin.bazaar') }}">Bazaar</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.bazaar') }}">Back To Bazaar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.create_bazaar') }}">ADD NEW</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" action="">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Bazaar name</label>
+                            {{ form.name(class="form-control") }}
+                            {% for error in form.name.errors %}
+                            <span class="text-danger">
+                      <strong>{{ error }}</strong>
+                    </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Location</label>
+                            {{ form.location(class="form-control") }}
+                            {% for error in form.location.errors %}
+                            <span class="text-danger">
+                      <strong>{{ error }}</strong>
+                    </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            {{ form.phone(class="form-control") }}
+                            {% for error in form.phone.errors %}
+                            <span class="text-danger">
+                      <strong>{{ error }}</strong>
+                    </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Color</label>
+                            {{ form.color(class="form-control") }}
+                            {% for error in form.color.errors %}
+                            <span class="text-danger">
+                      <strong>{{ error }}</strong>
+                    </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

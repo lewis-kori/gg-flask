@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from .. import db
+from collections import OrderedDict
+from flask import current_app, url_for
 
 features_association = db.Table(
     "features_association",
@@ -43,6 +45,9 @@ class Vehicle(db.Model):
     features = db.relationship(
         "Feature", secondary=features_association, backref="vehicle"
     )
+    bazaar_id = db.Column(db.Integer, db.ForeignKey('bazaars.id'), nullable=True)
+    imports = db.relationship('Import', backref='vehicle', lazy='dynamic')
+    enquiries = db.relationship('Enquiry', backref='vehicle', lazy='dynamic')
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     createdAt = db.Column(db.DateTime(), default=datetime.utcnow)
     updatedAt = db.Column(
