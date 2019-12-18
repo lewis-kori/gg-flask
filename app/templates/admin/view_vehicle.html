@@ -64,7 +64,7 @@
                     <div class="text-center">
                         <div class="mt-4 mb-3">
                             <img style="width:100%;" src="{% if vehicle.image_url %}
-                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url))}}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url)) }}
                                        {% else %}
                                             {{ url_for('static', filename='images/toyota.jpeg')}}
                                        {% endif %}" alt=""/>

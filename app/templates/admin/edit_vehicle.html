@@ -390,6 +390,7 @@
 </script>
 <script>
 $( document ).ready(function() {
+
     var myDropzone = new Dropzone("div#front_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone2 = new Dropzone("div#back_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone3 = new Dropzone("div#left_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
@@ -398,14 +399,43 @@ $( document ).ready(function() {
     var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone7 = new Dropzone("div#extra.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
 
+
    myDropzone.on("addedfile", function(file) {
        $('#front_image_field').val(file.name)
-       console.log(file.name);
-      });
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#front_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
+        console.log(file.name);
+   });
 
 
    myDropzone2.on("addedfile", function(file) {
        $('#back_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone2;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#back_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
        console.log(file.name);
       });
    myDropzone3.on("addedfile", function(file) {

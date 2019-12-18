@@ -18,7 +18,11 @@
 <script src="{{ url_for('static', filename='vendor/dropzone/dropzone.js') }}"></script>
 <!--init dropzone-->
 <script src="{{ url_for('static', filename='vendor/js-init/init-dropzone.js') }}"></script>
-
+<style>
+    .btn-danger{
+        margin: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -390,7 +394,7 @@
 </script>
 <script>
 $( document ).ready(function() {
-    var myDropzone = new Dropzone("div#front_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
+    var c = new Dropzone("div#front_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone2 = new Dropzone("div#back_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone3 = new Dropzone("div#left_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone4 = new Dropzone("div#right_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
@@ -398,24 +402,108 @@ $( document ).ready(function() {
     var myDropzone6 = new Dropzone("div#interior_image.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
     var myDropzone7 = new Dropzone("div#extra.mb-4", { url: "{{ url_for('admin.upload') }}", headers: { 'X-CSRFToken': '{{csrf_token()}}' } });
 
-    myDropzone.on("addedfile", function(file) {
-       $('#front_image_field').val(file.name)
+    c.on("addedfile", function(file) {
+        $('#front_image_field').val(file.name)
+        var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
 
+        var _this = c;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#front_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
+
     myDropzone2.on("addedfile", function(file) {
        $('#back_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone2;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#back_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
     myDropzone3.on("addedfile", function(file) {
        $('#left_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone3;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#left_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
     myDropzone4.on("addedfile", function(file) {
        $('#right_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone4;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#right_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
     myDropzone5.on("addedfile", function(file) {
        $('#dash_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone5;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#dash_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
     myDropzone6.on("addedfile", function(file) {
        $('#interior_image_field').val(file.name)
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone6;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#interior_image_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
     myDropzone7.on("addedfile", function(file) {
        var old = $('#extra_field').val().split(',')
@@ -424,13 +512,29 @@ $( document ).ready(function() {
 
        $('#extra_field').val(newArray.toString())
 
+       var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
+
+        var _this = myDropzone7;
+
+        removeButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          _this.removeFile(file);
+
+          $('#extra_field').val("")
+        });
+
+        file.previewElement.appendChild(removeButton);
+
     });
 
-    Dropzone.options.myDropzone = {
+
+    Dropzone.options.c = {
         init: function() {
           this.on("addedfile", function(file) {
 
-            var removeButton = Dropzone.createElement("<button>Remove file</button>");
+            var removeButton = Dropzone.createElement("<button class='btn btn-danger btn-pill btn-sm'>Remove file</button>");
 
             var _this = this;
 

@@ -883,3 +883,9 @@ def delete():
     db.session.delete(table)
     db.session.commit()
     return jsonify({'status': 1})
+
+
+@admin.route('/delete_carpic', methods=['GET', 'POST'])
+@login_required
+def delete_carpic():
+    return
