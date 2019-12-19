@@ -23,6 +23,9 @@
     display: block;
     padding-top: 10px;
     }
+[class*="btn"].btn-style-3 {
+    background: #ed1c24 !important;
+    }
 </style>
 {% endblock %}
 {% block content %}
@@ -61,33 +64,41 @@
                 <div class="row">
 
                     <div class="col-md-12 col-sm-12">
-                        <form id="contact-form" class="contact-form">
+                        {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                        <div class="alert alert-error">
+                            <strong>Error!</strong> {{error}}:{{field}}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+                        <form class="contact-form style-2" method="post" action="">
+                            {{ form.hidden_tag() }}
 
                             <div class="row">
                                 <div class="col-sm-12">
 
                                     <label class="required">Your Name</label>
-                                    <input type="text" name="cf-name">
+                                    {{ form.name(class='') }}
                                 </div>
                                 <div class="col-sm-12">
                                     <label class="required">Your email</label>
-                                    <input type="text" name="cf-email">
+                                    {{ form.email(class='') }}
 
                                 </div>
                                 <div class="col-sm-12">
 
                                     <label class="required">Phone number</label>
-                                    <input type="text" name="phone">
+                                    {{ form.phone_number(class='') }}
                                 </div>
                                 <div class="col-sm-12">
                                     <label class="required">Subject</label>
-                                    <input type="text" name="phone">
+                                    {{ form.subject(class='') }}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label>Message</label>
-                                    <textarea name="cf-message" rows="5"></textarea>
+                                    {{ form.message(class='', rows=5) }}
 
 
                                 </div>
@@ -95,8 +106,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
 
-
-                                    <button type="submit" class="btn btn-style-3" data-type="submit">Send Message</button>
+                                    {{ form.submit(class="btn btn-style-3") }}
 
                                 </div>
                             </div>
@@ -138,32 +148,32 @@
                                                     <span class="contact-desc">
                                                 Head Office: Hurlingham between Chaka Place and Nairobi Women's Hospital,
                                                         Argwings Kodhek Road, Nairobi, Kenya</span>
-                                                    <span class="contact-desc">
+                                                <span class="contact-desc">
                                                 Thika Road, Thika Road Mall (TRM), Second Floor, Nairobi</span>
-                                                </div>
                                             </div>
-                                            <div class="col-md-1">
-                                                <div class="contact-item bh">
-                                                    <h6 class="contact-title"><i class="licon-telephone"></i></h6>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="contact-item bh">
+                                                <h6 class="contact-title"><i class="licon-telephone"></i></h6>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="contact-item">
-                                                    <span class="contact-desc"> 0726 310 490 - Hurlingham</span>
-                                                    <span class="contact-desc"> 0758 949 232 - Thika Road</span>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="contact-item">
+                                                <span class="contact-desc"> 0726 310 490 - Hurlingham</span>
+                                                <span class="contact-desc"> 0758 949 232 - Thika Road</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 {% endblock %}

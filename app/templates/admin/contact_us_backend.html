@@ -1,0 +1,100 @@
+{% extends 'layouts/admin_base.html' %}
+
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Contact Us Questions</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Contact Us Questions</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.importers_vehicles') }}">CONTACT US</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive" id="alert">
+            <table id="newtab" class="table table-striped custom-table datatable">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th class="text-right">Action</th>
+                </tr>
+                </thead>
+                <tbody id="tab">
+                {% for question in all_questions %}
+
+                <tr id='del{{ question.id }}'>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="#">{{ question.name }}</a></td>
+                    <td>{{ question.phone_number }}</td>
+                    <td>{{ question.email }}</td>
+                    <td>{{ question.subject }}</td>
+                    <td>{{ question.message }}</td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="#"><i
+                                        class="fa fa-pencil m-r-5"></i> Edit</a></li>
+                                <li><a href="#"><i
+                                        class="fa fa-eye m-r-5"></i> View</a></li>
+                                <li><a href="#"
+                                       onclick="delete_row('{{ question.id }}','Question', '#del{{ question.id }}')"><i
+                                        class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

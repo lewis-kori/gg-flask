@@ -41,4 +41,4 @@ from .bazaar import *
 from .client import *
 from .enquiry import *
 from .supplier import *
-
+from .contact import *

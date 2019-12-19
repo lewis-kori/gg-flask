@@ -11,69 +11,73 @@
     box-shadow: 0 2px 8px 0 rgba(5,7,15,.1);
     padding: 2rem 2rem;
     }
+[class*="btn"].btn-style-3 {
+    background: #ed1c24 !important;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
 
-    <div id="content">
+<div id="content">
 
-      <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-      <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
+    <div class="breadcrumbs-wrap" data-bg="{{ url_for('static', filename='home/images/1920x200_img1.jpg') }}">
 
         <div class="container">
 
-          <h1 class="page-title">Sell Your Vehicle</h1>
+            <h1 class="page-title">Sell Your Vehicle</h1>
 
-          <ul class="breadcrumbs">
+            <ul class="breadcrumbs">
 
-            <li><a href="{{ url_for('home.index') }}">Home</a></li>
-            <li>Sell Your Vehicle</li>
+                <li><a href="{{ url_for('home.index') }}">Home</a></li>
+                <li>Sell Your Vehicle</li>
 
-          </ul>
+            </ul>
 
         </div>
 
-      </div>
+    </div>
 
-      <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
 
-      <div class="page-section">
+    <div class="page-section">
 
         <div class="container">
 
-          <div class="content-element3 mario">
+            <div class="content-element3 mario">
 
-            <div class="row">
-              <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
 
-                <h4><b>Vehicle Information</b></h4>
-                <p>Turn your car into cash. We'll take care of the process. Kindly fill out the form below to help us help you.</p>
-                {% for field in form.errors %}
+                        <h4><b>Vehicle Information</b></h4>
+                        <p>Turn your car into cash. We'll take care of the process. Kindly fill out the form below to
+                            help us help you.</p>
+                        {% for field in form.errors %}
                         {% for error in form.errors[field] %}
                         <div class="alert alert-error">
                             <strong>Error!</strong> {{error}}:{{field}}
                         </div>
                         {% endfor %}
-                    {% endfor %}
-                <form class="contact-form style-2">
+                        {% endfor %}
+                        <form class="contact-form style-2" method="post" action="">
+                            {{ form.hidden_tag() }}
+                            <div class="content-element3">
 
-                  <div class="content-element3">
+                                <div class="row">
+                                    <div class="col-sm-6">
 
-                    <div class="row">
-                      <div class="col-sm-6">
+                                        <label class="required">Make</label>
+                                        <div class="auto-custom-select">
+                                            {{ form.make(class="", id="car-makes") }}
+                                        </div>
+                                        <label class="required">Plate</label>
+                                        {{ form.plate(class="") }}
 
-                        <label class="required">Make</label>
-                        <div class="auto-custom-select">
-                        {{ form.make(class="", id="car-makes") }}
-                        </div>
-                        <label class="required">Plate</label>
-                        {{ form.plate(class="") }}
-
-                        <label class="required tooltips">Price (KES)
-                          <span class="right-tooltip qustion-tooltip">
+                                        <label class="required tooltips">Price (KES)
+                                            <span class="right-tooltip qustion-tooltip">
                             <a href="javascript:;" class="qustion-icon"></a>
                             <span class="tooltip">
                               <span><b>What is the competitively priceof your vehicle?</b></span>
@@ -81,167 +85,170 @@
                               <span class="licon-cross-circle close-tooltip"></span>
                             </span>
                           </span>
-                        </label>
-                        {{ form.price(class="") }}
+                                        </label>
+                                        {{ form.price(class="") }}
 
-                      </div>
-                      <div class="col-sm-6">
+                                    </div>
+                                    <div class="col-sm-6">
 
-                        <label class="required">Model</label>
-                        <div class="auto-custom-select1">
-                          {{ form.model(class="auto-selected-option", id="car-models") }}
-                        </div>
+                                        <label class="required">Model</label>
+                                        <div class="auto-custom-select1">
+                                            {{ form.model(class="auto-selected-option", id="car-models") }}
+                                        </div>
 
-                        <label class="required">Year</label>
-                        {{ form.year(class="") }}
+                                        <label class="required">Year</label>
+                                        {{ form.year(class="") }}
 
 
+                                        <label class="required">Mileage</label>
+                                        {{ form.mileage(class="") }}
 
-                        <label class="required">Mileage</label>
-                        {{ form.mileage(class="") }}
+                                    </div>
+                                </div>
 
-                      </div>
+                            </div>
+
+                            <div class="content-element3">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+
+                                        <label class="tooltips">Color
+                                        </label>
+                                        {{ form.color(class="") }}
+
+                                        <label class="tooltips">Engine Size
+                                        </label>
+                                        {{ form.engine_size(class="") }}
+
+                                        <label>Fuel Type</label>
+                                        <div class="auto-custom-select">
+                                            {{ form.fuel_type(class="") }}
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <label>Condition</label>
+                                        {{ form.condition(class="") }}
+
+                                        <label class="tooltips">Transmission
+                                        </label>
+                                        <div class="auto-custom-select">
+                                            {{ form.transmission(class="") }}
+                                        </div>
+                                        <label>Interior</label>
+                                        {{ form.interior(class="") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="content-element3">
+
+                                <h5><b>Description</b></h5>
+                                <p>Write a description of your vehicle below to give us an accurate idea of the
+                                    condition of your vehicle</p>
+                                <textarea rows="5"></textarea>
+
+                            </div>
+
+                            <div class="content-element7">
+
+                                <h5><b>Contact Information</b></h5>
+                                <p>By submitting this form you will be scheduling a sales appointment at no obligation
+                                    and
+                                    will be contacted within 48 hours by a sales consultant <a href="#"
+                                                                                               class="link-text2"></a>.
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="required tooltips">Name
+                                        </label>
+                                        {{ form.seller_name(class='') }}
+
+
+                                        <label class="required">Email</label>
+                                        {{ form.seller_email(class="") }}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="required tooltips">Phone Number
+                                        </label>
+                                        {{ form.phone_number(class="") }}
+
+                                        <label class="required tooltips">Area
+                                        </label>
+                                        {{ form.area(class="") }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="align-right">
+                              {{ form.submit(class="btn btn-style-3") }}
+                            </div>
+
+                        </form>
+
                     </div>
 
-                  </div>
-
-                  <div class="content-element3">
-
-                    <div class="row">
-                      <div class="col-sm-6">
-
-                        <label class="tooltips">Color
-                        </label>
-                        {{ form.color(class="") }}
-
-                        <label class="tooltips">Engine Size
-                        </label>
-                       {{ form.engine_size(class="") }}
-
-                        <label>Fuel Type</label>
-                          <div class="auto-custom-select">
-                        {{ form.fuel_type(class="") }}
-                          </div>
-
-
-
-                      </div>
-                      <div class="col-sm-6">
-
-                        <label>Condition</label>
-                        {{ form.condition(class="") }}
-
-                        <label class="tooltips">Transmission
-                        </label>
-                          <div class="auto-custom-select">
-                        {{ form.transmission(class="") }}
-                          </div>
-                          <label>Interior</label>
-                        {{ form.interior(class="") }}
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="content-element3">
-
-                    <h5><b>Description</b></h5>
-                    <p>Write a description of your vehicle below to give us an accurate idea of the condition of your vehicle</p>
-                    <textarea rows="5"></textarea>
-
-                  </div>
-
-                  <div class="content-element7">
-
-                    <h5><b>Contact Information</b></h5>
-                    <p>By submitting this form you will be scheduling a sales appointment at no obligation and
-                      will be contacted within 48 hours by a sales consultant <a href="#" class="link-text2"></a>.</p>
-
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <label class="required tooltips">Name
-                        </label>
-                          {{ form.seller_name(class='') }}
-
-
-                        <label class="required">Email</label>
-                        {{ form.seller_email(class="") }}
-
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="required tooltips">Phone Number
-                        </label>
-                        {{ form.phone_number(class="") }}
-
-                        <label class="required tooltips">Area
-                        </label>
-                        {{ form.area(class="") }}
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="align-right">
-                    <a href="#" class="btn btn-style-3">Submit</a>
-                  </div>
-
-                </form>
-
-              </div>
+                </div>
 
             </div>
 
-          </div>
+            <div class="content-element2 mario">
 
-          <div class="content-element2 mario">
+                <div class="row">
+                    <div class="col-sm-12">
 
-              <div class="row">
-                <div class="col-sm-12">
+                        <h3><b>What We'll Need</b></h3>
+                        <div class="accordion">
 
-                  <h3><b>What We'll Need</b></h3>
-                  <div class="accordion">
+                            <!--accordion item-->
+                            <div class="accordion-item">
+                                <h6 class="a-title active">Log Book</h6>
+                                <div class="a-content">
+                                    <p>A copy of your logbook to confirm ownership.
+                                    </p>
+                                </div>
+                            </div>
 
-                    <!--accordion item-->
-                    <div class="accordion-item">
-                      <h6 class="a-title active">Log Book</h6>
-                      <div class="a-content">
-                        <p>A copy of your logbook to confirm ownership.
-                        </p>
-                      </div>
+                            <!--accordion item-->
+                            <div class="accordion-item">
+                                <h6 class="a-title">National Identity Card or Passport</h6>
+                                <div class="a-content">
+                                    <p>A copy of your National Identity Card or Passport to verify documentation.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!--accordion item-->
+                            <div class="accordion-item">
+                                <h6 class="a-title">Original keys and Remotes</h6>
+                                <div class="a-content">
+                                    <p>If the original keys and remotes are missing, the valuation on your vehicle may
+                                        need to be adjusted.
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-
-                    <!--accordion item-->
-                    <div class="accordion-item">
-                      <h6 class="a-title">National Identity Card or Passport</h6>
-                      <div class="a-content">
-                        <p>A copy of your National Identity Card or Passport to verify documentation.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!--accordion item-->
-                    <div class="accordion-item">
-                      <h6 class="a-title">Original keys and Remotes</h6>
-                      <div class="a-content">
-                        <p>If the original keys and remotes are missing, the valuation on your vehicle may need to be adjusted.
-                        </p>
-
-                      </div>
-                    </div>
-
-                  </div>
-
                 </div>
-              </div>
-          </div>
+            </div>
 
         </div>
 
-      </div>
-
     </div>
 
-    <!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+</div>
+
+<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
 {% endblock %}
 
 {% block scripts %}
@@ -277,5 +284,6 @@
       updateModel();
   });
 });
+
 </script>
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, jsonify
+from flask import Blueprint, render_template, redirect, url_for, jsonify, flash
 from flask_login import current_user, login_required
 from datetime import datetime, date
 from app.models import *
@@ -188,9 +188,22 @@ def view_car(id):
     )
 
 
-@home.route("/contact_us")
+@home.route("/contact_us", methods=["GET", "POST"])
 def contact():
-    return render_template("home/contact_us.html")
+    form = ContactForm()
+
+    if form.validate_on_submit():
+        new_contact = Contact(
+            name=form.name.data,
+            phone_number=form.phone_number.data,
+            message=form.message.data,
+            subject=form.subject.data,
+            email=form.email.data,
+        )
+        db.session.add(new_contact)
+        db.session.commit()
+        return redirect(url_for("home.index"))
+    return render_template("home/contact_us.html", form=form)
 
 
 @home.route("/blog")
@@ -256,7 +269,8 @@ def sell_vehicle():
         )
         db.session.add(new_vehicle)
         db.session.commit()
-        return redirect(url_for("home.index"))
+        flash("Your trade in request has been saved.", "green")
+        return redirect(url_for("home.sell_vehicle"))
     return render_template("home/sell_vehicle.html", form=form)
 
 
@@ -276,7 +290,7 @@ def import_vehicle():
             id=form.transmission.data
         ).first_or_404()
         fuel = Fuel.query.filter_by(id=form.fuel_type.data).first_or_404()
-        new_vehicle = SellersVehicle(
+        new_vehicle = Import(
             name=form.name.data,
             price=form.price.data,
             description=form.description.data,
@@ -285,8 +299,8 @@ def import_vehicle():
             mileage=form.mileage.data,
             color=form.color.data,
             condition=form.condition.data,
-            seller_name=form.seller_name.data,
-            seller_email=form.seller_email.data,
+            importer_name=form.importer_name.data,
+            importer_email=form.importer_email.data,
             phone_number=form.phone_number.data,
             area=form.area.data,
             model_id=model.id,
@@ -298,7 +312,8 @@ def import_vehicle():
         )
         db.session.add(new_vehicle)
         db.session.commit()
-        return redirect(url_for("home.index"))
+        flash("Your import request has been saved.", "green")
+        return redirect(url_for("home.import_vehicle"))
     return render_template("home/import.html", form=form)
 
 

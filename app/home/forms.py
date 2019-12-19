@@ -117,7 +117,7 @@ class SellVehicleForm(FlaskForm):
     seller_name = StringField("Name", validators=[InputRequired()])
     phone_number = StringField("Phone", validators=[InputRequired()])
     area = StringField("Area", validators=[InputRequired()])
-    submit = SubmitField("Add")
+    submit = SubmitField("Submit")
 
 
 class ImportVehicleForm(FlaskForm):
@@ -135,8 +135,17 @@ class ImportVehicleForm(FlaskForm):
     transmission = SelectField(choices=[], coerce=int)
     interior = StringField("Interior")
     engine_size = StringField("Engine Size")
-    seller_email = StringField("Email", validators=[InputRequired()])
-    seller_name = StringField("Name", validators=[InputRequired()])
+    importer_email = StringField("Email", validators=[InputRequired()])
+    importer_name = StringField("Name", validators=[InputRequired()])
     phone_number = StringField("Phone", validators=[InputRequired()])
     area = StringField("Area")
-    submit = SubmitField("Add")
+    submit = SubmitField("Submit")
+
+
+class ContactForm(FlaskForm):
+    message = TextAreaField("message")
+    email = StringField("Email", validators=[InputRequired()])
+    name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    subject = StringField("Subject")
+    submit = SubmitField("Send Message")

@@ -10,6 +10,7 @@ class Make(db.Model):
     description = db.Column(db.String(10000))
     models = db.relationship('Model', backref='make', lazy='dynamic')
     vehicles = db.relationship('Vehicle', backref='make', lazy='dynamic')
+    sellers_vehicles = db.relationship('SellersVehicle', backref='make', lazy='dynamic')
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     createdAt = db.Column(db.DateTime(), default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)

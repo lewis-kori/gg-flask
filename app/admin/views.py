@@ -889,3 +889,35 @@ def delete():
 @login_required
 def delete_carpic():
     return
+
+
+@admin.route("/sellers_vehicles")
+@login_required
+@admin_required
+@check_confirmed
+def sellers_vehicles():
+    """Sellers Vehicles."""
+    sellers_vehicles = SellersVehicle.query.order_by(SellersVehicle.createdAt.desc())\
+        .join(Make, Model).all()
+
+    return render_template("admin/sellers_vehicles.html", sellers_vehicles=sellers_vehicles)
+
+
+@admin.route("/importers_vehicles")
+@login_required
+@admin_required
+@check_confirmed
+def importers_vehicles():
+    """Importers Vehicles."""
+    all_imports = Import.query.order_by(Import.createdAt.desc()).all()
+    return render_template("admin/importers_vehicles.html", all_imports=all_imports)
+
+
+@admin.route("/contact_us_backend")
+@login_required
+@admin_required
+@check_confirmed
+def contact_us_backend():
+    """CONTACT US."""
+    all_questions = Contact.query.all()
+    return render_template("admin/contact_us_backend.html", all_questions=all_questions)

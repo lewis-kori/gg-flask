@@ -11,6 +11,9 @@
     box-shadow: 0 2px 8px 0 rgba(5,7,15,.1);
     padding: 2rem 2rem;
     }
+    [class*="btn"].btn-style-3 {
+    background: #ed1c24 !important;
+    }
 </style>
 {% endblock %}
 
@@ -58,7 +61,8 @@
                         </div>
                         {% endfor %}
                     {% endfor %}
-                <form class="contact-form style-2">
+                 <form class="contact-form style-2" method="post" action="">
+                            {{ form.hidden_tag() }}
 
                   <div class="content-element3">
 
@@ -158,11 +162,11 @@
                       <div class="col-sm-6">
                         <label class="required tooltips">Name
                         </label>
-                          {{ form.seller_name(class='') }}
+                          {{ form.importer_name(class='') }}
 
 
                         <label class="required">Email</label>
-                        {{ form.seller_email(class="") }}
+                        {{ form.importer_email(class="") }}
 
                       </div>
                       <div class="col-sm-6">
@@ -179,7 +183,7 @@
                   </div>
 
                   <div class="align-right">
-                    <a href="#" class="btn btn-style-3">Submit</a>
+                    {{ form.submit(class="btn btn-style-3") }}
                   </div>
 
                 </form>
