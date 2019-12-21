@@ -58,8 +58,6 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Phone Number</th>
-                    <th>Make</th>
-                    <th>Model</th>
                     <th>Plate</th>
                     <th>Year</th>
                     <th>Price</th>
@@ -72,10 +70,8 @@
 
                 <tr id='del{{ sellers_vehicle.id }}'>
                     <td>{{ loop.index }}</td>
-                    <td><a href="#">{{ sellers_vehicle.seller_name }}</a></td>
+                    <td><a href="{{ url_for('admin.view_seller', id=sellers_vehicle.id) }}">{{ sellers_vehicle.seller_name }}</a></td>
                     <td>{{ sellers_vehicle.phone_number }}</td>
-                    <td>{{ sellers_vehicle.make_id.name }}</td>
-                    <td>{{ sellers_vehicle.model_id.name }}</td>
                     <td>{{ sellers_vehicle.plate }}</td>
                     <td>{{ sellers_vehicle.year}}</td>
                     <td>{{ sellers_vehicle.price }}</td>

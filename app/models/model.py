@@ -12,6 +12,7 @@ class Model(db.Model):
     make_id = db.Column(db.Integer(), db.ForeignKey('makes.id'), index=True)
     vehicles = db.relationship('Vehicle', backref='model', lazy='dynamic')
     sellers_vehicles = db.relationship('SellersVehicle', backref='model', lazy='dynamic')
+    importers_vehicles = db.relationship('Import', backref='model', lazy='dynamic')
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     createdAt = db.Column(db.DateTime(), default=datetime.utcnow)
     updatedAt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)

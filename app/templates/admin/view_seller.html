@@ -1,10 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layouts/admin_base.html' %}
 
-</body>
-</html>
+{% block custom_head_tags %}
+{{ super() }}
+<!-- CORE CSS-->
+<link href="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.css')}}" type="text/css"
+      rel="stylesheet">
+<style>
+    .asos{
+        font-weight: 400;
+        font-size: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!--page title-->
+<div class="page-title mb-4 d-flex align-items-center">
+    <div class="mr-auto">
+        <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Sellers Vehicle</h4>
+        <nav aria-label="breadcrumb" class="d-inline-block ">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Sellers Vehicle</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!--/page title-->
+
+<!--profile nav-->
+<div class="profile-nav mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-nav-links">
+                        <ul class="nav f12">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('admin.sellers_vehicles') }}">SELLERS'
+                                    VEHICLES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">EXPORT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">DELETE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/profile nav-->
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-4 col-md-6 profile-info-position">
+            <div class="card card-shadow mb-4 ">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="mt-4 mb-3">
+                            <img style="width:100%;" src="{% if vehicle.image_url %}
+                                            {{ url_for('static', filename='ckeditor_uploads/{}'.format(vehicle.image_url)) }}
+                                       {% else %}
+                                            {{ url_for('static', filename='images/front.png')}}
+                                       {% endif %}" alt=""/>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card card-shadow mb-4">
+                <div class="card-header border-0">
+                    <div class="custom-title-wrap bar-danger">
+                        <div class="custom-title">Features</div>
+                    </div>
+
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="card-body">
+                    <div class="row f12 mb-3">
+                        {% for features in vehicle.features%}
+                        <div class="col-6">{{features.name}}</div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card card-shadow mb-4">
+                <div class="card-header border-0">
+                    <div class="custom-title-wrap bar-danger">
+                        <div class="custom-title">Seller Details</div>
+                    </div>
+
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="card-body">
+                    <div class="row f12 mb-3">
+                        <div class="col-10">Name:<h5 class="asos">{{vehicle.seller_name }}</h5></div>
+                        <div class="col-10">Phone Number:<h6 class="asos">{{vehicle.phone_number }}</h6></div>
+                        <div class="col-10">Email:<h6 class="asos">{{vehicle.seller_email }}</h6></div>
+                        <div class="col-10">Location:<h6 class="asos">{{vehicle.area }}</h6></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-xl-8 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Name</h4>
+                            <p>
+                                {{vehicle.year}} {{vehicle.make.name}}  {{vehicle.model.name}}
+                            </p>
+                            <h4>Price</h4>
+                            <p>
+                                {{vehicle.price}}
+                            </p>
+                            <h4>Description</h4>
+                            <p>
+                                {{vehicle.description}}
+                            </p>
+                            <br/>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Make</h4>
+                            <p>
+                                {{vehicle.make.name}}
+                            </p>
+                            <h4>Model</h4>
+                            <p>
+                                {{vehicle.model.name}}
+                            </p>
+                            <h4>Year</h4>
+                            <p>
+                                {{vehicle.year}}
+                            </p>
+
+
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Mileage</h4>
+                            <p>
+                                {{vehicle.mileage}}
+                            </p>
+                            <h4>Fuel Type</h4>
+                            <p>
+                                {{car_fuel_type.type}}
+                            </p>
+                            <h4>Transmission</h4>
+                            <p>
+                                {% if vehicle.transmission %}
+                                {{vehicle.transmission}}
+                                {% else %}
+                                N/A
+                                {% endif %}
+                            </p>
+                            <br/>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Engine</h4>
+                            <p>{% if vehicle.engine %}
+                                {{vehicle.engine}}
+                                {% else %}
+                                N/A
+                                {% endif %}
+                            </p>
+                            <h4>Color</h4>
+                            <p>
+                                {{vehicle.color}}
+                            </p>
+
+                            <h4>Plate</h4>
+                            <p>
+                                {{vehicle.plate}}
+                            </p>
+
+
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="offset-4 col-xl-4 col-md-6 profile-info-position">
+            <div class="card card-shadow mb-4 ">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="mt-4 mb-3">
+
+                            <a href="{{ url_for('admin.delete_seller', id=vehicle.id) }}"
+                               class="btn btn-danger btn-pill btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock %}
+
+    {% block scripts %}
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='vendor/data-tables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='vendor/data-tables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js-init/init-datatable.js') }}"></script>
+
+    {% endblock %}

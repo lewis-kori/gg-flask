@@ -68,7 +68,7 @@
 
                 <tr id='del{{ question.id }}'>
                     <td>{{ loop.index }}</td>
-                    <td><a href="#">{{ question.name }}</a></td>
+                    <td><a href="{{ url_for('admin.view_question', id=question.id) }}">{{ question.name }}</a></td>
                     <td>{{ question.phone_number }}</td>
                     <td>{{ question.email }}</td>
                     <td>{{ question.subject }}</td>

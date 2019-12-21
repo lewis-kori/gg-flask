@@ -43,8 +43,8 @@ def dashboard():
     croles = Role.query.filter_by(index="customer").first_or_404()
     customers = croles.users.order_by(User.createdAt.desc()).limit(5)
     all_vehicles = Vehicle.query.order_by(Vehicle.createdAt.desc()).all()
-    makes = Make.query.order_by(Make.createdAt.desc()).limit(5)
-    models = Model.query.order_by(Model.createdAt.desc()).limit(5)
+    makes = Make.query.order_by(Make.createdAt.desc())
+    models = Model.query.order_by(Model.createdAt.desc())
     bookingsCount = Booking.query.count()
     listingsCount = Listing.query.filter_by(published=True).count()
     customersCount = customers.count()
@@ -353,8 +353,8 @@ def delete_vehicle(id):
 @admin_required
 @check_confirmed
 def enquiry():
-    enquiry = Enquiry.query.order_by(Enquiry.created_at.desc()).all()
-    return render_template('admin/enquiries.html', enquiries=enquiry, title='Enquiry')
+    enquiries = Enquiry.query.order_by(Enquiry.created_at.desc()).all()
+    return render_template('admin/enquiries.html', enquiries=enquiries, title='Enquiry')
 
 
 @admin.route('/bazaar', methods=['GET', 'POST'])
@@ -877,7 +877,7 @@ def delete():
         if table.id == 1:
             return jsonify({'status': 0,'message':'Cannot delete superadmin'})
     elif tablename == 'Role':
-            table = Role.query.filter_by(id=id).first_or_404()
+            table = Role.queryc.first_or_404()
     elif tablename == 'Bazaar':
             table = Bazaar.query.filter_by(id=id).first_or_404()
     db.session.delete(table)
@@ -903,14 +903,64 @@ def sellers_vehicles():
     return render_template("admin/sellers_vehicles.html", sellers_vehicles=sellers_vehicles)
 
 
+@admin.route("/view_seller/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def view_seller(id):
+    """Sellers Vehicles."""
+    vehicle = SellersVehicle.query.get_or_404(id)
+    fuel_id = vehicle.fuel_type_id
+    car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
+    return render_template("admin/view_seller.html", vehicle=vehicle, fuel_id=fuel_id, car_fuel_type=car_fuel_type)
+
+
+@admin.route("/delete_seller/delete/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def delete_seller(id):
+    """View Vehicle."""
+    vehicle = SellersVehicle.query.get_or_404(id)
+
+    db.session.delete(vehicle)
+    db.session.commit()
+    return redirect(url_for("admin.sellers_vehicles"))
+
+
 @admin.route("/importers_vehicles")
 @login_required
 @admin_required
 @check_confirmed
 def importers_vehicles():
     """Importers Vehicles."""
-    all_imports = Import.query.order_by(Import.createdAt.desc()).all()
+    all_imports = Import.query.order_by(Import.createdAt.desc()).join(Make, Model).all()
     return render_template("admin/importers_vehicles.html", all_imports=all_imports)
+
+
+@admin.route("/view_importer/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def view_importer(id):
+    """Importers Vehicles."""
+    vehicle = Import.query.get_or_404(id)
+    fuel_id = vehicle.fuel_type_id
+    car_fuel_type = Fuel.query.filter_by(id=fuel_id).first_or_404()
+    return render_template("admin/view_importer.html", vehicle=vehicle, fuel_id=fuel_id, car_fuel_type=car_fuel_type)
+
+
+@admin.route("/delete_importer/delete/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def delete_importer(id):
+    """View Vehicle."""
+    vehicle = Import.query.get_or_404(id)
+
+    db.session.delete(vehicle)
+    db.session.commit()
+    return redirect(url_for("admin.importers_vehicles"))
 
 
 @admin.route("/contact_us_backend")
@@ -921,3 +971,26 @@ def contact_us_backend():
     """CONTACT US."""
     all_questions = Contact.query.all()
     return render_template("admin/contact_us_backend.html", all_questions=all_questions)
+
+
+@admin.route("/view_question/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def view_question(id):
+    """Question."""
+    question = Contact.query.get_or_404(id)
+    return render_template("admin/view_question.html", question=question)
+
+
+@admin.route("/delete_importer/delete/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def delete_question(id):
+    """View Vehicle."""
+    question = Contact.query.get_or_404(id)
+
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for("admin.contact_us_backend"))

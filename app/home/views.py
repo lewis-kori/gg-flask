@@ -171,7 +171,7 @@ def _get_cars():
 @home.route("/view_car/<id>", methods=["post", "get"])
 def view_car(id):
     """Admin dashboard page."""
-
+    form = EnquiryForm()
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
     more_vehicles = (
@@ -185,6 +185,7 @@ def view_car(id):
         more_vehicles=more_vehicles,
         vehicle=vehicle,
         car_fuel_type=car_fuel_type,
+        form=form
     )
 
 

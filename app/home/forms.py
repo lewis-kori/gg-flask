@@ -149,3 +149,14 @@ class ContactForm(FlaskForm):
     phone_number = StringField("Phone", validators=[InputRequired()])
     subject = StringField("Subject")
     submit = SubmitField("Send Message")
+
+
+class EnquiryForm(FlaskForm):
+    budget = StringField("budget")
+    email = StringField("Email", validators=[InputRequired()])
+    name = StringField("Name", validators=[InputRequired()])
+    phone_number = StringField("Phone", validators=[InputRequired()])
+    year = StringField("Subject")
+    make = StringField()
+    model = StringField()
+    submit = SubmitField("Send Message")

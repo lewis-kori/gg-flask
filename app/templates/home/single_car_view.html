@@ -386,15 +386,21 @@
                   <h5>Enquire</h5>
                   <p class="type-2">All fields are required.</p>
 
-                  <form>
-                    <input type="text" placeholder="First Name">
-                    <input type="text" placeholder="Email">
+                  <form class="contact-form style-2" method="post" action="">
+                            {{ form.hidden_tag() }}
+                    {{ form.name(class="") }}
+                    {{ form.email(class="") }}
 
-                    <div class="form-cols">
+                    <div class="form-cols">s
                       <div class="form-collumn col-sm-12">
-                        <input type="text" placeholder="Phone Number">
+                        {{ form.phone(class="") }}
                       </div>
-
+                      <div style="display: none;">
+                        {{form.year(class="form-control", type="hidden", value="vehicle.year")}}
+                        {{ form.budget(class="form-control", type="hidden" value="vehicle.price") }}
+                        {{ form.make(class="form-control", type="hidden" value="vehicle.make.name") }}
+                        {{ form.model(class="form-control", type="hidden" value="vehicle.model.name") }}
+                      </div>
                     </div>
 
                     <textarea rows="4" placeholder="Type here to let us know how we can be of assistance. You can book a test drive or request for more photos, we are here to assist."></textarea>

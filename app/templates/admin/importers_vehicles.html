@@ -58,8 +58,6 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Phone Number</th>
-                    <th>Make</th>
-                    <th>Model</th>
                     <th>Plate</th>
                     <th>Year</th>
                     <th>Price</th>
@@ -72,10 +70,8 @@
 
                 <tr id='del{{ import.id }}'>
                     <td>{{ loop.index }}</td>
-                    <td><a href="#">{{ import.importer_name }}</a></td>
+                    <td><a href="{{ url_for('admin.view_importer', id=import.id) }}">{{ import.importer_name }}</a></td>
                     <td>{{ import.phone_number }}</td>
-                    <td>{{ import.make_id.name }}</td>
-                    <td>{{ import.model_id.name }}</td>
                     <td>{{ import.plate }}</td>
                     <td>{{ import.year}}</td>
                     <td>{{ import.price }}</td>
