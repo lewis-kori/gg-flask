@@ -386,28 +386,30 @@
                   <h5>Enquire</h5>
                   <p class="type-2">All fields are required.</p>
 
-                  <form class="contact-form style-2" method="post" action="">
+                  <form method="post" action="">
                             {{ form.hidden_tag() }}
-                    {{ form.name(class="") }}
-                    {{ form.email(class="") }}
+                    {{ form.name(class="", placeholder="Name") }}
+                    {{ form.email(class="", placeholder="Email" ) }}
 
-                    <div class="form-cols">s
+                    <div class="form-cols">
                       <div class="form-collumn col-sm-12">
-                        {{ form.phone(class="") }}
+                        {{ form.phone_number(class="", placeholder="Phone Number") }}
                       </div>
                       <div style="display: none;">
-                        {{form.year(class="form-control", type="hidden", value="vehicle.year")}}
-                        {{ form.budget(class="form-control", type="hidden" value="vehicle.price") }}
-                        {{ form.make(class="form-control", type="hidden" value="vehicle.make.name") }}
-                        {{ form.model(class="form-control", type="hidden" value="vehicle.model.name") }}
+                        {{ form.year(class="form-control", type="hidden", value=vehicle.year)}}
+                        {{ form.plate(class="form-control", type="hidden", value=vehicle.plate)}}
+                        {{ form.budget(class="form-control", type="hidden", value=vehicle.price) }}
+                        {{ form.make(class="form-control", type="hidden", value=vehicle.make.name) }}
+                        {{ form.model(class="form-control", type="hidden", value=vehicle.model.name) }}
                       </div>
                     </div>
 
-                    <textarea rows="4" placeholder="Type here to let us know how we can be of assistance. You can book a test drive or request for more photos, we are here to assist."></textarea>
-
+                    {{ form.message(class="", rows="4", placeholder="Type here to let us know how we
+                    can be of assistance. You can book a test drive or request for more photos, we are here to assist.") }}
+                    {{ form.submit(class="btn btn-style-3") }}
                   </form>
 
-                  <a href="#" class="btn btn-style-3">Send Message</a>
+
 
                 </div>
 

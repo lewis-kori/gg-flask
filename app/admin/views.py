@@ -994,3 +994,36 @@ def delete_question(id):
     db.session.delete(question)
     db.session.commit()
     return redirect(url_for("admin.contact_us_backend"))
+
+
+@admin.route("/single_car_enquiries")
+@login_required
+@admin_required
+@check_confirmed
+def single_car_enquiries():
+    """SINGLE CAR ENQUIRIES."""
+    single_enquiries = SingleEnquiry.query.all()
+    return render_template("admin/single_car_enquiries.html", single_enquiries=single_enquiries)
+
+
+@admin.route("/view_single_enquiry/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def view_single_enquiry(id):
+    """Enquiry."""
+    single_enquiry = SingleEnquiry.query.get_or_404(id)
+    return render_template("admin/view_car_enquiry.html", single_enquiry=single_enquiry)
+
+
+@admin.route("/delete_single_enquiry/delete/<id>")
+@login_required
+@admin_required
+@check_confirmed
+def delete_single_enquiry(id):
+    """View Vehicle."""
+    single_enquiry = SingleEnquiry.query.get_or_404(id)
+
+    db.session.delete(single_enquiry)
+    db.session.commit()
+    return redirect(url_for("admin.single_car_enquiries"))

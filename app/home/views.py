@@ -172,6 +172,21 @@ def _get_cars():
 def view_car(id):
     """Admin dashboard page."""
     form = EnquiryForm()
+    if form.validate_on_submit():
+        new_enquiry = SingleEnquiry(
+            name=form.name.data,
+            phone_number=form.phone_number.data,
+            message=form.message.data,
+            plate=form.plate.data,
+            year=form.year.data,
+            budget=form.budget.data,
+            make=form.make.data,
+            model=form.model.data,
+            email=form.email.data,
+        )
+        db.session.add(new_enquiry)
+        db.session.commit()
+        return redirect(url_for("home.inventory"))
     vehicle = Vehicle.query.get_or_404(id)
     fuel_id = vehicle.fuel_type_id
     more_vehicles = (

@@ -42,3 +42,5 @@ from .client import *
 from .enquiry import *
 from .supplier import *
 from .contact import *
+from .single_car_enquiry import *
+
