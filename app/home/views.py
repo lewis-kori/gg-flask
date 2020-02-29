@@ -55,7 +55,7 @@ def inventory():
     makes = [(row.id, row.name) for row in Make.query.all()]
     transmissions = [(row.id, row.type) for row in Transmission.query.all()]
     fuel_types = [(row.id, row.type) for row in Fuel.query.all()]
-    years = list(reversed(range(2005, date.today().year)))
+    years = list(range(2000, date.today().year))
 
     all_vehicles = (
         Vehicle.query.filter(

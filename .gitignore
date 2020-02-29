@@ -1,4 +1,4 @@
-venv
+venv/
 app/static/uploads
 app/static/ckeditor_uploads
 .env
