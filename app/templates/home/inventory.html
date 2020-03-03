@@ -56,6 +56,57 @@
 
               <form id="form" method="get">
 
+                <div class="accordion toggle">
+
+
+                  <div class="accordion-item">
+                    <h6 class="a-title active">Make</h6>
+                    <div class="a-content">
+                      {% for make in makes %}
+                      <div class="input-wrapper">
+                        <input type="checkbox" class="make" id="mak{{ make[0] }}" value="{{ make[0] }}" >
+                        <label for="mak{{ make[0] }}">{{ make[1] }}</label>
+                      </div>
+                      {% endfor %}
+  
+                    </div>
+                  </div>
+  
+                </div>
+  
+                <div class="accordion toggle">
+  
+  
+                  <div class="accordion-item">
+                    <h6 class="a-title">Model</h6>
+                    <div id="model-container" class="a-content">
+  
+                    </div>
+                  </div>
+  
+                </div> 
+
+                <div class="accordion toggle">
+
+
+                  <div class="accordion-item">
+                    <h6 class="a-title active">Price</h6>
+                    <div class="a-content">
+  
+                      <!--price-->
+                      <fieldset class="price-scale">
+                        <div class="clearfix range-values">
+                          <input id="min_price" class="f-left first-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(min_price) }}">
+                          <input id="max_price" class="f-right last-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(max_price) }}">
+                        </div>
+                        <div id="price"></div>
+                      </fieldset>
+  
+                    </div>
+                  </div>
+  
+                </div>
+
               <div class="accordion toggle">
 
 
@@ -79,81 +130,12 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title active">Make</h6>
-                  <div class="a-content">
-                    {% for make in makes %}
-                    <div class="input-wrapper">
-                      <input type="checkbox" class="make" id="mak{{ make[0] }}" value="{{ make[0] }}" >
-                      <label for="mak{{ make[0] }}">{{ make[1] }}</label>
-                    </div>
-                    {% endfor %}
-
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="accordion toggle">
-
-
-                <div class="accordion-item">
-                  <h6 class="a-title">Model</h6>
-                  <div id="model-container" class="a-content">
-
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="accordion toggle">
-
-
-                <div class="accordion-item">
-                  <h6 class="a-title active">Price</h6>
-                  <div class="a-content">
-
-                    <!--price-->
-                    <fieldset class="price-scale">
-                      <div class="clearfix range-values">
-                        <input id="min_price" class="f-left first-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(min_price) }}">
-                        <input id="max_price" class="f-right last-limit" readonly type="text" value="{{  'Ksh {:,.0f}'.format(max_price) }}">
-                      </div>
-                      <div id="price"></div>
-                    </fieldset>
-
-                  </div>
-                </div>
-
-              </div>
-              <div class="accordion toggle">
-
-
-                <div class="accordion-item">
-                  <h6 class="a-title">Transmission</h6>
-                  <div class="a-content">
-
-                    {% for transmission in transmissions %}
-                    <div class="input-wrapper">
-                      <input type="checkbox" class="transmission" id="trans{{ transmission[0] }}" value="{{ transmission[0] }}" >
-                      <label for="trans{{ transmission[0] }}">{{ transmission[1] }}</label>
-                    </div>
-
-                    {% endfor %}
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="accordion toggle">
-
-
-                <div class="accordion-item">
                   <h6 class="a-title">Mileage</h6>
                   <div class="a-content">
                       <div class="auto-custom-select">
                         <select data-default-text="Any">
                           <option value="menu">Below 50k</option>
-                          <option value="menu">Below 70kk</option>
+                          <option value="menu">Below 70k</option>
                           <option value="menu">Below 100k</option>
                           <option value="menu">Below 150k</option>
                         </select>
@@ -225,7 +207,7 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title">Drivetrain</h6>
+                  <h6 class="a-title">Drive terrain</h6>
                   <div class="a-content">
 
                     <div class="input-wrapper">
@@ -282,7 +264,24 @@
 
               </div>
 
+              <div class="accordion toggle">
 
+
+                <div class="accordion-item">
+                  <h6 class="a-title">Transmission</h6>
+                  <div class="a-content">
+
+                    {% for transmission in transmissions %}
+                    <div class="input-wrapper">
+                      <input type="checkbox" class="transmission" id="trans{{ transmission[0] }}" value="{{ transmission[0] }}" >
+                      <label for="trans{{ transmission[0] }}">{{ transmission[1] }}</label>
+                    </div>
+
+                    {% endfor %}
+                  </div>
+                </div>
+
+              </div>
 
               <div class="accordion toggle">
 
@@ -452,14 +451,10 @@
 
 
                 <div class="accordion-item">
-                  <h6 class="a-title">Keywords</h6>
+                  <h6 class="a-title active">Keywords</h6>
                   <div class="a-content">
 
-
-
                       <input type="text" placeholder="Additional keywords">
-
-
 
                   </div>
                 </div>

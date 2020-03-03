@@ -18,8 +18,8 @@ def index():
     model = [(row.id, row.name) for row in Model.query.all()]
     transmission = [(row.id, row.type) for row in Transmission.query.all()]
     fuel = [(row.id, row.type) for row in Fuel.query.all()]
-    year_to = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
-    year_from = [(i, i) for i in list(reversed(range(2000, date.today().year)))]
+    year_to = [(i, i) for i in list(reversed(range(2000, date.today().year+1)))]
+    year_from = [(i, i) for i in list(range(2000, date.today().year+1))]
     make.insert(0, (0, "--All Makes--"))
     year_from.insert(0, (0, "Year from"))
     year_to.insert(0, (0, "Year to"))
@@ -55,7 +55,7 @@ def inventory():
     makes = [(row.id, row.name) for row in Make.query.all()]
     transmissions = [(row.id, row.type) for row in Transmission.query.all()]
     fuel_types = [(row.id, row.type) for row in Fuel.query.all()]
-    years = list(range(2000, date.today().year))
+    years = list(reversed(range(2000, date.today().year+1)))
 
     all_vehicles = (
         Vehicle.query.filter(
@@ -246,7 +246,7 @@ def terms_of_use():
 def tour_operators_terms():
     return render_template("home/tour_operators_terms.html")
 
-
+@home.route("/trade-in", methods=["GET","POST"])
 @home.route("/sell_your_car", methods=["GET", "POST"])
 def sell_vehicle():
     all_vehicles = Vehicle.query.all()

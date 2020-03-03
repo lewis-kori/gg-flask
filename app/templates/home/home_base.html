@@ -57,6 +57,16 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='home/css/icon.css') }}"
     />
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46979417-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-46979417-1');
+  </script>
     {% block custom_head_tags %} {% endblock %}
   </head>
 
@@ -140,6 +150,11 @@
                     <li>
                       <a href="{{ url_for('home.sell_vehicle') }}" class="wake"
                         >Sell your car</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/trade-in" class="wake"
+                        >Trade in</a
                       >
                     </li>
                     <li>
@@ -264,7 +279,7 @@ We have been dedicated to providing our clients both private and corporate with 
                     <li><a href="{{ url_for('home.inventory') }}">View Inventory</a></li>
                     <li><a href="#">New Stock</a></li>
                     <li><a href="#">Import</a></li>
-                    <li><a href="#">Trade In</a></li>
+                    <li><a href="/trade-in">Trade In</a></li>
                   </ul>
                 </div>
               </div>
@@ -314,7 +329,7 @@ We have been dedicated to providing our clients both private and corporate with 
         <div class="copyright-section">
           <div class="container">
             <div class="copyright align-center">
-               Copyright Gigi Motors Limited © 2019. All Rights Reserved. Designed by Simply Vivid Media
+               Copyright Gigi Motors Limited © 2020. All Rights Reserved. Designed by <a style="color:#FF0000" href="http://simplyvivid.co.ke/">Simply Vivid Media</a>
             </div>
           </div>
         </div>
