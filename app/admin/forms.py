@@ -28,6 +28,9 @@ from app.models import Role, User, Category, Product
 
 photos = UploadSet("photos", IMAGES)
 
+BODY_TYPES = [('Saloon', 'Saloon'), ('Pickup', 'Pickup'), ('SUV', 'SUV'), ('Wagon', 'Wagon'), ('Hatchback', 'Hatchback'),
+              ('Minivan/buses', 'Minibus/Van')]
+
 
 class ChangeUserEmailForm(Form):
     email = EmailField(
@@ -96,6 +99,7 @@ class AddVehicleForm(FlaskForm):
     mileage = StringField("Mileage", validators=[InputRequired()])
     color = StringField("Color", validators=[InputRequired()])
     condition = StringField("Condition")
+    body_type = SelectField(choices=BODY_TYPES, validators=[DataRequired()])
     year = IntegerField("Year", validators=[InputRequired()])
     model = SelectField(validators=[InputRequired()], choices=[], coerce=int)
     make = SelectField(validators=[InputRequired()], choices=[], coerce=int)
@@ -141,6 +145,7 @@ class EditVehicleForm(Form):
     description = TextAreaField("Description", validators=[InputRequired()])
     name = StringField("Name", validators=[InputRequired()])
     price = DecimalField("Price", validators=[DataRequired()])
+    body_type = SelectField(choices=BODY_TYPES, validators=[DataRequired()])
     mileage = StringField("Mileage", validators=[InputRequired()])
     color = StringField("Color", validators=[InputRequired()])
     condition = StringField("Condition")

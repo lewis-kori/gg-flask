@@ -31,6 +31,7 @@ class Vehicle(db.Model):
     extra_images_url = db.Column(db.String(500))
     mileage = db.Column(db.String(80), index=True)
     condition = db.Column(db.String(80), index=True)
+    body_type = db.Column(db.String(80), index=True)
     color = db.Column(db.String(80), index=True)
     model_id = db.Column(db.Integer(), db.ForeignKey("models.id"), index=True)
     make_id = db.Column(db.Integer(), db.ForeignKey("makes.id"), index=True)

@@ -23,7 +23,6 @@ from sqlalchemy import func
 from flask_ckeditor import upload_success, upload_fail
 from werkzeug.datastructures import FileStorage
 
-
 admin = Blueprint("admin", __name__)
 photos = UploadSet("photos", IMAGES)
 
@@ -37,8 +36,8 @@ def dashboard():
     bookings = Booking.query.order_by(Booking.createdAt.desc()).limit(5)
     listings = (
         Listing.query.filter_by(published=True)
-        .order_by(Listing.createdAt.desc())
-        .limit(5)
+            .order_by(Listing.createdAt.desc())
+            .limit(5)
     )
     croles = Role.query.filter_by(index="customer").first_or_404()
     customers = croles.users.order_by(User.createdAt.desc()).limit(5)
@@ -182,6 +181,7 @@ def edit_vehicle(id):
         form.extra_images_url = (form.extra_images.data,)
         form.left_image_url = (form.left_image_url.data,)
         form.right_image_url = (form.right_image_url.data,)
+        form.body_type = (form.body_type.data,)
         for form.feature_id in form.features_id.data:
             form.feature = Feature.query.filter_by(id=form.feature_id).first_or_404()
             vehicle.features_id.append(form.feature)
@@ -417,9 +417,9 @@ def edit_bazaar(id):
 def view_bazaar(id):
     page = request.args.get('page', 1, type=int)
     vehicle = Vehicle.query.filter_by(bazaar_id=id).order_by(Vehicle.createdAt.desc()).paginate(page,
-                                                                                                 current_app.config[
-                                                                                                     'POSTS_PER_PAGE'],
-                                                                                                 False)
+                                                                                                current_app.config[
+                                                                                                    'POSTS_PER_PAGE'],
+                                                                                                False)
     next_url = url_for('admin.view_bazaar', id=id, page=vehicle.next_num) if vehicle.has_next else None
     prev_url = url_for('admin.view_bazaar', id=id, page=vehicle.prev_num) if vehicle.has_prev else None
     return render_template('admin/all_vehicles.html', inventory=vehicle.items, next_url=next_url, prev_url=prev_url,
@@ -450,7 +450,7 @@ def create_enquiry():
         make = Make.query.filter_by(id=form.make.data).first_or_404()
         model = Model.query.filter_by(id=form.model.data).first_or_404()
         client = Client.query.filter_by(id=form.client_id.data).first_or_404()
-        vehicle=Vehicle.query.filter_by(make_id=make.id, model_id=model.id).first_or_404()
+        vehicle = Vehicle.query.filter_by(make_id=make.id, model_id=model.id).first_or_404()
         enquiry = Enquiry(vehicle=vehicle, client=client,
                           budget=form.budget.data,
                           year=form.year.data)
@@ -459,6 +459,7 @@ def create_enquiry():
         flash('Enquiry added successfully', 'success')
         return redirect(url_for('admin.enquiry'))
     return render_template('admin/create_enquiry.html', form=form, title='create enquiry')
+
 
 @admin.route('/edit_enquiry/<id>', methods=['GET', 'POST'])
 @login_required
@@ -521,6 +522,7 @@ def edit_import(id):
         flash('Import edited ', 'success')
         return redirect(url_for('admin.imports'))
     return render_template('admin/edit_import.html', form=form, title='edit import')
+
 
 ##finance starts here
 # invoice
@@ -840,6 +842,8 @@ def view_client(id):
 def view_supplier(id):
     supplier = Supplier.query.filter_by(id=id).first_or_404()
     return render_template('admin/view_supplier.html', title='view supplier', supplier=supplier)
+
+
 ##endfinance
 
 
@@ -873,13 +877,13 @@ def delete():
     elif tablename == 'User':
         table = User.query.filter_by(id=id).first_or_404()
         if table.status == True:
-            return jsonify({'status': 0,'message':'User must be deactivated first'})
+            return jsonify({'status': 0, 'message': 'User must be deactivated first'})
         if table.id == 1:
-            return jsonify({'status': 0,'message':'Cannot delete superadmin'})
+            return jsonify({'status': 0, 'message': 'Cannot delete superadmin'})
     elif tablename == 'Role':
-            table = Role.queryc.first_or_404()
+        table = Role.queryc.first_or_404()
     elif tablename == 'Bazaar':
-            table = Bazaar.query.filter_by(id=id).first_or_404()
+        table = Bazaar.query.filter_by(id=id).first_or_404()
     db.session.delete(table)
     db.session.commit()
     return jsonify({'status': 1})
@@ -897,7 +901,7 @@ def delete_carpic():
 @check_confirmed
 def sellers_vehicles():
     """Sellers Vehicles."""
-    sellers_vehicles = SellersVehicle.query.order_by(SellersVehicle.createdAt.desc())\
+    sellers_vehicles = SellersVehicle.query.order_by(SellersVehicle.createdAt.desc()) \
         .join(Make, Model).all()
 
     return render_template("admin/sellers_vehicles.html", sellers_vehicles=sellers_vehicles)

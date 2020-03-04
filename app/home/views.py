@@ -51,6 +51,7 @@ def inventory():
     model = request.args.get("model", 0, type=int)
     fuel = request.args.get("fuel", 0, type=int)
     transmission = request.args.get("transmission", 0, type=int)
+    body_type = request.args.get("body_type", "", type=str)
 
     makes = [(row.id, row.name) for row in Make.query.all()]
     transmissions = [(row.id, row.type) for row in Transmission.query.all()]
@@ -69,6 +70,7 @@ def inventory():
             if transmission
             else Vehicle.id.isnot(None)
         )
+        .filter(Vehicle.body_type == body_type if body_type else Vehicle.id.isnot(None))
         .filter(Vehicle.fuel_type_id == fuel if fuel else Vehicle.id.isnot(None))
         .order_by(Vehicle.createdAt.desc())
         .paginate(page, current_app.config["POSTS_PER_PAGE"], False)
@@ -110,6 +112,7 @@ def _get_cars():
         "years" not in data
         or "makes" not in data
         or "models" not in data
+        or "bodyTypes" not in data
         or "transmissions" not in data
         or "min_price" not in data
         or "max_price" not in data
@@ -129,6 +132,11 @@ def _get_cars():
         .filter(
             Vehicle.model_id.in_(data["models"])
             if len(data["models"])
+            else Vehicle.id.isnot(None)
+        )
+        .filter(
+            Vehicle.body_type.in_(data["bodyTypes"])
+            if len(data["bodyTypes"])
             else Vehicle.id.isnot(None)
         )
         .filter(

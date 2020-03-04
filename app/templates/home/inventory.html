@@ -159,42 +159,42 @@
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-36" id="checkbox-36">
+                      <input type="checkbox" name="checkbox-36" class="bodytype" id="checkbox-36" value="Saloon">
                       <label for="checkbox-36">Saloon</label>
 
                     </div>
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-37" id="checkbox-37">
+                      <input type="checkbox" name="checkbox-37" class="bodytype" id="checkbox-37" value="SUV">
                       <label for="checkbox-37">SUV</label>
 
                     </div>
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-38" id="checkbox-38">
+                      <input type="checkbox" name="checkbox-38" class="bodytype" id="checkbox-38" value="Pickup">
                       <label for="checkbox-38">Pickup</label>
 
                     </div>
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-39" id="checkbox-39">
+                      <input type="checkbox" name="checkbox-39" class="bodytype" id="checkbox-39" value="Hatchback">
                       <label for="checkbox-39">Hatchback</label>
 
                     </div>
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-30" id="checkbox-40">
+                      <input type="checkbox" name="checkbox-30" class="bodytype" id="checkbox-40" value="Wagon">
                       <label for="checkbox-40">Wagon</label>
 
                     </div>
 
                     <div class="input-wrapper">
 
-                      <input type="checkbox" name="checkbox-41" id="checkbox-41">
+                      <input type="checkbox" name="checkbox-41" class="bodytype" id="checkbox-41" value="Minibus/Van">
                       <label for="checkbox-41">Minibus/Van </label>
 
                     </div>
@@ -495,6 +495,7 @@
       makes: [],
       models: [],
       transmissions: [],
+      bodyTypes: [],
       min_price: parseNumber($('#min_price').val()),
       max_price: parseNumber($('#max_price').val())
     }
@@ -528,6 +529,17 @@
       } else {
 
         data.models = data.models.filter(function(model) { return model !== selected })
+      }
+      getData();
+    });
+
+    $( ".bodytype").on( "click",function() {
+      selectedBodyType = $(this).val()
+      if ($(this).prop('checked')) {
+        data.bodyTypes.push(selectedBodyType);
+      } else {
+
+        data.bodyTypes = data.bodyTypes.filter(function(bodyType) { return bodyType !== selectedBodyType })
       }
       getData();
     });
